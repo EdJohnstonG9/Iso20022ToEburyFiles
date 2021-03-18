@@ -164,7 +164,7 @@ namespace EburyMPIsoFiles.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please read the Privacy Statement here.
+        ///   Looks up a localized string similar to No private or personal information is stored or recorded by this application.
         /// </summary>
         public static string SettingsPagePrivacyStatementText {
             get {
@@ -182,7 +182,7 @@ namespace EburyMPIsoFiles.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please read Terms Of Use here.
+        ///   Looks up a localized string similar to This application is Opensource under the MIT license.
         /// </summary>
         public static string SettingsTermsOfUseStatementText {
             get {

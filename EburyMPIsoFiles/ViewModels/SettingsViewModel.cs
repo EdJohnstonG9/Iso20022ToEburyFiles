@@ -62,7 +62,7 @@ namespace EburyMPIsoFiles.ViewModels
         private ICommand _webLinkCommand;
         public ICommand WebLinkCommand => _webLinkCommand ?? (_webLinkCommand = new DelegateCommand(OnWebLink));
         private void OnWebLink()
-            => _systemService.OpenInWebBrowser(_appConfig.PrivacyStatement);
+            => _systemService.OpenInWebBrowser(_appConfig.TermsOfUseStatement);
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
             => true;

@@ -158,12 +158,12 @@ The user remains responsible for the content of converted files.</value>
     <value>About this application</value>
   </data>
   <data name="SettingsPagePrivacyStatementText" xml:space="preserve">
-    <value>Please read the Privacy Statement here</value>
+    <value>No private or personal information is stored or recorded by this application</value>
   </data>
   <data name="SettingsPageTitle" xml:space="preserve">
     <value>Application Settings</value>
   </data>
   <data name="SettingsTermsOfUseStatementText" xml:space="preserve">
-    <value>Please read Terms Of Use here</value>
+    <value>This application is Opensource under the MIT license</value>
   </data>
 </root>
