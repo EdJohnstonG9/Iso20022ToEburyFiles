@@ -1,0 +1,7 @@
+﻿d:
+cd D:\VisualStudio\Source\Repos\EburyMassFilesWPFSoln\EburyMassFilesWPF.Core\Models\ISO20022
+xsd pain.001.001.03.xsd /c /l:CS /n:EburyMassFilesWPF.Core.Models.ISO20022.pain_001_001_03 
+rem	[System.Xml.Serialization.XmlRootAttribute(ElementName = "Document", Namespace ="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", IsNullable=false)]
+rem public partial class PaymentsInitiationV03
+
+xsd pain.001.001.03.xsd /d /l:CS /n:EburyMassFilesWPF.Core.Models.ISO20022.pain_001_001_03 

@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>EburyMPIsolFilesLibraryKey.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\APIModels\**" />
+    <Compile Remove="Models\Beneficiaries\**" />
+    <Compile Remove="Models\Payments\**" />
+    <EmbeddedResource Remove="Models\APIModels\**" />
+    <EmbeddedResource Remove="Models\Beneficiaries\**" />
+    <EmbeddedResource Remove="Models\Payments\**" />
+    <None Remove="Models\APIModels\**" />
+    <None Remove="Models\Beneficiaries\**" />
+    <None Remove="Models\Payments\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="16.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Contracts\Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Repos\EburyMassPaymentApiSolution\EburyApiModels\EburyApiModels.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.ComponentModel.DataAnnotations.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

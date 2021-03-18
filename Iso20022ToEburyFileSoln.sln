@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EburyMPIsoFilesLibrary", "EburyMPIsoFilesLibrary\EburyMPIsoFilesLibrary.csproj", "{33AAAE0C-ACEB-4708-B165-77C9A0B16944}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EburyMPIsoFilesLibraryTests", "EburyMPIsoFilesLibraryTests\EburyMPIsoFilesLibraryTests.csproj", "{6C73EFAF-B1B8-4E76-8E8C-4FEADF7BFCC9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{33AAAE0C-ACEB-4708-B165-77C9A0B16944} = {33AAAE0C-ACEB-4708-B165-77C9A0B16944}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EburyMPIsoFiles.Core", "EburyMPIsoFiles.Core\EburyMPIsoFiles.Core.csproj", "{4A337D34-7B33-4A64-AED0-EB6D27B06E07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EburyMPIsoFiles", "EburyMPIsoFiles\EburyMPIsoFiles.csproj", "{DDA521DF-4E16-4FF0-B548-0A9893311E1A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4A337D34-7B33-4A64-AED0-EB6D27B06E07} = {4A337D34-7B33-4A64-AED0-EB6D27B06E07}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EburyApiModels", "..\..\Repos\EburyMassPaymentApiSolution\EburyApiModels\EburyApiModels.csproj", "{51C8F16B-76F2-47C6-9676-283D302727F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33AAAE0C-ACEB-4708-B165-77C9A0B16944}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33AAAE0C-ACEB-4708-B165-77C9A0B16944}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33AAAE0C-ACEB-4708-B165-77C9A0B16944}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33AAAE0C-ACEB-4708-B165-77C9A0B16944}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C73EFAF-B1B8-4E76-8E8C-4FEADF7BFCC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C73EFAF-B1B8-4E76-8E8C-4FEADF7BFCC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C73EFAF-B1B8-4E76-8E8C-4FEADF7BFCC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C73EFAF-B1B8-4E76-8E8C-4FEADF7BFCC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A337D34-7B33-4A64-AED0-EB6D27B06E07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A337D34-7B33-4A64-AED0-EB6D27B06E07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A337D34-7B33-4A64-AED0-EB6D27B06E07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A337D34-7B33-4A64-AED0-EB6D27B06E07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDA521DF-4E16-4FF0-B548-0A9893311E1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDA521DF-4E16-4FF0-B548-0A9893311E1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDA521DF-4E16-4FF0-B548-0A9893311E1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDA521DF-4E16-4FF0-B548-0A9893311E1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51C8F16B-76F2-47C6-9676-283D302727F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51C8F16B-76F2-47C6-9676-283D302727F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51C8F16B-76F2-47C6-9676-283D302727F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51C8F16B-76F2-47C6-9676-283D302727F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DEEF6E1B-3C4D-41C6-B674-8B98120D67BB}
+	EndGlobalSection
+EndGlobal

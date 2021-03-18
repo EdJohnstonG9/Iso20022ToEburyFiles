@@ -1,0 +1,106 @@
+﻿<UserControl x:Class="EburyMPIsoFiles.Views.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:EburyMPIsoFiles.Views"
+        xmlns:properties="clr-namespace:EburyMPIsoFiles.Properties" 
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        Style="{StaticResource BaseUserControlStyle}"
+        mc:Ignorable="d" 
+        d:DesignHeight="768" d:DesignWidth="1024"
+        xmlns:prism="http://prismlibrary.com/"             
+        prism:ViewModelLocator.AutoWireViewModel="True">
+    <ScrollViewer>
+        <Grid Margin="{StaticResource SmallTopBottomMargin}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48" />
+                <RowDefinition Height="0" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Style="{StaticResource PageTitleStyle}"
+                Text="{x:Static properties:Resources.SettingsPageTitle}" />
+            <StackPanel 
+                x:Name="AppSettings"
+                Grid.Row="2"
+                Margin="{StaticResource MediumLeftRightMargin}">
+                <StackPanel>
+                    <StackPanel.Resources>
+                        <Style TargetType="Label">
+                            <Setter Property="DockPanel.Dock" Value="left"/>
+                        </Style>
+                        <Style TargetType="DockPanel">
+                            <Setter Property="DockPanel.Margin" Value="5"/>
+                        </Style>
+                    </StackPanel.Resources>
+
+                    <DockPanel>
+                        <Label Width="100">XML File Path</Label>
+                        <TextBox x:Name="XmlFilePath" Text="{Binding Path=XmlFilePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <prism:InvokeCommandAction Command="{Binding Path=SaveUserSettingsCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                    </DockPanel>
+                    <DockPanel>
+                        <Label Width="100">Output File Path</Label>
+                        <TextBox x:Name="OutputFilePath" Text="{Binding Path=OutputFilePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <prism:InvokeCommandAction Command="{Binding Path=SaveUserSettingsCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                    </DockPanel>
+
+                </StackPanel>
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="3"
+                        Margin="{StaticResource MediumLeftRightMargin}">
+                <TextBlock
+                    Margin="{StaticResource SmallTopMargin}"
+                    Style="{StaticResource SubtitleTextStyle}"
+                    Text="{x:Static properties:Resources.SettingsPageAboutTitle}" />
+                <TextBlock
+                    Text="{Binding VersionDescription, Mode=OneWay}"
+                    Margin="{StaticResource XSmallTopMargin}"
+                    Style="{StaticResource BodyTextStyle}" />
+                <TextBlock
+                    Margin="{StaticResource XSmallTopMargin}"
+                    Style="{StaticResource BodyTextStyle}"
+                    Text="{x:Static properties:Resources.SettingsPageAboutText}" />
+
+                <TextBlock
+                    Margin="{StaticResource SmallTopMargin}"
+                    AutomationProperties.Name="{Binding Text, ElementName=settingsPrivacyStatement}">
+                    <Hyperlink
+                        Command="{Binding WebLinkCommand}"
+                        AutomationProperties.Name="{Binding Text, ElementName=settingsPrivacyStatement}">
+                        <TextBlock
+                            x:Name="settingsPrivacyStatement"
+                            Style="{StaticResource BodyTextStyle}"
+                            Text="{x:Static properties:Resources.SettingsPagePrivacyStatementText}" />
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock
+                    Margin="{StaticResource SmallTopMargin}"
+                    AutomationProperties.Name="{Binding Text, ElementName=settingsTermsOfUseStatement}">
+                    <Hyperlink
+                        Command="{Binding WebLinkCommand}"
+                        AutomationProperties.Name="{Binding Text, ElementName=settingsTermsOfUseStatement}">
+                        <TextBlock
+                            x:Name="settingsTermsOfUseStatement"
+                            Style="{StaticResource BodyTextStyle}"
+                            Text="{x:Static properties:Resources.SettingsTermsOfUseStatementText}" />
+                    </Hyperlink>
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>
