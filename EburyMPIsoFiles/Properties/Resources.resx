@@ -164,6 +164,6 @@ The user remains responsible for the content of converted files.</value>
     <value>Application Settings</value>
   </data>
   <data name="SettingsTermsOfUseStatementText" xml:space="preserve">
-    <value>This application is Opensource under the MIT license</value>
+    <value>This application is Opensource and free to use under the MIT license</value>
   </data>
 </root>

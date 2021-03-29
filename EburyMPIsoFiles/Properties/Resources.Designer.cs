@@ -182,7 +182,7 @@ namespace EburyMPIsoFiles.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This application is Opensource under the MIT license.
+        ///   Looks up a localized string similar to This application is Opensource and free to use under the MIT license.
         /// </summary>
         public static string SettingsTermsOfUseStatementText {
             get {

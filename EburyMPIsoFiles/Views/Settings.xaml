@@ -79,14 +79,15 @@
                 <TextBlock
                     Margin="{StaticResource SmallTopMargin}"
                     AutomationProperties.Name="{Binding Text, ElementName=settingsPrivacyStatement}">
-                    <Hyperlink
-                        Command="{Binding WebLinkCommand}"
-                        AutomationProperties.Name="{Binding Text, ElementName=settingsPrivacyStatement}">
-                        <TextBlock
+                    <TextBlock
                             x:Name="settingsPrivacyStatement"
                             Style="{StaticResource BodyTextStyle}"
                             Text="{x:Static properties:Resources.SettingsPagePrivacyStatementText}" />
-                    </Hyperlink>
+                    <!--<Hyperlink
+                        Command="{Binding WebLinkCommand}"
+                        AutomationProperties.Name="{Binding Text, ElementName=settingsPrivacyStatement}">
+                        
+                    </Hyperlink>-->
                 </TextBlock>
                 <TextBlock
                     Margin="{StaticResource SmallTopMargin}"
