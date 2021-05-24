@@ -1,0 +1,194 @@
+RecType,Account,BeneName,ColD,IfhRef,IfhCreated,IfhDate,Amount,DueDate,ColJ,BatDueDate,BatCustomerRef,BatCcy,BatAmount,ColO,ColP,ColQ,ColR,ColS,AdvBeneEmail,OrderingCustomer,OrderingAddress1,OrderingAddress2,ColX,ColY,ColZ,BatBeneAddress,ColAB,ColAC,ColAD,ColAE,ColAF,ColAG,ColAH,BankType,SecBeneSwift,SecBeneBank,ColAL,ColAM,ColAN,ColAO,SecBankCtry,ColAQ,SecPaymentRef,SecBeneBane2,ColAT,ColAU,Charges
+IFH,IFILE,CSV,ABC79439001,SGHBAPGSG152566758,2.02105E+13,07/05/2021,09:58:14,P,1,193,    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,9944.96,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Dinglasa,,,,,,,,,,,,,,,,,,,,,
+SECPTY,5531069077,Dinglasan Bonner Avecilla,,,,,9944.96,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,OCBCSGSG,OCBC BANK,,,,,SG,,SALARY PAYMENT APRIL 2021,Dinglasan Bonner Avecilla,,,OUR
+ADV,,,,,,,1,1,Dinglasan Bonner Avecilla,O,,,,,,S,Y,1,BONNERDINGLASAN@YAHOO.COM,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,9306.86,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Binod Ku,,,,,,,,,,,,,,,,,,,,,
+SECPTY,27062784,Binod Kumar Tyagi SO Ram Daras,,,,,9306.86,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Binod Kumar Tyagi SO Ram Daras,,,OUR
+ADV,,,,,,,1,1,Binod Kumar Tyagi SO Ram Daras,O,,,,,,S,Y,1,Binod68@gmail.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,11321.2,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Maruthav,,,,,,,,,,,,,,,,,,,,,
+SECPTY,104663478,MARUTHAVANAN ELAYARAJA,,,,,11321.2,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB BANK,,,,,SG,,SALARY PAYMENT APRIL 2021,Maruthavanan Elayaraja,,,OUR
+ADV,,,,,,,1,1,Maruthavanan Elayaraja,O,,,,,,S,Y,1,ELAYARAJAH1978@GMAIL.COM,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,10431.97,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Estante,,,,,,,,,,,,,,,,,,,,,
+SECPTY,701795008,ERIC ESTANTE,,,,,10431.97,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,CITISGSGGCB,CITIBANK,,,,,SG,,SALARY PAYMENT APRIL 2021,Estante Eric Estante,,,OUR
+ADV,,,,,,,1,1,Estante Eric Estante,O,,,,,,S,Y,1,ERIC.ESTANTE@YAHOO.COM,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,10678.58,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Firdaus,,,,,,,,,,,,,,,,,,,,,
+SECPTY,1490015137,FIRDAUS BIN SEMAN,,,,,10678.58,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,DBS BANK,,,,,SG,,SALARY PAYMENT APRIL 2021,Firdaus Bin Seman,,,OUR
+ADV,,,,,,,1,1,Firdaus Bin Seman,O,,,,,,S,Y,1,FIRDAUS.SEMAN@GMAIL.COM,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,10129.7,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-GNANA  A,,,,,,,,,,,,,,,,,,,,,
+SECPTY,132238677,GNANA  AROCKIAM MARIA FRANCISCO,,,,,10129.7,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,GNANA  AROCKIAM MARIA FRANCISCO,,,OUR
+ADV,,,,,,,1,1,GNANA  AROCKIAM MARIA FRANCISCO,O,,,,,,S,Y,1,FRANTHULASI@YAHOO.COM.SG,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,10612.57,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Gerardo,,,,,,,,,,,,,,,,,,,,,
+SECPTY,116173050,GERARDO ESTEVES QUINTANA,,,,,10612.57,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Gerardo Esteves Quintana,,,OUR
+ADV,,,,,,,1,1,Gerardo Esteves Quintana,O,,,,,,S,Y,1,Gerry_quintana@yahoo.com.ph,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,21193.18,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Supe Joh,,,,,,,,,,,,,,,,,,,,,
+SECPTY,5.53873E+11,Supe John Albarico,,,,,21193.18,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,OCBCSGSG,OCBC,,,,,SG,,SALARY PAYMENT APRIL 2021,Supe John Albarico,,,OUR
+ADV,,,,,,,1,1,Supe John Albarico,O,,,,,,S,Y,1,John.supe_winpower@yahoo.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,10148.13,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Michael,,,,,,,,,,,,,,,,,,,,,
+SECPTY,149531939,MICHAEL KOMALA,,,,,10148.13,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Michael Komala,,,OUR
+ADV,,,,,,,1,1,Michael Komala,O,,,,,,S,Y,1,MICHAELKOMALA@ICLOUD.COM,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,5252,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Anuta Nu,,,,,,,,,,,,,,,,,,,,,
+SECPTY,3803941341,ANUTA NUNITA LOGROSA,,,,,5252,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,UOVBSGSG,UOB,,,,,SG,,SALARY PAYMENT APRIL 2021,Anuta Nunita Logrosa,,,OUR
+ADV,,,,,,,1,1,Anuta Nunita Logrosa,O,,,,,,S,Y,1,MONITH22782@YAHOO.COM,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,10547.08,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Mugan Va,,,,,,,,,,,,,,,,,,,,,
+SECPTY,119566878,MUGAN VARATHAN,,,,,10547.08,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,DBS,,,,,SG,,SALARY PAYMENT APRIL 2021,Mugan Varathan,,,OUR
+ADV,,,,,,,1,1,Mugan Varathan,O,,,,,,S,Y,1,MUGAN71@YAHOO.COM.SG,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,13464.38,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Vivekana,,,,,,,,,,,,,,,,,,,,,
+SECPTY,245909292,VIVEKANANTHAN NIRMALKUMAR,,,,,13464.38,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Vivekananthan Nirmalkumar,,,OUR
+ADV,,,,,,,1,1,Vivekananthan Nirmalkumar,O,,,,,,S,Y,1,NIRMALKUMAR.SG@GMAIL.COM,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,8978.88,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Atienza,,,,,,,,,,,,,,,,,,,,,
+SECPTY,6.28066E+11,ATIENZA NOEL CLERIGO,,,,,8978.88,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,OCBCSGSG,OCBC BANK,,,,,SG,,SALARY PAYMENT APRIL 2021,Atienza Noel Clerigo,,,OUR
+ADV,,,,,,,1,1,Atienza Noel Clerigo,O,,,,,,S,Y,1,NOELATIENZA71@GMAIL.COM,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,12317.5,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Ravi Nai,,,,,,,,,,,,,,,,,,,,,
+SECPTY,200647882,RAVI NAINAPPAN,,,,,12317.5,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Ravi Nainappan,,,OUR
+ADV,,,,,,,1,1,Ravi Nainappan,O,,,,,,S,Y,1,Nnravi71@yahoo.com.sg,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,8833.68,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Pyei Phy,,,,,,,,,,,,,,,,,,,,,
+SECPTY,207233528,Pyei Phyo Than,,,,,8833.68,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,DBS Singapore,,,,,SG,,SALARY PAYMENT APRIL 2021,Pyei Phyo Than,,,OUR
+ADV,,,,,,,1,1,Pyei Phyo Than,O,,,,,,S,Y,1,PYEIPHYOTHAN@HOTMAIL.COM,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,9725.49,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-ABELLANA,,,,,,,,,,,,,,,,,,,,,
+SECPTY,248981288,ABELLANA RIGE FABURADA,,,,,9725.49,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,ABELLANA RIGE FABURADA,,,OUR
+ADV,,,,,,,1,1,ABELLANA RIGE FABURADA,O,,,,,,S,Y,1,RIGE007@YAHOO.COM,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,21088.7,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Rameshra,,,,,,,,,,,,,,,,,,,,,
+SECPTY,245656530,RAMESHRAJAN CHANDRASEGARAN,,,,,21088.7,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,DBS,,,,,SG,,SALARY PAYMENT APRIL 2021,Rameshrajan Chandrasegaran,,,OUR
+ADV,,,,,,,1,1,Rameshrajan Chandrasegaran,O,,,,,,S,Y,1,Rameshrajan.Chandrasegaran@ext.sbmoffshore.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,11912.94,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Gurusamy,,,,,,,,,,,,,,,,,,,,,
+SECPTY,248599529,Gurusamy Selvan,,,,,11912.94,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Gurusamy Selvan,,,OUR
+ADV,,,,,,,1,1,Gurusamy Selvan,O,,,,,,S,Y,1,SELVA0706@GMAIL.COM,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,9957.21,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-PUSHPARA,,,,,,,,,,,,,,,,,,,,,
+SECPTY,245843453,PUSHPARAJ SUMAN VINODH KUMAR,,,,,9957.21,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,PUSHPARAJ SUMAN VINODH KUMAR,,,OUR
+ADV,,,,,,,1,1,PUSHPARAJ SUMAN VINODH KUMAR,O,,,,,,S,Y,1,SUMANVINODHKUMAR@YAHOO.COM,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,10596.52,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Mohammad,,,,,,,,,,,,,,,,,,,,,
+SECPTY,1204090114,MOHAMMAD ABU TAHER,,,,,10596.52,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,DBS BANK,,,,,SG,,SALARY PAYMENT APRIL 2021,Mohammad Abu Taher,,,OUR
+ADV,,,,,,,1,1,Mohammad Abu Taher,O,,,,,,S,Y,1,TAHERMA82@GMAIL.COM,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,13523.48,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-WELLINGT,,,,,,,,,,,,,,,,,,,,,
+SECPTY,14160623811,WELLINGTON FOO CHIH CHUN,,,,,13523.48,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,MBBESGS2,MAYBANK SINGAPORE LIMITED,,,,,SG,,SALARY PAYMENT APRIL 2021,WELLINGTON FOO CHIH CHUN,,,OUR
+ADV,,,,,,,1,1,WELLINGTON FOO CHIH CHUN,O,,,,,,S,Y,1,WOOF_22@HOTMAIL.COM,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,11335.92,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Yovan Ab,,,,,,,,,,,,,,,,,,,,,
+SECPTY,1.2781E+12,Abraham Y,,,,,11335.92,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,CNRBINBBMFD,CANARA BANK,,,,,IN,,SALARY PAYMENT APRIL 2021,Yovan Abraham,,,OUR
+ADV,,,,,,,1,1,Yovan Abraham,O,,,,,,S,Y,1,abrahamwincy@gmail.com,,IN,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,11800,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Adap Arn,,,,,,,,,,,,,,,,,,,,,
+SECPTY,149205314,ARNOLD CRISPIN E. ADAP,,,,,11800,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Adap Arnold Crispin Encarnacion,,,OUR
+ADV,,,,,,,1,1,Adap Arnold Crispin Encarnacion,O,,,,,,S,Y,1,acea_2000@yahoo.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,6576.09,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Ankur Ve,,,,,,,,,,,,,,,,,,,,,
+SECPTY,421587752,ANKUR VEDI,,,,,6576.09,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,DBS,,,,,SG,,SALARY PAYMENT APRIL 2021,Ankur Vedi,,,OUR
+ADV,,,,,,,1,1,Ankur Vedi,O,,,,,,S,Y,1,ankur.vedi23@gmail.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,10162.29,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Syed Abu,,,,,,,,,,,,,,,,,,,,,
+SECPTY,526005014,Syed Abu Bakar Bin Syed Abdullah,,,,,10162.29,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,DBS,,,,,SG,,SALARY PAYMENT APRIL 2021,Syed Abu Bakar Bin Syed Abdullah,,,OUR
+ADV,,,,,,,1,1,Syed Abu Bakar Bin Syed Abdullah,O,,,,,,S,Y,1,araburnt@icloud.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,10654.86,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Ramasamy,,,,,,,,,,,,,,,,,,,,,
+SECPTY,245563663,RAMASAMY ASHOKAN,,,,,10654.86,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,DBS BANK,,,,,SG,,SALARY PAYMENT APRIL 2021,Ramasamy Ashokan,,,OUR
+ADV,,,,,,,1,1,Ramasamy Ashokan,O,,,,,,S,Y,1,ashokdam@gmail.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,8013.03,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Azli Bin,,,,,,,,,,,,,,,,,,,,,
+SECPTY,1290068790,AZLI BIN ABDUL KADER,,,,,8013.03,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Azli Bin Abdul Kader,,,OUR
+ADV,,,,,,,1,1,Azli Bin Abdul Kader,O,,,,,,S,Y,1,azlikaf1@gmail.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,4895.85,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Weng Yih,,,,,,,,,,,,,,,,,,,,,
+SECPTY,88031913,WENG YIHUA,,,,,4895.85,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,DBS,,,,,SG,,SALARY PAYMENT APRIL 2021,Weng Yihua,,,OUR
+ADV,,,,,,,1,1,Weng Yihua,O,,,,,,S,Y,1,bear_yvonne@yahoo.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,9884.18,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Benjamin,,,,,,,,,,,,,,,,,,,,,
+SECPTY,5581008009,BENJAMIN BACSA BACAY,,,,,9884.18,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,OCBCSGSG,OCBC,,,,,SG,,SALARY PAYMENT APRIL 2021,Benjamin Bacsa Bacay,,,OUR
+ADV,,,,,,,1,1,Benjamin Bacsa Bacay,O,,,,,,S,Y,1,benjie_bacay@yahoo.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,7254.72,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Dhandapa,,,,,,,,,,,,,,,,,,,,,
+SECPTY,189748329,DHANDAPANI CHIDAMBARARAJAN,,,,,7254.72,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Dhandapani Chidambararajan,,,OUR
+ADV,,,,,,,1,1,Dhandapani Chidambararajan,O,,,,,,S,Y,1,chidambu_rajan@yahoo.co.in,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,10534.92,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Duraisin,,,,,,,,,,,,,,,,,,,,,
+SECPTY,122562840,DURAISINGAM KANNAN,,,,,10534.92,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Duraisingam Kannan,,,OUR
+ADV,,,,,,,1,1,Duraisingam Kannan,O,,,,,,S,Y,1,duraisingam71@yahoo.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,5012,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Fatimah,,,,,,,,,,,,,,,,,,,,,
+SECPTY,121110687,FATIMAH BINTE SAMAT,,,,,5012,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Fatimah Binte Samat,,,OUR
+ADV,,,,,,,1,1,Fatimah Binte Samat,O,,,,,,S,Y,1,fatimahsg2015@gmail.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,11282.46,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Poloyapo,,,,,,,,,,,,,,,,,,,,,
+SECPTY,245682581,POLOYAPOY FERONDE MERCADO,,,,,11282.46,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Poloyapoy Feronde Mercado,,,OUR
+ADV,,,,,,,1,1,Poloyapoy Feronde Mercado,O,,,,,,S,Y,1,ferondepoloyapoy@yahoo.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,10409.92,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Anthonis,,,,,,,,,,,,,,,,,,,,,
+SECPTY,176182997,Antonisamy gragori stalin,,,,,10409.92,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Anthonisamy Gragori Stalin,,,OUR
+ADV,,,,,,,1,1,Anthonisamy Gragori Stalin,O,,,,,,S,Y,1,gragori2002@yahoo.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,11170.68,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Shriniva,,,,,,,,,,,,,,,,,,,,,
+SECPTY,1206530730,Shrinivas Veerappa H,,,,,11170.68,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,DBS BANK,,,,,SG,,SALARY PAYMENT APRIL 2021,Shrinivas Veerappa Hadagali,,,OUR
+ADV,,,,,,,1,1,Shrinivas Veerappa Hadagali,O,,,,,,S,Y,1,hadagu2004@gmail.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,8819.17,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Hazali B,,,,,,,,,,,,,,,,,,,,,
+SECPTY,245667329,HAZALI BIN ABDUL RAHIM,,,,,8819.17,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Hazali Bin Abdul Rahim,,,OUR
+ADV,,,,,,,1,1,Hazali Bin Abdul Rahim,O,,,,,,S,Y,1,hazali69@gmail.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,3648.2,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Law Hoay,,,,,,,,,,,,,,,,,,,,,
+SECPTY,194075074,Law Hoay Wen,,,,,3648.2,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,DBS BANK,,,,,SG,,SALARY PAYMENT APRIL 2021,Law Hoay Wen,,,OUR
+ADV,,,,,,,1,1,Law Hoay Wen,O,,,,,,S,Y,1,hoaywen@gmail.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,7862.92,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-How Kam,,,,,,,,,,,,,,,,,,,,,
+SECPTY,1071374330,How Kam Ming,,,,,7862.92,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,UOVBSGSG,UOB Bank,,,,,SG,,SALARY PAYMENT APRIL 2021,How Kam Ming,,,OUR
+ADV,,,,,,,1,1,How Kam Ming,O,,,,,,S,Y,1,howalex911@gmail.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,7429.41,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Abiog La,,,,,,,,,,,,,,,,,,,,,
+SECPTY,9707425,Abiog Lazaro Jr,,,,,7429.41,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Abiog Lazaro JR Dela Vega,,,OUR
+ADV,,,,,,,1,1,Abiog Lazaro JR Dela Vega,O,,,,,,S,Y,1,junabiog@singnet.com.sg,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,8707.86,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Kanthiah,,,,,,,,,,,,,,,,,,,,,
+SECPTY,175322663,Kanthiah Kumarasamy,,,,,8707.86,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Kanthiah Kumarasamy,,,OUR
+ADV,,,,,,,1,1,Kanthiah Kumarasamy,O,,,,,,S,Y,1,kksamy@msn.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,10001.62,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Raju Jay,,,,,,,,,,,,,,,,,,,,,
+SECPTY,245767218,RAJU JAYAKUMAR,,,,,10001.62,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB BANK,,,,,SG,,SALARY PAYMENT APRIL 2021,Raju Jayakumar,,,OUR
+ADV,,,,,,,1,1,Raju Jayakumar,O,,,,,,S,Y,1,kumarwi@yahoo.co.in,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,8276.62,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Francisc,,,,,,,,,,,,,,,,,,,,,
+SECPTY,6.28628E+11,Francisco Leo Cabrera,,,,,8276.62,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,OCBCSGSG,OCBC Bank,,,,,SG,,SALARY PAYMENT APRIL 2021,Francisco Leo Cabrera,,,OUR
+ADV,,,,,,,1,1,Francisco Leo Cabrera,O,,,,,,S,Y,1,leofran90@hotmail.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,15781.73,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Ong Lih,,,,,,,,,,,,,,,,,,,,,
+SECPTY,189445016,ONG LIH HUI,,,,,15781.73,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,DBS,,,,,SG,,SALARY PAYMENT APRIL 2021,Ong Lih Hui,,,OUR
+ADV,,,,,,,1,1,Ong Lih Hui,O,,,,,,S,Y,1,lihui2502@gmail.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,11096.42,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Low Chin,,,,,,,,,,,,,,,,,,,,,
+SECPTY,198044484,LOW CHIN LAM,,,,,11096.42,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,DBS,,,,,SG,,SALARY PAYMENT APRIL 2021,Low Chin Lam,,,OUR
+ADV,,,,,,,1,1,Low Chin Lam,O,,,,,,S,Y,1,lowchinlam@yahoo.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,9553.93,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Mohamed,,,,,,,,,,,,,,,,,,,,,
+SECPTY,120949187,MOHAMED NAZEER BIN MOHAMED KATHIR HUSSAIN,,,,,9553.93,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Mohamed Nazeer Bin Mohamed Kathir Hussai,,,OUR
+ADV,,,,,,,1,1,Mohamed Nazeer Bin Mohamed Kathir Hussai,O,,,,,,S,Y,1,nazeer.info@gmail.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,22890.48,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Er Yin H,,,,,,,,,,,,,,,,,,,,,
+SECPTY,115563840,ER YIN HONG,,,,,22890.48,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Er Yin Hong,,,OUR
+ADV,,,,,,,1,1,Er Yin Hong,O,,,,,,S,Y,1,nicmonds@hotmail.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,10200.32,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Christop,,,,,,,,,,,,,,,,,,,,,
+SECPTY,245264500,Christopher Benjamin Nonis,,,,,10200.32,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,DBS,,,,,SG,,SALARY PAYMENT APRIL 2021,Christopher Benjamin Nonis,,,OUR
+ADV,,,,,,,1,1,Christopher Benjamin Nonis,O,,,,,,S,Y,1,nonis.chrisb@gmail.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,9213.51,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Muhammad,,,,,,,,,,,,,,,,,,,,,
+SECPTY,189176082,Muhammad Noor Lim Bin Othman,,,,,9213.51,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Muhammad Noor Lim Bin Othman,,,OUR
+ADV,,,,,,,1,1,Muhammad Noor Lim Bin Othman,O,,,,,,S,Y,1,noorlim@yahoo.com.sg,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,8078,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-FREDERIC,,,,,,,,,,,,,,,,,,,,,
+SECPTY,480496148,Frederick Oriel,,,,,8078,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,FREDERICK ALVIOLA ORIEL,,,OUR
+ADV,,,,,,,1,1,FREDERICK ALVIOLA ORIEL,O,,,,,,S,Y,1,oriel_fa@yahoo.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,9809.12,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Srinivas,,,,,,,,,,,,,,,,,,,,,
+SECPTY,245128479,SRINIVASAN RAJADURAI,,,,,9809.12,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Srinivasan Rajadurai,,,OUR
+ADV,,,,,,,1,1,Srinivasan Rajadurai,O,,,,,,S,Y,1,raja_raja659@yahoo.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,20218.18,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Ramil Is,,,,,,,,,,,,,,,,,,,,,
+SECPTY,5.53864E+11,RAMIL ISALES GULLE,,,,,20218.18,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,OCBCSGSG,OCBC,,,,,SG,,SALARY PAYMENT APRIL 2021,Ramil Isales Gulle,,,OUR
+ADV,,,,,,,1,1,Ramil Isales Gulle,O,,,,,,S,Y,1,ramil.gulle@yahoo.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,22442.21,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Kunnath,,,,,,,,,,,,,,,,,,,,,
+SECPTY,20370115,Kunnath Stevenson Oswald Ranjith,,,,,22442.21,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,DBS,,,,,SG,,SALARY PAYMENT APRIL 2021,Kunnath Stevenson Oswald Ranjith Ashley,,,OUR
+ADV,,,,,,,1,1,Kunnath Stevenson Oswald Ranjith Ashley,O,,,,,,S,Y,1,ranjith.ashley@yahoo.com.sg,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,10776.47,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Sathyara,,,,,,,,,,,,,,,,,,,,,
+SECPTY,40355260,SATHYARAJAN THUNDAYATH VASU,,,,,10776.47,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Sathyarajan Thundayath Vasu,,,OUR
+ADV,,,,,,,1,1,Sathyarajan Thundayath Vasu,O,,,,,,S,Y,1,sathyarajan.vasu@yahoo.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,10549.92,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Tio Song,,,,,,,,,,,,,,,,,,,,,
+SECPTY,6.43343E+11,TIO SONG CHENG,,,,,10549.92,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,OCBCSGSG,OCBC,,,,,SG,,SALARY PAYMENT APRIL 2021,Tio Song Cheng,,,OUR
+ADV,,,,,,,1,1,Tio Song Cheng,O,,,,,,S,Y,1,sctio1975@yahoo.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,7929.84,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Sivabala,,,,,,,,,,,,,,,,,,,,,
+SECPTY,60796742,SIVABALAN SO N DHANAPAL,,,,,7929.84,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Sivabalan S/O N Dhanapal,,,OUR
+ADV,,,,,,,1,1,Sivabalan S/O N Dhanapal,O,,,,,,S,Y,1,sivavidz@gmail.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,9382.72,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Sivashan,,,,,,,,,,,,,,,,,,,,,
+SECPTY,56969128,Sivashanmugam SivaKumar,,,,,9382.72,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Sivashanmugam Siva Kumar,,,OUR
+ADV,,,,,,,1,1,Sivashanmugam Siva Kumar,O,,,,,,S,Y,1,sivawi16@gmail.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,10488.72,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Thu Ya O,,,,,,,,,,,,,,,,,,,,,
+SECPTY,327019716,Thu Ya Oo,,,,,10488.72,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,DBS,,,,,SG,,SALARY PAYMENT APRIL 2021,Thu Ya Oo,,,OUR
+ADV,,,,,,,1,1,Thu Ya Oo,O,,,,,,S,Y,1,thuyaoo94@yahoo.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,3931.6,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SBM-Lilawati Bin,,,,,,,,,,,,,,,,,,,,,
+SECPTY,84418617,Lilawati Binte Lajim,,,,,3931.6,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Lilawati Binte Lajim,,,OUR
+ADV,,,,,,,1,1,Lilawati Binte Lajim,O,,,,,,S,Y,1,watilajim.anggun@gmail.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,10332.27,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Subbiah,,,,,,,,,,,,,,,,,,,,,
+SECPTY,175493018,SUBBIAH JOHN WESLEY,,,,,10332.27,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Subbiah John Wesley,,,OUR
+ADV,,,,,,,1,1,Subbiah John Wesley,O,,,,,,S,Y,1,wesleyjays@gmail.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,9223.84,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Zulkifli,,,,,,,,,,,,,,,,,,,,,
+SECPTY,5533080825,ZULKILFI BIN NODIN,,,,,9223.84,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,OCBCSGSG,OCBC,,,,,SG,,SALARY PAYMENT APRIL 2021,Zulkifli Bin Nodin,,,OUR
+ADV,,,,,,,1,1,Zulkifli Bin Nodin,O,,,,,,S,Y,1,zulhse@yahoo.com.sg,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,11730,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Graeme T,,,,,,,,,,,,,,,,,,,,,
+SECPTY,1.55063E+11,WELSH GRAEME TREVOR,,,,,11730,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,HSBCSGS2,HSBC Bank,,,,,SG,,SALARY PAYMENT APRIL 2021,Graeme Trevor Welsh,,,OUR
+ADV,,,,,,,1,1,Graeme Trevor Welsh,O,,,,,,S,Y,1,G_welsh63@yahoo.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,2888.57,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Muhammad,,,,,,,,,,,,,,,,,,,,,
+SECPTY,6.43261E+11,Muhammad Iskandar Bin Idris,,,,,2888.57,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,OCBCSGSG,OCBC,,,,,SG,,SALARY PAYMENT APRIL 2021,Muhammad Iskandar Bin Idris,,,OUR
+ADV,,,,,,,1,1,Muhammad Iskandar Bin Idris,O,,,,,,S,Y,1,Mdiskandar82@gmail.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,5513.68,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Chinnapp,,,,,,,,,,,,,,,,,,,,,
+SECPTY,122690075,Chinnappa Rajendran,,,,,5513.68,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,DBSSSGSG,POSB,,,,,SG,,SALARY PAYMENT APRIL 2021,Chinnappa Rajendran,,,OUR
+ADV,,,,,,,1,1,Chinnappa Rajendran,O,,,,,,S,Y,1,chinna_rajendran@yahoo.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,
+BATHDR,FTR,1,,,,,,,@1ST@,20210507,1.52567E+11,SGD,12438.5,,,,,,,Air Energi Group Singapore Pte Ltd,1 Raffles Place,Tower 1  39-03,,,,SINBUOY-Malaiyap,,,,,,,,,,,,,,,,,,,,,
+SECPTY,7.17081E+11,Malaiyappan Ramajayam,,,,,12438.5,20210507,,,,,,Y,N,,,,,,@HVP@,,,,,,,,,,,,,SWF,OCBCSGSG,OCBC,,,,,SG,,SALARY PAYMENT APRIL 2021,Malaiyappan Ramajayam,,,OUR
+ADV,,,,,,,1,1,Malaiyappan Ramajayam,O,,,,,,S,Y,1,ramajayam.m@gmail.com,,SG,,,,,,,,,,,,,,,,,,,,,,,,,,

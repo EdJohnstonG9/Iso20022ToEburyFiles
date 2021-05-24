@@ -1,0 +1,20 @@
+﻿https://toolslick.com/generation/code/class-from-csv
+
+This is a payment file
+Every 3 lines represent a payment
+Column B is account numbers/ IBAN
+Column C and AS are beneficiary names
+Column H and N are payment amounts
+Column I and K are value dates
+Column L is client's internal reference
+Column M is payment currency
+Column T is beneficiary's email address
+Column U is ordering client's name
+Column V is ordering client's address
+Column AA is beneficiary's reference
+Column AI represents SWIFT Code
+Column AJ is beneficiary's SWIFT Code
+Column AK is beneficiary's bank
+Column AP is beneficiary's bank country
+Column AR is payment reference
+Column AV is the charges
