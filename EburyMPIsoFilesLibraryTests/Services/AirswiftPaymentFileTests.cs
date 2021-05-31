@@ -15,7 +15,7 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
         {
             var paymentFile = new AirswiftPaymentFile();
             var result = paymentFile.ReadPaymentsFile(Path.Combine(fileRoot, @"AirEnergi\0705_SBM LOCAL_SGD.TXT"));
-            Assert.True(result);
+            Assert.True(result > 0);
         }
     }
 }

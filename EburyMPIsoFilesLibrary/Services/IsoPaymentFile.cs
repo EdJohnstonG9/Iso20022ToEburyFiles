@@ -11,7 +11,7 @@ using System.Xml;
 
 namespace EburyMPIsoFilesLibrary.Services
 {
-    public class IsoPaymentFile
+    public class IsoPaymentFile 
     {
         const string pain_001_001_03 = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03";
         const string pain_001_003_03 = "urn:iso:std:iso:20022:tech:xsd:pain.001.003.03";

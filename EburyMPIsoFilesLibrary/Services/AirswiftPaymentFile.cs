@@ -12,10 +12,10 @@ using System.Text;
 
 namespace EburyMPIsoFilesLibrary.Services
 {
-    public class AirswiftPaymentFile
+    public class AirswiftPaymentFile : IInputPaymentFile<AirswiftPaymentModel>
     {
-        public AirswiftModel IfhRecord { get; set; }
-        public List<AirswiftPaymentModel> AirswiftPaymentList { get; set; }
+        private AirswiftModel IfhRecord { get; set; }
+        public List<AirswiftPaymentModel> InputPaymentList { get; set; }
         //public AirswiftModel[] RawAirswiftData { get; set; }
 
         public AirswiftPaymentFile()
@@ -23,13 +23,13 @@ namespace EburyMPIsoFilesLibrary.Services
 
         }
 
-        public bool ReadPaymentsFile(string fullPathName)
+        public int ReadPaymentsFile(string fullPathName)
         {
-            AirswiftPaymentList = readAirswiftFile(fullPathName);
-            if (AirswiftPaymentList.Count > 0 && IfhRecord != null)
-                return true;
+            InputPaymentList = readAirswiftFile(fullPathName);
+            if (InputPaymentList.Count > 0 && IfhRecord != null)
+                return InputPaymentList.Count;
             else
-                return false;
+                return 0;
         }
 
         private List<AirswiftPaymentModel> readAirswiftFile(string fullPathName)
@@ -57,8 +57,8 @@ namespace EburyMPIsoFilesLibrary.Services
                                 case "IFH":
                                     if (IfhRecord != null)
                                         throw new ApplicationException("Bad Record Sequence, duplicate IFH records");
-                                    IfhRecord = record;   
-                                break;
+                                    IfhRecord = record;
+                                    break;
                                 case "BATHDR":
                                     if (payment.BatHdr != null)
                                         throw new ApplicationException("Bad Record Sequence, duplicate BATHDR records");
@@ -86,46 +86,25 @@ namespace EburyMPIsoFilesLibrary.Services
             }
             catch (Exception ex)
             {
-                throw ex;
+                return new List<AirswiftPaymentModel>();
             }
         }
 
-        //private AirswiftPaymentModel newPayment(AirswiftPaymentModel payment, AirswiftModel record)
-        //{
-        //    bool returnNew = false; 
-        //    if (payment == default(AirswiftPaymentModel))
-        //    {
-        //        //do nothing, already is new
-        //    }
-        //    else
-        //    {
-        //        if (record.RecType == "BATHDR") //First of 3
-        //        {
-        //            if (payment.BatHdr == null || payment.SecPty == null || payment.Adv == null)
-        //                throw new ApplicationException("Bad Record Sequence");
-        //            returnNew = true; ;
-        //        }
-        //    }
-        //    if (returnNew)
-        //        return new AirswiftPaymentModel();
-        //    else
-        //        return payment;
-        //}
         private AirswiftPaymentModel savePayment(AirswiftPaymentModel payment, List<AirswiftPaymentModel> paymentList)
         {
             if (payment.BatHdr == null || payment.SecPty == null || payment.Adv == null)
                 throw new ApplicationException("Bad Record Sequence");
             if (paymentList == null)
-                paymentList = new List<AirswiftPaymentModel>(); 
+                paymentList = new List<AirswiftPaymentModel>();
             paymentList.Add(payment);
             return new AirswiftPaymentModel();
         }
 
 
-        public List<MassPaymentFileModel> GetPaymentFileList()
+        public List<MassPaymentFileModel> MassPaymentFileList()
         {
             var output = new List<MassPaymentFileModel>();
-            foreach (var item in AirswiftPaymentList)
+            foreach (var item in InputPaymentList)
             {
                 output.Add(item.GetPaymentFromAirswift());
             }
