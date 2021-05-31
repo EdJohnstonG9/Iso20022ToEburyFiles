@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace EburyMPIsoFilesLibrary.Helpers
 {
@@ -29,10 +30,12 @@ namespace EburyMPIsoFilesLibrary.Helpers
 
             output.SwiftCode = airswift.SecPty.SecBeneSwift;
             output.BankName = airswift.SecPty.SecBeneBank;
-            //output.IBAN = airswift.Iban();
-            output.AccountNo = airswift.SecPty.Account;
-            output.BankCountry = airswift.SecPty.SecBankCtry;
+            if (isIban(airswift.SecPty.Account))
+                output.IBAN = airswift.SecPty.Account;
+            else
+                output.AccountNo = airswift.SecPty.Account;
 
+            output.BankCountry = airswift.SecPty.SecBankCtry;
             output.BeneficiaryName = airswift.SecPty.BeneName;
             output.BeneficiaryReference = airswift.SecPty.SecPaymentRef;
             output.BeneficiaryAddress1 = airswift.BatHdr.BatBeneAddress;
@@ -45,6 +48,12 @@ namespace EburyMPIsoFilesLibrary.Helpers
         }
 
         #region converter functions
+
+        private static bool isIban(string account)
+        {
+            var match = Regex.Match(account, @"^([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?$");
+            return match.Success;
+        }
 
         private static DateTime executionDate(this AirswiftPaymentModel airswift)
         {

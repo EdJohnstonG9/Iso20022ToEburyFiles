@@ -9,7 +9,8 @@ namespace EburyMPIsoFilesLibrary.Models.Bacs
         public int BacsRec { get; set; }
         public string EmployeeName { get; set; }
         public string SortCode { get; set; }
-        public string AcType { get; set; }
+        public string AccountNo { get; set; }
+        public int AcType { get; set; }
         public string BuildingSoctRef { get; set; }
         public string AccountName { get; set; }
         public decimal Amount { get; set; }

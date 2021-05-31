@@ -17,7 +17,7 @@ namespace EburyMPIsoFiles.Services
             {
                 version = System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Set the app version in EburyMassFilesWPF > Properties > Package > PackageVersion
                 //string assemblyLocation = Assembly.GetExecutingAssembly().Location;
