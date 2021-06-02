@@ -10,6 +10,7 @@ namespace EburyMPIsoFilesLibrary.Models.Airswift
         public AirswiftModel BatHdr { get; set; }
         public AirswiftModel SecPty { get; set; }
         public AirswiftModel Adv { get; set; }
+
     }
 
     public class AirswiftModel

@@ -6,17 +6,18 @@ using System.Text.RegularExpressions;
 
 namespace EburyMPIsoFilesLibrary.Services
 {
-    public class ProcessPaymentFiles
+    public class ProcessPaymentFiles : IProcessPaymentFiles
     {
-        public InputTypeModel InputType { get; }
+        public InputTypeModel InputType { get; set; }
         public List<string> InputFileNameList { get; private set; }
         public string InputFilePath { get; private set; }
         public string OutputFilePath { get; private set; }
         public List<EburyMassPaymentsFile> MassPaymentsOutput { get; private set; }
 
-        public ProcessPaymentFiles(InputTypeModel inputType)
+        IApplyFinancialsService _apply;
+        public ProcessPaymentFiles(IApplyFinancialsService apply)
         {
-            InputType = inputType;
+            _apply = apply;
         }
 
         public string ReadInputFiles(List<string> inputFileNames, string inputFilePath, string outputFilePath)
@@ -63,7 +64,7 @@ namespace EburyMPIsoFilesLibrary.Services
         private EburyMassPaymentsFile getInputData(string fileName, InputTypeModel fileModel)
         {
             EburyMassPaymentsFile output = new EburyMassPaymentsFile();
-            
+
             switch (fileModel.InputType)
             {
                 case InputTypeModel.InputFileType.ISOPain113:
@@ -77,7 +78,7 @@ namespace EburyMPIsoFilesLibrary.Services
                     output.Payments = pain133.MassPaymentFileList();
                     break;
                 case InputTypeModel.InputFileType.AirswiftText:
-                    var airswift = new AirswiftPaymentFile();
+                    var airswift = new AirswiftPaymentFile(_apply);
                     airswift.ReadPaymentsFile(fileName);
                     output.Payments = airswift.MassPaymentFileList();
                     break;

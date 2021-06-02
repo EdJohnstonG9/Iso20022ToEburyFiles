@@ -9,27 +9,46 @@ using System.Text;
 
 namespace EburyMPIsoFilesLibrary.Services
 {
-    public class ApplyFinancialsService
+    public class ApplyFinancialsService : IApplyFinancialsService
     {
-        const string basePath = @"https://apps.applyfinancial.co.uk/validate-api/rest";
-
         public string Token { get; private set; }
+        string basePath = @"https://apps.applyfinancial.co.uk/validate-api/rest";
+        private NetworkCredential _credential;
+
+        public ApplyFinancialsService()
+        {
+
+        }
+        public ApplyFinancialsService(ApplyConfiguration config)
+        {
+            basePath = config.BaseUrl;
+            Authenticate(config.Credentials);
+            _credential = config.Credentials;
+        }
 
         #region authenticate
-        public HttpStatusCode Authenticate(string username, SecureString password)
+        public HttpStatusCode Authenticate(NetworkCredential credential)
         {
-            RestClient client = new RestClient(basePath);
-            var request = getAuthenticateRequest(username, password);
-            var response = client.Post(request);
-            Token = authToken(response);
-            return response.StatusCode;
+            try
+            {
+                RestClient client = new RestClient(basePath);
+                var request = getAuthenticateRequest(credential);
+                var response = client.Post(request);
+                Token = authToken(response);
+                _credential = credential;
+                return response.StatusCode;
+            }
+            catch (Exception ex)
+            {
+                throw new AccessViolationException($"{nameof(Authenticate)}\tFailed to log in to ApplyFinancials", ex);
+            }
+
         }
-        private RestRequest getAuthenticateRequest(string username, SecureString password)
+        private RestRequest getAuthenticateRequest(NetworkCredential credential)
         {
             string reqPath = @"/authenticate";
             Method method = Method.POST;
 
-            var credential = new NetworkCredential(username, password);
             var request = new RestRequest(reqPath, method);
             request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
             request.AddParameter("username", credential.UserName, "application/x-www-form-urlencoded", ParameterType.GetOrPost);
@@ -40,7 +59,7 @@ namespace EburyMPIsoFilesLibrary.Services
         private string authToken(IRestResponse response)
         {
             string output = null;
-            if(response.StatusCode == HttpStatusCode.OK)
+            if (response.StatusCode == HttpStatusCode.OK)
             {
                 try
                 {
@@ -58,16 +77,26 @@ namespace EburyMPIsoFilesLibrary.Services
         #region convert
         public ConvertResponse Convert(string countryCode, string branchId, string accountNo)
         {
-            RestClient client = new RestClient(basePath);
-            var request = getConvertRequest(countryCode,branchId,accountNo);
-            var response = client.Get(request);
-            var output = getConvert(response);
-            return output;
+            if (string.IsNullOrEmpty(Token))
+                throw new AccessViolationException($"{nameof(Convert)}\tMust authenticate before Conver");
+            try
+            {
+                RestClient client = new RestClient(basePath);
+                var request = getConvertRequest(countryCode, branchId, accountNo);
+                var response = client.Get(request);
+                var output = getConvert(response);
+                return output;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException($"{nameof(Convert)}\tIssue when getting bank details\t{countryCode}\t{branchId}\t{accountNo}", ex);
+            }
+
         }
 
         private RestRequest getConvertRequest(string countryCode, string nationalId, string accountNumber)
         {
-            
+
             string reqPath = @"/convert/1.0.1";
             Method method = Method.GET;
 

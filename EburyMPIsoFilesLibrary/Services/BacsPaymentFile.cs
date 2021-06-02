@@ -1,4 +1,5 @@
-﻿using EburyMPIsoFilesLibrary.Models.Bacs;
+﻿using EburyMPIsoFilesLibrary.Helpers;
+using EburyMPIsoFilesLibrary.Models.Bacs;
 using EburyMPIsoFilesLibrary.Models.Ebury;
 using ExcelDataReader;
 using System;
@@ -15,16 +16,30 @@ namespace EburyMPIsoFilesLibrary.Services
         public List<BacsModel> BacsPayments { get; set; }
         public int TotalCount { get; set; }
         public decimal TotalAmount { get; set; }
+        private IApplyFinancialsService _apply;
 
         public BacsPaymentFile()
         {
+
+        }
+        public BacsPaymentFile(IApplyFinancialsService apply)
+        {
+            _apply = apply;
             //Required for the ReadExcel package ref: https://github.com/ExcelDataReader/ExcelDataReader#important-note-on-net-core
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         }
 
         public List<MassPaymentFileModel> MassPaymentFileList()
         {
-            throw new NotImplementedException();
+            List<MassPaymentFileModel> output = new List<MassPaymentFileModel>();
+            
+            foreach(var payment in BacsPayments)
+            {
+                var apply = _apply.Convert("GB", payment.SortCode, payment.AccountNo);
+                var emp = payment.GetPaymentFromBacs(DateTime.Today.AddDays(1), apply);
+                output.Add(emp);
+            }
+            return output;
         }
 
         public int ReadPaymentsFile(string fullPathName)

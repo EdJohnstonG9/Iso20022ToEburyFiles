@@ -1,6 +1,8 @@
 ﻿using EburyApiWrapper.Beneficiaries;
 using EburyMPIsoFilesLibrary.Models.Airswift;
+using EburyMPIsoFilesLibrary.Models.ApplyFinancials;
 using EburyMPIsoFilesLibrary.Models.Ebury;
+using EburyMPIsoFilesLibrary.Services;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -16,8 +18,15 @@ namespace EburyMPIsoFilesLibrary.Helpers
             return new NewBenePaymentModel();
         }
 
-        public static MassPaymentFileModel GetPaymentFromAirswift(this AirswiftPaymentModel airswift)
+        public static MassPaymentFileModel GetPaymentFromAirswift(this AirswiftPaymentModel airswift, IApplyFinancialsService apply)
         {
+            bool valid = true;
+            var applyRes = apply.Convert(airswift.SecPty.SecBankCtry, airswift.SecPty.SecBeneSwift, airswift.SecPty.Account);
+            if (!applyRes.status.ToUpper().Contains("PASS"))
+            {
+                valid = false;
+                System.Diagnostics.Debug.Print(applyRes.status);
+            }
             MassPaymentFileModel output = new MassPaymentFileModel();
             output.Direction = "BUY";
             output.Product = "SPOT";
@@ -28,17 +37,18 @@ namespace EburyMPIsoFilesLibrary.Helpers
             output.PaymentReference = airswift.SecPty.SecPaymentRef;
             output.ReasonForPayment = airswift.reasonForPayment();
 
-            output.SwiftCode = airswift.SecPty.SecBeneSwift;
-            output.BankName = airswift.SecPty.SecBeneBank;
-            if (isIban(airswift.SecPty.Account))
-                output.IBAN = airswift.SecPty.Account;
+            output.SwiftCode = applyRes.recommendedBIC;
+            output.BankName = applyRes.paymentBicDetails?.bankName;
+            if (isIban(applyRes.recommendedAcct))
+                output.IBAN = applyRes.recommendedAcct;
             else
-                output.AccountNo = airswift.SecPty.Account;
+                output.AccountNo = applyRes.recommendedAcct;
+            output.BankCountry = applyRes.countryCode;
+            output.BankCode = applyRes.recommendedNatId;
 
-            output.BankCountry = airswift.SecPty.SecBankCtry;
-            output.BeneficiaryName = airswift.SecPty.BeneName;
+            output.BeneficiaryName = airswift.beneficiaryName(valid);
             output.BeneficiaryReference = airswift.SecPty.SecPaymentRef;
-            output.BeneficiaryAddress1 = airswift.BatHdr.BatBeneAddress;
+            output.BeneficiaryAddress1 = airswift.beneficiaryAddress(valid);
             //output.BeneficiaryCity = airswift.Cdtr.PstlAdr?.TwnNm;
             output.BeneficiaryCountry = airswift.SecPty.SecBankCtry;
 
@@ -51,8 +61,13 @@ namespace EburyMPIsoFilesLibrary.Helpers
 
         private static bool isIban(string account)
         {
-            var match = Regex.Match(account, @"^([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?$");
-            return match.Success;
+            if (string.IsNullOrEmpty(account))
+                return false;
+            else
+            {
+                var match = Regex.Match(account, @"^([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?$");
+                return match.Success;
+            }
         }
 
         private static DateTime executionDate(this AirswiftPaymentModel airswift)
@@ -77,6 +92,22 @@ namespace EburyMPIsoFilesLibrary.Helpers
                 output = "Salary/Payroll";
             }
             return output;
+        }
+
+        private static string beneficiaryName(this AirswiftPaymentModel airswift, bool valid)
+        {
+            string output = airswift.SecPty.BeneName;
+            if (!valid)
+                output += " REVIEW BANK DETAILS!!!";
+            return output;
+        }
+
+        private static string beneficiaryAddress(this AirswiftPaymentModel airswift, bool valid)
+        {
+            if (valid)
+                return airswift.BatHdr.BatBeneAddress;
+            else
+                return "";
         }
         #endregion
     }

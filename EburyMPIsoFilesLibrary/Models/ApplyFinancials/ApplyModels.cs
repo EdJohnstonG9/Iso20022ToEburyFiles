@@ -1,9 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 
 namespace EburyMPIsoFilesLibrary.Models.ApplyFinancials
 {
+
+    public class ApplyConfiguration
+    {
+        public NetworkCredential Credentials { get; set; }
+        public string BaseUrl { get; set; }
+    }
 
     public class AuthenticateResponse
     {

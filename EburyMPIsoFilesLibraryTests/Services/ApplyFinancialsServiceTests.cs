@@ -16,12 +16,13 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
         {
             ApplyFinancialsService service = new ApplyFinancialsService();
 
-            var result = service.Authenticate(credential.UserName, credential.SecurePassword);
+            var result = service.Authenticate(credential);
 
             Assert.True(result == HttpStatusCode.OK);
             Assert.True(service.Token != "");
 
-            result = service.Authenticate("badUser", credential.SecurePassword);
+            credential.UserName = "badUser";
+            result = service.Authenticate(credential);
             Assert.True(string.IsNullOrEmpty(service.Token));
         }
 
@@ -41,7 +42,7 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
         {
             ApplyFinancialsService service = new ApplyFinancialsService();
 
-            var result = service.Authenticate(credential.UserName, credential.SecurePassword);
+            var result = service.Authenticate(credential);
 
             Assert.True(service.Token != "");
 

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Text;
 using EburyMPIsoFilesLibrary.Models;
 using System.IO;
+using EburyMPIsoFilesLibrary.Models.ApplyFinancials;
+using System.Net;
 
 namespace EburyMPIsoFilesLibrary.Services.Tests
 {
@@ -13,23 +15,37 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
         InputTypeModel inputType;
         string root = @"G:\Shared drives\MP - High Wycombe - Data\";
 
+        ApplyFinancialsService _apply;
         public ProcessPaymentFilesTests()
+        {
+            _apply = new ApplyFinancialsService(applyConfig());
+        }
+
+
+        private ApplyConfiguration applyConfig()
+        {
+            //todo: get this information from new Setting page, persist privately
+            var output = new ApplyConfiguration();
+            output.BaseUrl = @"https://apps.applyfinancial.co.uk/validate-api/rest";
+            output.Credentials = new NetworkCredential("mpoperations@ebury.com", "MpEb0427!");
+            return output;
+        }
+        private InputTypeModel inputTypeModel()
         {
             inputType = new InputTypeModel();
             inputType.InputType = InputTypeModel.InputFileType.AirswiftText;
             inputType.InputExt = ".TXT";
             inputType.OuputExt = ".csv";
+            return inputType;
         }
 
         [Fact()]
         public ProcessPaymentFiles ProcessPaymentFilesTest()
         {
-            inputType = new InputTypeModel();
-            inputType.InputType = InputTypeModel.InputFileType.AirswiftText;
-            inputType.InputExt = ".TXT";
-            inputType.OuputExt = ".csv";
+            _apply = new ApplyFinancialsService(applyConfig());
 
-            var result = new ProcessPaymentFiles(inputType);
+            var result = new ProcessPaymentFiles(_apply);
+            result.InputType = inputTypeModel();
             return result;
         }
 
