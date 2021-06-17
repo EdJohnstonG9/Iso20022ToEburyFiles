@@ -8,7 +8,7 @@ namespace EburyMPIsoFilesLibrary.Services
     {
         string Token { get; }
 
-        HttpStatusCode Authenticate(NetworkCredential credential);
+        HttpStatusCode Authenticate(NetworkCredential credential = null);
         ConvertResponse Convert(string countryCode, string branchId, string accountNo);
     }
 }

@@ -11,7 +11,7 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
 {
     public class AirswiftPaymentFileTests
     {
-        string fileRoot = @"G:\Shared drives\MP - High Wycombe - Data\Airswift";
+        string fileRoot = @"\\engsyst-svr05\CommonData\Shared drives\MP - High Wycombe - Data\Airswift\";
         ApplyFinancialsService _apply;
 
         private ApplyConfiguration applyConfig()
@@ -37,6 +37,7 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
 
         [Theory()]
         [InlineData(@"AirEnergi\0705_SBM LOCAL_SGD - Copy.TXT")]
+        [InlineData(@"AirEnergi\0705_FLOUR.TXT")]
         public void MassPaymentFileListTest(string file)
         {
             var paymentFile = ReadAirswiftFileTest(file);

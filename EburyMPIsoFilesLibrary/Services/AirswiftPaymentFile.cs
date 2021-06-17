@@ -16,12 +16,14 @@ namespace EburyMPIsoFilesLibrary.Services
     {
         private AirswiftModel IfhRecord { get; set; }
         public List<AirswiftPaymentModel> InputPaymentList { get; set; }
+        public string SettlementCcy { get; set; }
         //public AirswiftModel[] RawAirswiftData { get; set; }
 
         private IApplyFinancialsService _apply;
         public AirswiftPaymentFile(IApplyFinancialsService apply)
         {
             _apply = apply;
+            _apply.Authenticate();
         }
         #region ReadPaymentsFile
         public int ReadPaymentsFile(string fullPathName)
@@ -108,7 +110,7 @@ namespace EburyMPIsoFilesLibrary.Services
             var output = new List<MassPaymentFileModel>();
             foreach (var item in InputPaymentList)
             {
-                output.Add(item.GetPaymentFromAirswift(_apply));
+                output.Add(item.GetPaymentFromAirswift(SettlementCcy, _apply));
             }
             return output;
         }

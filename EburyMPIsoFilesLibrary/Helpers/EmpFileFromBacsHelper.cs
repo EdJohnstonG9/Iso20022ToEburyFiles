@@ -23,16 +23,16 @@ namespace EburyMPIsoFilesLibrary.Helpers
             output.ValueDate = executionDate;
             output.PaymentAmount = bacs.Amount;
             output.PaymentCurrency = bacsCcy;
-            output.PaymentReference = "";// bacs.Description;
+            output.PaymentReference = bacs.Description;
             output.ReasonForPayment = bacs.reasonForPayment();
 
             output.AccountNo = bacs.AccountNo;
-            output.BankCode = bacs.SortCode;
+            output.BankCode = bacs.sortCode();
             output.SwiftCode = apply?.recommendedBIC;
-            output.BankName = apply?.branchDetails?[0].bankName;
-            output.BankAddress1 = apply?.branchDetails?[0].branch;
-            output.BankCity = apply?.branchDetails?[0].city;
-            output.BankCountry = apply?.branchDetails?[0].country;
+            output.BankName = apply?.paymentBicDetails?.bankName;
+            output.BankAddress1 = apply?.paymentBicDetails?.branch;
+            output.BankCity = apply?.paymentBicDetails?.city;
+            output.BankCountry = apply.bankCountry();
             output.IBAN = apply?.recommendedAcct;
 
             output.BeneficiaryName = decodedString(bacs.EmployeeName);
@@ -55,6 +55,15 @@ namespace EburyMPIsoFilesLibrary.Helpers
             }
 
             return output;
+        }
+        private static string sortCode(this BacsModel bacs)
+        {
+            return bacs.SortCode.Replace("-", "");
+        }
+        private static string bankCountry (this ConvertResponse apply)
+        {
+            string country = apply?.paymentBicDetails?.country;
+            return country == "UNITED KINGDOM" ? "GB" : "XX";
         }
         private static string decodedString(string source)
         {

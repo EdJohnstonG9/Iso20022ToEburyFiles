@@ -39,11 +39,11 @@ namespace EburyMPIsoFilesLibrary.Helpers.Tests
             string fileName = Path.Combine(fileRoot, @"AirEnergi\0705_SBM LOCAL_SGD.TXT");
             var readfile = paymentFile.ReadPaymentsFile(fileName);
             Assert.True(readfile > 0);
-
+            string settlementCcy = "USD";
             var eburyData = new List<MassPaymentFileModel>();
             foreach (var payment in paymentFile.InputPaymentList)
             {
-                var actual = payment.GetPaymentFromAirswift(_apply);
+                var actual = payment.GetPaymentFromAirswift(settlementCcy, _apply);
                 Assert.True(actual != null);
                 eburyData.Add(actual);
             }

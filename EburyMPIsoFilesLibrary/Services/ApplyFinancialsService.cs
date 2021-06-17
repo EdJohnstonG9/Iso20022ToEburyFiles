@@ -27,10 +27,11 @@ namespace EburyMPIsoFilesLibrary.Services
         }
 
         #region authenticate
-        public HttpStatusCode Authenticate(NetworkCredential credential)
+        public HttpStatusCode Authenticate(NetworkCredential credential = null)
         {
             try
             {
+                if (credential == null) credential = _credential;
                 RestClient client = new RestClient(basePath);
                 var request = getAuthenticateRequest(credential);
                 var response = client.Post(request);

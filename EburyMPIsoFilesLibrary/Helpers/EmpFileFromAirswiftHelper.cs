@@ -13,18 +13,22 @@ namespace EburyMPIsoFilesLibrary.Helpers
 {
     public static class EmpFileFromAirswiftHelper
     {
+        const string fail = "FAIL";
+        const string pass = "PASS";
+
         public static NewBenePaymentModel GetBeneFromAirswift(this AirswiftPaymentModel airswift)
         {
             return new NewBenePaymentModel();
         }
 
-        public static MassPaymentFileModel GetPaymentFromAirswift(this AirswiftPaymentModel airswift, IApplyFinancialsService apply)
+        public static MassPaymentFileModel GetPaymentFromAirswift(this AirswiftPaymentModel airswift, string settlementCcy, IApplyFinancialsService apply)
         {
             bool valid = true;
             var applyRes = apply.Convert(airswift.SecPty.SecBankCtry, airswift.SecPty.SecBeneSwift, airswift.SecPty.Account);
-            if (!applyRes.status.ToUpper().Contains("PASS"))
+            if (!applyRes.status.ToUpper().Contains(pass))
             {
                 valid = false;
+
                 System.Diagnostics.Debug.Print(applyRes.status);
             }
             MassPaymentFileModel output = new MassPaymentFileModel();
@@ -37,22 +41,27 @@ namespace EburyMPIsoFilesLibrary.Helpers
             output.PaymentReference = airswift.SecPty.SecPaymentRef;
             output.ReasonForPayment = airswift.reasonForPayment();
 
-            output.SwiftCode = applyRes.recommendedBIC;
+            output.SwiftCode = airswift.bic(applyRes);
             output.BankName = applyRes.paymentBicDetails?.bankName;
-            if (isIban(applyRes.recommendedAcct))
-                output.IBAN = applyRes.recommendedAcct;
+            string account = airswift.account(applyRes);
+            if (isIban(account))
+            { 
+                output.IBAN = account;
+                output.AccountNo = accFromGBIban(account);
+            }
             else
-                output.AccountNo = applyRes.recommendedAcct;
+                output.AccountNo = account;
             output.BankCountry = applyRes.countryCode;
-            output.BankCode = applyRes.recommendedNatId;
+            output.BankCode = airswift.bankCode(applyRes);
 
-            output.BeneficiaryName = airswift.beneficiaryName(valid);
-            output.BeneficiaryReference = airswift.SecPty.SecPaymentRef;
+            output.BeneficiaryName = airswift.beneficiaryName(applyRes);
+            //output.BeneficiaryReference = airswift.SecPty.SecPaymentRef;
+            output.BeneficiaryReference = airswift.BatHdr.BatBeneAddress;
             output.BeneficiaryAddress1 = airswift.beneficiaryAddress(valid);
             //output.BeneficiaryCity = airswift.Cdtr.PstlAdr?.TwnNm;
             output.BeneficiaryCountry = airswift.SecPty.SecBankCtry;
 
-            output.SettlementCurrency = airswift.BatHdr.BatCcy;
+            output.SettlementCurrency = settlementCcy;
 
             return output;
         }
@@ -70,10 +79,67 @@ namespace EburyMPIsoFilesLibrary.Helpers
             }
         }
 
+        private static string account(this AirswiftPaymentModel airswift, ConvertResponse applyRes)
+        {
+            string output;
+            if (applyRes.status == fail)
+            {
+                output = airswift.SecPty.Account;
+            }
+            else
+            {
+                if (airswift.SecPty.Account != applyRes.recommendedAcct)
+                    airswift.SecPty.BeneName = $"{airswift.SecPty.BeneName}\n{airswift.SecPty.Account} Recommend Change Acct to: {applyRes.recommendedAcct}";
+                output = applyRes.recommendedAcct;
+            }
+            return output;
+        }
+
+        private static string accFromGBIban(string account)
+        {
+            if (account.Substring(0, 2) == "GB" && account.Length == 14+8)
+            {
+                return account.Substring(14, 8);
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        private static string bic(this AirswiftPaymentModel airswift, ConvertResponse applyRes)
+        {
+            string output;
+            if (applyRes.status == fail)
+            {
+                output = airswift.SecPty.SecBeneSwift;
+            }
+            else
+            {
+                if (!applyRes.recommendedBIC.Contains(airswift.SecPty.SecBeneSwift))
+                    airswift.SecPty.BeneName = $"{airswift.SecPty.BeneName}\n{airswift.SecPty.SecBeneSwift} Recommend Change BIC to: {applyRes.recommendedBIC}";
+                output = applyRes.recommendedBIC;
+            }
+            return output;
+        }
+
         private static DateTime executionDate(this AirswiftPaymentModel airswift)
         {
             string dueDate = airswift.SecPty.DueDate;
             DateTime output = DateTime.ParseExact(dueDate, "yyyyMMdd", CultureInfo.InvariantCulture);
+            return output;
+        }
+
+        private static string bankCode (this AirswiftPaymentModel airswift, ConvertResponse applyRes)
+        {
+            string output = applyRes.recommendedNatId;
+            if (string.IsNullOrEmpty(output))
+            {
+                if (applyRes.branchDetails?[0].codeDetails.codeName4=="Sort Code")
+                {
+                    output = applyRes.branchDetails[0].codeDetails.codeValue4;
+                }
+            }
             return output;
         }
 
@@ -94,18 +160,18 @@ namespace EburyMPIsoFilesLibrary.Helpers
             return output;
         }
 
-        private static string beneficiaryName(this AirswiftPaymentModel airswift, bool valid)
+        private static string beneficiaryName(this AirswiftPaymentModel airswift, ConvertResponse applyRes)
         {
             string output = airswift.SecPty.BeneName;
-            if (!valid)
-                output += " REVIEW BANK DETAILS!!!";
+            if (applyRes.status == fail)
+                output = $"{output}\nBANK DETAILS!!! {applyRes.comment}";
             return output;
         }
 
         private static string beneficiaryAddress(this AirswiftPaymentModel airswift, bool valid)
         {
             if (valid)
-                return airswift.BatHdr.BatBeneAddress;
+                return ".";// airswift.BatHdr.BatBeneAddress; this is not valid address data
             else
                 return "";
         }
