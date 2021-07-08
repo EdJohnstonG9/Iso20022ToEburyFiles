@@ -37,7 +37,6 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
         [InlineData("20-72-91", "53276449")]
         [InlineData("20-89-16", "93666743")]
         [InlineData("09-01-35", "8471583")]
-
         public void ConvertTest(string sort, string acno)
         {
             ApplyFinancialsService service = new ApplyFinancialsService();

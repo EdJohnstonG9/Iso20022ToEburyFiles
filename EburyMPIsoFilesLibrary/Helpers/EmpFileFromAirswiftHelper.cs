@@ -56,7 +56,7 @@ namespace EburyMPIsoFilesLibrary.Helpers
 
             output.BeneficiaryName = airswift.beneficiaryName(applyRes);
             //output.BeneficiaryReference = airswift.SecPty.SecPaymentRef;
-            output.BeneficiaryReference = airswift.BatHdr.BatBeneAddress;
+            //output.BeneficiaryReference = airswift.BatHdr.BatBeneAddress; //Removed so dynamic references used
             output.BeneficiaryAddress1 = airswift.beneficiaryAddress(valid);
             //output.BeneficiaryCity = airswift.Cdtr.PstlAdr?.TwnNm;
             output.BeneficiaryCountry = airswift.SecPty.SecBankCtry;
@@ -171,7 +171,7 @@ namespace EburyMPIsoFilesLibrary.Helpers
         private static string beneficiaryAddress(this AirswiftPaymentModel airswift, bool valid)
         {
             if (valid)
-                return ".";// airswift.BatHdr.BatBeneAddress; this is not valid address data
+                return "";// airswift.BatHdr.BatBeneAddress; this is not valid address data
             else
                 return "";
         }
