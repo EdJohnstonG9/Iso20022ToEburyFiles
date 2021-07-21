@@ -18,10 +18,10 @@ namespace EburyMPIsoFilesLibrary.Helpers.Tests
             var paymentFile = new AirswiftPaymentFile();
             string fileName = Path.Combine(fileRoot, @"AirEnergi\0705_SBM LOCAL_SGD.TXT");
             var readfile = paymentFile.ReadPaymentsFile(fileName);
-            Assert.True(readfile);
+            Assert.True(readfile > 0);
 
             var eburyData = new List<MassPaymentFileModel>();
-            foreach (var payment in paymentFile.AirswiftPaymentList)
+            foreach (var payment in paymentFile.InputPaymentList)
             {
                 var actual = payment.GetPaymentFromAirswift();
                 Assert.True(actual != null);
