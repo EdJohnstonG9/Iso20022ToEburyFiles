@@ -136,9 +136,11 @@ namespace EburyMPIsoFilesLibrary.Helpers
         public static string PaymentReference(this CreditTransferTransactionInformation10 creditTransfer)
         {
             //string output = $"{creditTransfer.PurposeOfPayment()} {creditTransfer.RmtInf.Ustrd[0]}".Trim();
-            string output = $"{creditTransfer.RmtInf.Ustrd[0]}".Trim();
+            string output = $"{creditTransfer.RmtInf?.Ustrd[0]}".Trim();
             //remove multispace
             output = Regex.Replace(output, @"\s+", " ", RegexOptions.Multiline).Trim();
+            if (string.IsNullOrEmpty(output))
+                throw new ApplicationException($"Blank Reference not allowed. Payment to {creditTransfer.Cdtr.Nm} {creditTransfer.Bic()} {creditTransfer.CreditAmt()}");
             return output;
         }
         public static string AccountNo(this CreditTransferTransactionInformation10 creditTransfer)
@@ -213,7 +215,7 @@ namespace EburyMPIsoFilesLibrary.Helpers
 
         public static string Iban(this CreditTransferTransactionInformation10 creditTransfer)
         {
-            var output = (string)creditTransfer.CdtrAcct.Id.Item;
+            var output = (string)creditTransfer.CdtrAcct.Id?.Item;
             return output;
         }
 
