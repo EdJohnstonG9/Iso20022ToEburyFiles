@@ -9,6 +9,7 @@ using System.Text;
 
 namespace EburyMPIsoFilesLibrary.Services
 {
+    //https://documents.applyfinancial.co.uk/
     public class ApplyFinancialsService
     {
         const string basePath = @"https://apps.applyfinancial.co.uk/validate-api/rest";
@@ -63,6 +64,31 @@ namespace EburyMPIsoFilesLibrary.Services
             var response = client.Get(request);
             var output = getConvert(response);
             return output;
+        }
+
+        public ConvertResponse Validate(string bic, string iban)
+        {
+            RestClient client = new RestClient(basePath);
+
+            RestRequest request = ValidateRequest(bic, iban);
+
+            var response = client.Get(request);
+            var output = getConvert(response);
+            return output;
+        }
+
+        private RestRequest ValidateRequest(string bic, string iban)
+        {
+            string reqPath = @"/convert/1.0.1";
+            Method method = Method.GET;
+            string countryCode = bic.Substring(4, 2);
+            RestRequest request = new RestRequest(reqPath, method);
+            request.AddParameter("countryCode", countryCode, ParameterType.QueryString);
+            request.AddParameter("nationalId", bic, ParameterType.QueryString);
+            request.AddParameter("accountNumber", iban, ParameterType.QueryString);
+            request.AddParameter("errorComment", "E", ParameterType.QueryString);
+            request.AddParameter("token", Token, ParameterType.QueryString);
+            return request;
         }
 
         private RestRequest getConvertRequest(string countryCode, string nationalId, string accountNumber)
