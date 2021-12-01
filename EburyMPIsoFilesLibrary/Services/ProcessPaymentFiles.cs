@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace EburyMPIsoFilesLibrary.Services
 {
-    public class ProcessPaymentFiles
+    public class ProcessPaymentFiles : IProcessPaymentFiles
     {
         public InputTypeModel InputType { get; }
         public List<string> InputFileNameList { get; private set; }
@@ -63,7 +63,7 @@ namespace EburyMPIsoFilesLibrary.Services
         private EburyMassPaymentsFile getInputData(string fileName, InputTypeModel fileModel)
         {
             EburyMassPaymentsFile output = new EburyMassPaymentsFile();
-            
+
             switch (fileModel.InputType)
             {
                 case InputTypeModel.InputFileType.ISOPain113:

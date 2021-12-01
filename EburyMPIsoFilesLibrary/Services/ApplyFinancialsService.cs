@@ -10,7 +10,7 @@ using System.Text;
 namespace EburyMPIsoFilesLibrary.Services
 {
     //https://documents.applyfinancial.co.uk/
-    public class ApplyFinancialsService
+    public class ApplyFinancialsService : IApplyFinancialsService
     {
         const string basePath = @"https://apps.applyfinancial.co.uk/validate-api/rest";
 
@@ -41,7 +41,7 @@ namespace EburyMPIsoFilesLibrary.Services
         private string authToken(IRestResponse response)
         {
             string output = null;
-            if(response.StatusCode == HttpStatusCode.OK)
+            if (response.StatusCode == HttpStatusCode.OK)
             {
                 try
                 {
@@ -60,7 +60,7 @@ namespace EburyMPIsoFilesLibrary.Services
         public ConvertResponse Convert(string countryCode, string branchId, string accountNo)
         {
             RestClient client = new RestClient(basePath);
-            var request = getConvertRequest(countryCode,branchId,accountNo);
+            var request = getConvertRequest(countryCode, branchId, accountNo);
             var response = client.Get(request);
             var output = getConvert(response);
             return output;
@@ -93,7 +93,7 @@ namespace EburyMPIsoFilesLibrary.Services
 
         private RestRequest getConvertRequest(string countryCode, string nationalId, string accountNumber)
         {
-            
+
             string reqPath = @"/convert/1.0.1";
             Method method = Method.GET;
 
