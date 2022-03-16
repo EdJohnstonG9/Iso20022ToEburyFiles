@@ -38,7 +38,7 @@ namespace EburyMPIsoFilesLibrary.Helpers
                 outBene.ReferenceInformation = outBene.BeneficiaryReference;
             outBene.Payment = new NewPaymentPayments(
                 NewBenePaymentModel.NoBene,
-                (float)paymentIn.PaymentAmount, NewBenePaymentModel.NoBene, false, paymentIn.ValueDate, outBene.ReferenceInformation);
+                paymentIn.PaymentAmount, NewBenePaymentModel.NoBene, false, paymentIn.ValueDate, outBene.ReferenceInformation);
 
             outBene.FundingCcy = paymentIn.SettlementCurrency;
 

@@ -65,7 +65,7 @@ namespace EburyMPIsoFilesLibrary.Helpers
             );
             outBene.Payment = new NewPaymentPayments(
                 "NoAccount",
-                (float)creditTransfer.CreditAmt(), "NoBene", false, paymentInstruction.ExecutionDate(), creditTransfer.PaymentReference());
+                creditTransfer.CreditAmt(), "NoBene", false, paymentInstruction.ExecutionDate(), creditTransfer.PaymentReference());
 
             outBene.FundingCcy = paymentInstruction.SettlementCurrency(creditTransfer.CreditCcy());
             if (string.IsNullOrEmpty(outBene.PostCode))
