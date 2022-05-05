@@ -127,7 +127,9 @@ namespace EburyMPIsoFiles.ViewModels
             {
                 outStr = "File Create Failed";
                 MassPaymentFile = null;
-                throw new ApplicationException($"Could not open the file: {fileName}\n{ex.Message}");
+                var content = $"Could not process the file: {fileName}";
+                MessageBox.Show(content + $"\n{ex.Message}", "File Creation Failed", MessageBoxButton.OK);
+                throw new ApplicationException(content, ex);
                 //, "Issue Reading File", MessageBoxButton.OK);
             }
             return outStr;

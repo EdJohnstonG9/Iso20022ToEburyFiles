@@ -65,7 +65,7 @@ namespace EburyMPIsoFilesLibrary.Helpers
             );
             outBene.Payment = new NewPaymentPayments(
                 "NoAccount",
-                (float)creditTransfer.CreditAmt(), "NoBene", false, paymentInstruction.ExecutionDate(), creditTransfer.PaymentReference());
+                creditTransfer.CreditAmt(), "NoBene", false, paymentInstruction.ExecutionDate(), creditTransfer.PaymentReference());
 
             outBene.FundingCcy = paymentInstruction.SettlementCurrency(creditTransfer.CreditCcy());
             if (string.IsNullOrEmpty(outBene.PostCode))
@@ -87,7 +87,7 @@ namespace EburyMPIsoFilesLibrary.Helpers
             output.PaymentAmount = creditTransfer.CreditAmt();
             output.PaymentCurrency = creditTransfer.CreditCcy();
             output.PaymentReference = creditTransfer.PaymentReference();
-            //output.ReasonForPayment = reasonForPayment(creditTransfer);
+                //output.ReasonForPayment = reasonForPayment(creditTransfer);
 
             output.SwiftCode = creditTransfer.CdtrAgt?.FinInstnId.BIC;
             output.BankName = creditTransfer.CdtrAgt?.FinInstnId.Nm;
@@ -135,13 +135,20 @@ namespace EburyMPIsoFilesLibrary.Helpers
 
         public static string PaymentReference(this CreditTransferTransactionInformation10 creditTransfer)
         {
-            //string output = $"{creditTransfer.PurposeOfPayment()} {creditTransfer.RmtInf.Ustrd[0]}".Trim();
-            string output = $"{creditTransfer.RmtInf?.Ustrd[0]}".Trim();
-            //remove multispace
-            output = Regex.Replace(output, @"\s+", " ", RegexOptions.Multiline).Trim();
-            if (string.IsNullOrEmpty(output))
-                throw new ApplicationException($"Blank Reference not allowed. Payment to {creditTransfer.Cdtr.Nm} {creditTransfer.Bic()} {creditTransfer.CreditAmt()}");
-            return output;
+            try
+            {
+                //string output = $"{creditTransfer.PurposeOfPayment()} {creditTransfer.RmtInf.Ustrd[0]}".Trim();
+                string output = $"{creditTransfer.RmtInf.Ustrd[0]}".Trim();
+                ///CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/RmtInf/Ustrd
+                
+                //remove multispace
+                output = Regex.Replace(output, @"\s+", " ", RegexOptions.Multiline).Trim();
+                return output;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException($"{nameof(PaymentReference)}\tCould not find Payment Reference in Remittance Information for Bene: {creditTransfer.Cdtr.Nm}", ex);
+            }
         }
         public static string AccountNo(this CreditTransferTransactionInformation10 creditTransfer)
         {

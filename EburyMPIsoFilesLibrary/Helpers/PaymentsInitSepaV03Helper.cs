@@ -36,7 +36,7 @@ namespace EburyMPIsoFilesLibrary.Helpers
             ) ;
             outBene.Payment = new NewPaymentPayments(
                 "NoAccount",
-                (float)creditTransfer.CreditAmt(), "NoBene", false, paymentInstruction.ExecutionDate(), creditTransfer.PaymentReference());
+                creditTransfer.CreditAmt(), "NoBene", false, paymentInstruction.ExecutionDate(), creditTransfer.PaymentReference());
 
             outBene.FundingCcy = paymentInstruction.SettlementCurrency(creditTransfer.CreditCcy());
             if (string.IsNullOrEmpty(outBene.PostCode))
@@ -136,14 +136,14 @@ namespace EburyMPIsoFilesLibrary.Helpers
         {
             string output = "";
             string purp = creditTransfer.Purp?.Cd;//.Item;
-            if(purp.ToUpper().Contains("SALA"))
-            {
-                output = "Salary/Payroll";
-            }
-            else
+            if (string.IsNullOrEmpty(purp) || !purp.ToUpper().Contains("SALA"))
             {
                 //output = "Other";
                 output = "";
+            }
+            else
+            {
+                output = "Salary/Payroll";
             }
             return output;
         }
