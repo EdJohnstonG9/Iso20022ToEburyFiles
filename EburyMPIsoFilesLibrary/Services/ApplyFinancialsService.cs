@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Security;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace EburyMPIsoFilesLibrary.Services
 {
@@ -95,6 +96,23 @@ namespace EburyMPIsoFilesLibrary.Services
             }
 
         }
+        public async Task<ConvertResponse> ConvertAsync(string countryCode, string branchId, string accountNo)
+        {
+            if (string.IsNullOrEmpty(Token))
+                throw new AccessViolationException($"{nameof(Convert)}\tMust authenticate before Conver");
+            try
+            {
+                RestClient client = new RestClient(basePath);
+                var request = getConvertRequest(countryCode, branchId, accountNo);
+                var output = await client.GetAsync<ConvertResponse>(request);
+                return output;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException($"{nameof(Convert)}\tIssue when getting bank details\t{countryCode}\t{branchId}\t{accountNo}", ex);
+            }
+
+        }
 
         public ConvertResponse Validate(string bic, string iban)
         {
@@ -135,6 +153,7 @@ namespace EburyMPIsoFilesLibrary.Services
 
             return request;
         }
+
         private ConvertResponse getConvert(IRestResponse response)
         {
             ConvertResponse output = null;

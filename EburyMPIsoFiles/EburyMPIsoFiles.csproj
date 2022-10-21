@@ -26,14 +26,14 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>https://www.engsyst.co.uk/Apps/Iso20022ToEburyFileSoln/</InstallUrl>
-    <UpdateUrl>https://www.engsyst.co.uk/Apps/Iso20022ToEburyFileSoln/</UpdateUrl>
+    <InstallUrl>https://apps.engsyst.co.uk/Apps/Iso20022ToEburyFileSoln/</InstallUrl>
+    <UpdateUrl>https://apps.engsyst.co.uk/Apps/Iso20022ToEburyFileSoln/</UpdateUrl>
     <ProductName>ISO to Mass Payment Files</ProductName>
     <PublisherName>Engineered Systems Ltd</PublisherName>
     <SuiteName>Ebury Mass Payments</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>35</ApplicationRevision>
+    <ApplicationRevision>41</ApplicationRevision>
     <ApplicationVersion>1.2.1.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>

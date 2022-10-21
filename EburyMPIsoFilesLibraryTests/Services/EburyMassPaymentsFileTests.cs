@@ -3,11 +3,15 @@ using EburyMPIsoFilesLibrary.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace EburyMPIsoFilesLibrary.Services.Tests
 {
     public class EburyMassPaymentsFileTests
     {
+        NetworkCredential _credential = new NetworkCredential("mpoperations@ebury.com", "MpEb0427!");
+        
         [Theory]
         [InlineData(@"G:\Shared drives\MP - High Wycombe - Data\XML FILE EXAMPLES\BDO Example 1\Copy of 3623_27821 Tokio Marine_ salaries_10_2020.xml",
             49)]
@@ -57,13 +61,40 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
             483)]
         [InlineData(@"G:\Shared drives\MP - High Wycombe - Data\XML FILE EXAMPLES\Zahlungsdatei\IFS034_DE_10_20201014_14-42test.csv",
             1)]
-        public void ReadPaymentsFileTest(string fileName, int items)
+        public EburyMassPaymentsFile ReadPaymentsFileTest(string fileName, int items)
         {
             var eburyFile = new EburyMassPaymentsFile();
 
             var result = eburyFile.ReadPaymentsFile(fileName);
 
-            Assert.Equal(items, result);
+            Assert.True(items == result || items == -1);
+
+            return eburyFile;
+        }
+
+        [Theory]
+        //[InlineData(@"G:\Shared drives\MP - High Wycombe - Data\XML FILE EXAMPLES\BDO Example 1\XML FILE - Example 1 - BDO - GetSwiftTest.csv",
+        //    3)]
+        [InlineData(@"C:\Users\EdJohnston\Downloads\Bene file test.csv",
+            -1)]
+        public void ReadFileAndCompleteApplyAsync(string fileName, int items)  
+        {
+            var eburyFile = ReadPaymentsFileTest(fileName, items);
+
+            ApplyFinancialsService service = new ApplyFinancialsService();
+
+            var auth = service.Authenticate(_credential);
+
+            Assert.True(auth == HttpStatusCode.OK);
+            Assert.True(service.Token != "");
+
+            var result = eburyFile.CompleteBenePaymentList(service);
+
+            Assert.Equal(eburyFile.Payments.Count, result);
+
+            string outFileName = fileName.Replace(".csv", "-Upd.csv");
+            eburyFile.WriteMassPaymentsFile(outFileName);
+
         }
 
         [Theory]

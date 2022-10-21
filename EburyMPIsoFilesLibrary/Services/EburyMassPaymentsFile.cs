@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using EburyMPIsoFilesLibrary.Models.Ebury;
 using EburyApiWrapper.Beneficiaries;
 using EburyMPIsoFilesLibrary.Helpers;
-
+using EburyMPIsoFilesLibrary.Models.ApplyFinancials;
 
 namespace EburyMPIsoFilesLibrary.Services
 {
@@ -53,6 +53,29 @@ namespace EburyMPIsoFilesLibrary.Services
             return outList;
         }
 
+        public int CompleteBenePaymentList(ApplyFinancialsService service)
+        {
+            int output = 0;
+            foreach(var payment in Payments)
+            {
+                ConvertResponse response;
+                if (string.IsNullOrEmpty(payment.BankCountry)
+                    || string.IsNullOrEmpty(payment.BankCode)
+                    || string.IsNullOrEmpty(payment.AccountNo))
+                {
+                    payment.BeneficiaryReference = $"***MissingData*** {payment.BeneficiaryReference}";
+                }
+                else
+                {
+                    response = service.Convert(payment.BankCountry, payment.BankCode, payment.AccountNo);
+                    payment.SwiftCode = response.recommendedBIC;
+                    if(!string.IsNullOrEmpty(response.recommendedAcct))
+                        payment.IBAN = response.recommendedAcct;
+                    output += 1;
+                }
+            }
+            return output;
+        }
 
         //public async Task<List<BicFromIbanModel>> CompleteBicFromIban(List<MassPaymentFileModel> payments = null)
         //{

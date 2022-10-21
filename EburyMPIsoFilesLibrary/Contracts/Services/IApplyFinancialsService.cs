@@ -2,6 +2,7 @@
 
 using System.Net;
 using System.Security;
+using System.Threading.Tasks;
 
 namespace EburyMPIsoFilesLibrary.Services
 {
@@ -11,6 +12,7 @@ namespace EburyMPIsoFilesLibrary.Services
 
         HttpStatusCode Authenticate(NetworkCredential credential = null);
         ConvertResponse Convert(string countryCode, string branchId, string accountNo);
+        Task<ConvertResponse> ConvertAsync(string countryCode, string branchId, string accountNo);
         ConvertResponse Validate(string bic, string iban);
     }
 }
