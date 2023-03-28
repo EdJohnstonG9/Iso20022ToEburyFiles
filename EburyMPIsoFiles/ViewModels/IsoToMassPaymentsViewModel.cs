@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -24,7 +25,24 @@ namespace EburyMPIsoFiles.ViewModels
         public string InputFilePath
         {
             get { return _InputFilePath; }
-            set { SetProperty(ref _InputFilePath, value); }
+            set { 
+                if (SetProperty(ref _InputFilePath, value))
+                {
+                    if (!string.IsNullOrEmpty(value) && (new DirectoryInfo(value)).Exists)
+                    {
+                        UserSettings settings = _propertiesService.GetCurrent<UserSettings>();
+                        settings.XmlFilePath = value;
+                        _propertiesService.SaveCurrent(settings);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"The Path you entered does not exist\nPlease try again\n{value}", "Invalid Path");
+                        UserSettings settings = _propertiesService.GetCurrent<UserSettings>();
+                        _InputFilePath = settings.XmlFilePath;
+                        RaisePropertyChanged(nameof(InputFilePath));
+                    }
+                }
+            }
         }
         private string _OutputFilePath;
         public string OutputFilePath
@@ -66,13 +84,15 @@ namespace EburyMPIsoFiles.ViewModels
         public IsoToMassPaymentsViewModel(IObjectToPropertiesService propertiesService)
         {
             _propertiesService = propertiesService;
-            //InputFilePath = @"G:\Shared drives\MP - High Wycombe - Data\XML FILE EXAMPLES";
-            //SameOutputPath = true;
+            UserSettings settings = _propertiesService.GetCurrent<UserSettings>();
+            _InputFilePath = settings?.XmlFilePath;
+            _OutputFilePath = settings?.SaveFilePath;
         }
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            InputFilePath = _propertiesService.GetCurrent<UserSettings>()?.XmlFilePath;
-            OutputFilePath = _propertiesService.GetCurrent<UserSettings>()?.SaveFilePath;
+            UserSettings settings = _propertiesService.GetCurrent<UserSettings>();
+            InputFilePath = settings?.XmlFilePath;
+            OutputFilePath = settings?.SaveFilePath;
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -82,10 +102,27 @@ namespace EburyMPIsoFiles.ViewModels
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
+            UserSettings settings = _propertiesService.GetCurrent<UserSettings>();
+            if (settings == null)
+            {
+                settings = new UserSettings();
+            }
+            settings.XmlFilePath = InputFilePath;
         }
         private DelegateCommand _OpenFileCommand;
         public DelegateCommand OpenFileCommand =>
-            _OpenFileCommand ?? (_OpenFileCommand = new DelegateCommand(ExecuteOpenFileCommand));
+            _OpenFileCommand ?? (_OpenFileCommand = new DelegateCommand(ExecuteOpenFileCommand, CanExecuteOpenFileCommand));
+
+        private bool CanExecuteOpenFileCommand()
+        {
+            if (String.IsNullOrEmpty(_propertiesService.GetCurrent<UserSettings>()?.XmlFilePath) )
+            {
+                var result = MessageBox.Show("Please set the default File Path for your XML files", "Set File Path", MessageBoxButton.OK);
+                return false;
+            }
+            else
+                return true;
+        }
 
         void ExecuteOpenFileCommand()
         {
@@ -138,7 +175,12 @@ namespace EburyMPIsoFiles.ViewModels
         {
             string output = inFileName;
             XmlPath = XmlPath.Trim();
-            OutputPath = _propertiesService.GetCurrent<UserSettings>().SaveFilePath;
+            OutputPath = _propertiesService.GetCurrent<UserSettings>()?.SaveFilePath;
+            if(string.IsNullOrEmpty(OutputPath))
+            {
+                OutputPath = XmlPath;
+            }
+
             if (inFileName.Contains(XmlPath))
             {
                 output = inFileName.Replace(XmlPath, OutputPath);

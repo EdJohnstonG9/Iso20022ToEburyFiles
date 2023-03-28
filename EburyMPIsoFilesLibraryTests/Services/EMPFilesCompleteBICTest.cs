@@ -39,7 +39,8 @@ namespace EburyMPIsoFilesLibraryTests.Services
         //[InlineData(@"G:\Shared drives\MP - High Wycombe - Data\VialtoCompleteBIC\File for SWIFT Data.csv")]
         //[InlineData(@"G:\Shared drives\MP - High Wycombe - Data\VialtoCompleteBIC\Jadestone Jun Sal live file for payment.csv")]
         //[InlineData(@"G:\Shared drives\MP - High Wycombe - Data\VialtoCompleteBIC\Copy of SWIFT Data.csv")]
-        [InlineData(@"G:\Shared drives\MP - High Wycombe - Data\VialtoCompleteBIC\Rubrik Data 220809.csv")]
+        //[InlineData(@"G:\Shared drives\MP - High Wycombe - Data\VialtoCompleteBIC\Rubrik Data 220809.csv")]
+        [InlineData(@"G:\Shared drives\MP - High Wycombe - Data\VialtoCompleteBIC\Yondr Penny test .csv")]
         public void ReadFileAndCompleteApplyAsync(string fileName)
         {
             var eburyFile = ReadPaymentsFileTest(fileName);
