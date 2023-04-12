@@ -1,17 +1,23 @@
 ﻿using EburyMPIsoFiles.Core.Models;
 using EburyMPIsoFiles.Models;
 using EburyMPIsoFiles.Services;
+
 using EburyMPIsoFilesLibrary.Models.Ebury;
 using EburyMPIsoFilesLibrary.Services;
+
 using Microsoft.Win32;
+
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text.RegularExpressions;
 using System.Windows;
 
@@ -24,7 +30,25 @@ namespace EburyMPIsoFiles.ViewModels
         public string InputFilePath
         {
             get { return _InputFilePath; }
-            set { SetProperty(ref _InputFilePath, value); }
+            set
+            {
+                if (SetProperty(ref _InputFilePath, value))
+                {
+                    if (!string.IsNullOrEmpty(value) && (new DirectoryInfo(value)).Exists)
+                    {
+                        UserSettings settings = _propertiesService.GetCurrent<UserSettings>();
+                        settings.XmlFilePath = value;
+                        _propertiesService.SaveCurrent(settings);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"The Path you entered does not exist\nPlease try again\n{value}", "Invalid Path");
+                        UserSettings settings = _propertiesService.GetCurrent<UserSettings>();
+                        _InputFilePath = settings.XmlFilePath;
+                        RaisePropertyChanged(nameof(InputFilePath));
+                    }
+                }
+            }
         }
         private string _OutputFilePath;
         public string OutputFilePath
@@ -66,13 +90,15 @@ namespace EburyMPIsoFiles.ViewModels
         public IsoToMassPaymentsViewModel(IObjectToPropertiesService propertiesService)
         {
             _propertiesService = propertiesService;
-            //InputFilePath = @"G:\Shared drives\MP - High Wycombe - Data\XML FILE EXAMPLES";
-            //SameOutputPath = true;
+            UserSettings settings = _propertiesService.GetCurrent<UserSettings>();
+            _InputFilePath = settings?.XmlFilePath;
+            _OutputFilePath = settings?.SaveFilePath;
         }
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            InputFilePath = _propertiesService.GetCurrent<UserSettings>()?.XmlFilePath;
-            OutputFilePath = _propertiesService.GetCurrent<UserSettings>()?.SaveFilePath;
+            UserSettings settings = _propertiesService.GetCurrent<UserSettings>();
+            InputFilePath = settings?.XmlFilePath;
+            OutputFilePath = settings?.SaveFilePath;
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -82,24 +108,48 @@ namespace EburyMPIsoFiles.ViewModels
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
+            UserSettings settings = _propertiesService.GetCurrent<UserSettings>();
+            if (settings == null)
+            {
+                settings = new UserSettings();
+            }
+            settings.XmlFilePath = InputFilePath;
         }
         private DelegateCommand _OpenFileCommand;
         public DelegateCommand OpenFileCommand =>
-            _OpenFileCommand ?? (_OpenFileCommand = new DelegateCommand(ExecuteOpenFileCommand));
+            _OpenFileCommand ?? (_OpenFileCommand = new DelegateCommand(ExecuteOpenFileCommand, CanExecuteOpenFileCommand));
+
+        private bool CanExecuteOpenFileCommand()
+        {
+            if (String.IsNullOrEmpty(_propertiesService.GetCurrent<UserSettings>()?.XmlFilePath))
+            {
+                var result = MessageBox.Show("Please set the default File Path for your XML files", "Set File Path", MessageBoxButton.OK);
+                return false;
+            }
+            else
+                return true;
+        }
 
         void ExecuteOpenFileCommand()
         {
-            string fileName = "";
+            //string fileName = "";
             try
             {
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 openFileDialog.Filter = $"ISO Xml|*.xml|All files (*.*)|*.*";
                 openFileDialog.InitialDirectory = InputFilePath;
+                openFileDialog.Multiselect = true;
                 if (openFileDialog.ShowDialog() == true)
                 {
-                    fileName = openFileDialog.FileName;
-                    var outFile = readIsoFile(fileName);
-                    OutputFilePath = outFile;
+                    MassPaymentFile = new EburyMassPaymentsFile();
+                    //fileName = openFileDialog.FileName;
+                    var fileNames = openFileDialog.FileNames;
+                    List<string> outFiles = new List<string>();
+                    foreach (var fileName in fileNames)
+                    {
+                        outFiles.Add(readIsoFile(fileName));
+                    }
+                    OutputFilePath = writeIsoFile(fileNames);
                     showPayments();
                     showSummary(MassPaymentFile);
                 }
@@ -116,12 +166,9 @@ namespace EburyMPIsoFiles.ViewModels
             {
                 isoPayments = new IsoPaymentFile();
                 isoPayments.ReadPaymentsFile(fileName);
-                MassPaymentFile = new EburyMassPaymentsFile();
-                MassPaymentFile.Payments = isoPayments.GetPaymentFileList();
-                //var outFile = fileName.Replace(".xml", ".csv");
-                var outFile = getOutFileName(fileName, InputFilePath, OutputFilePath);
-                MassPaymentFile.WriteMassPaymentsFile(outFile);
-                outStr = outFile;
+                MassPaymentFile.Payments.AddRange(isoPayments.GetPaymentFileList());
+                outStr = fileName.Replace(".xml", ".csv");
+                //outStr = writeIsoFile(fileName);
             }
             catch (Exception ex)
             {
@@ -134,20 +181,70 @@ namespace EburyMPIsoFiles.ViewModels
             }
             return outStr;
         }
-        private string getOutFileName(string inFileName, string XmlPath, string OutputPath)
+
+        private string writeIsoFile(string[] fileNames)
         {
-            string output = inFileName;
+            string outStr;
+            var outFile = getOutFileName(fileNames, InputFilePath, OutputFilePath);
+            MassPaymentFile.WriteMassPaymentsFile(outFile);
+            outStr = outFile;
+            return outStr;
+        }
+
+        private string getOutFileName(string[] inFileNames, string XmlPath, string OutputPath)
+        {
+            string output = multiFileName(inFileNames);
+
             XmlPath = XmlPath.Trim();
-            OutputPath = _propertiesService.GetCurrent<UserSettings>().SaveFilePath;
-            if (inFileName.Contains(XmlPath))
+            OutputPath = _propertiesService.GetCurrent<UserSettings>()?.SaveFilePath;
+            if (string.IsNullOrEmpty(OutputPath))
             {
-                output = inFileName.Replace(XmlPath, OutputPath);
+                OutputPath = XmlPath;
+            }
+
+            if (output.Contains(XmlPath))
+            {
+                output = output.Replace(XmlPath, OutputPath);
             }
 
             output = Regex.Replace(output, @"\.xml", @".csv", RegexOptions.IgnoreCase);
 
             return output;
         }
+
+        public string multiFileName(string[] files)
+        {
+            if (files == null || files.Length == 0)
+                throw new ArgumentNullException($"{nameof(files)} must contain 1 or more names");
+
+            if(files.Length == 1)
+            {
+                return files[0];
+            }
+
+            var fi = new FileInfo(files.First());
+            var ext = fi.Extension;
+            var path = fi.DirectoryName;
+            string common = fi.Name;
+            foreach (var file in files)
+            {
+                var fiName = new FileInfo(file).Name;
+                common = string.Concat(common.TakeWhile((c, i) => c == fiName[i]));
+                Debug.Print(common);
+            }
+
+            string output = fi.Name;
+            if (output != common)
+            {
+                output = $"{path}\\{common}Multi-{DateTimeOffset.Now:yyMMdd-hhmmss}{ext}";
+            }
+            else
+            {
+                output = fi.FullName;
+            }
+            return output;
+        }
+
         private void showPayments()
         {
             PaymentList = new ObservableCollection<MassPaymentFileModel>(MassPaymentFile.Payments);
@@ -181,7 +278,7 @@ namespace EburyMPIsoFiles.ViewModels
             }
             return output;
         }
-        
+
         void ExecuteOpenOutputFileCommand()
         {
             Process xlProcess = new Process();
@@ -205,15 +302,19 @@ namespace EburyMPIsoFiles.ViewModels
         void ExecuteDropFileDropCommand(object e)
         {
             DragEventArgs args = (DragEventArgs)e;
-            foreach (var fileName in (string[])args.Data.GetData(DataFormats.FileDrop, false))
+            MassPaymentFile = new EburyMassPaymentsFile();
+            List<string> outFiles = new List<string>();
+            string[] fileNames = (string[])args.Data.GetData(DataFormats.FileDrop, false);
+            foreach (var fileName in fileNames)
             {
                 if (fileName.ToLower().Contains(".xml"))
                 {
-                    var outFile = readIsoFile(fileName);
-                    OutputFilePath = outFile;
-                    showPayments();
-                    showSummary(MassPaymentFile);
+                    outFiles.Add(readIsoFile(fileName));
                 }
+                OutputFilePath = writeIsoFile(fileNames);
+                showPayments();
+                showSummary(MassPaymentFile);
+
             }
         }
 

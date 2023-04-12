@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>False</SignAssembly>
     <AssemblyOriginatorKeyFile>EburyMPIsolFilesLibraryKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 

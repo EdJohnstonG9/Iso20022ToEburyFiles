@@ -73,10 +73,10 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
         }
 
         [Theory]
-        //[InlineData(@"G:\Shared drives\MP - High Wycombe - Data\XML FILE EXAMPLES\BDO Example 1\XML FILE - Example 1 - BDO - GetSwiftTest.csv",
-        //    3)]
-        [InlineData(@"C:\Users\EdJohnston\Downloads\Bene file test.csv",
-            -1)]
+        [InlineData(@"G:\Shared drives\MP - High Wycombe - Data\XML FILE EXAMPLES\BDO Example 1\XML FILE - Example 1 - BDO - GetSwiftTest.csv",
+            3)]
+        //[InlineData(@"C:\Users\EdJohnston\Downloads\Bene file test.csv",
+        //    -1)]
         public void ReadFileAndCompleteApplyAsync(string fileName, int items)  
         {
             var eburyFile = ReadPaymentsFileTest(fileName, items);
