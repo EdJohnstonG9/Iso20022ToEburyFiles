@@ -18,7 +18,7 @@ namespace EburyMPIsoFilesLibrary.Services
     /// </summary>
     public class EburyMassPaymentsFile
     {
-        public List<MassPaymentFileModel> Payments { get; set; }
+        public List<MassPaymentFileModel> Payments { get; set; } = new List<MassPaymentFileModel>();
 
         public EburyMassPaymentsFile()
         {
