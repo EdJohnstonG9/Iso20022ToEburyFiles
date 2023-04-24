@@ -28,9 +28,9 @@ namespace EburyMPIsoFilesLibraryTests
             ApplyConfiguration applyConfig = new ApplyConfiguration();
 
             //var applyConfig = new ApplyConfiguration();
-            applyConfig.BaseUrl = configuration.GetSection("ApplyConfiguration:BaseUrl").Value;
-            applyConfig.Credentials.UserName = configuration.GetSection("ApplyConfiguration:Credentials:UserName").Value;
-            applyConfig.Credentials.Password = configuration.GetSection("ApplyConfiguration:Credentials:Password").Value;
+            applyConfig.BaseUrl = configuration.GetSection("ApplyConfiguration_BaseUrl").Value;
+            applyConfig.Credentials.UserName = configuration.GetSection("ApplyConfiguration_Credentials_UserName").Value;
+            applyConfig.Credentials.Password = configuration.GetSection("ApplyConfiguration_Credentials_Password").Value;
 
             _applyConfig= applyConfig;
         }
