@@ -60,6 +60,9 @@ jobs:
       #Test_Project_Path: your-test-project-path                 # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
       Wap_Project_Directory: EburyMPIsoFiles    # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
       Wap_Project_Path: EburyMPIsoFiles\EburyMPIsoFiles.csproj                   # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
+      ApplyConfiguration_Credentials_UserName: ${{ secrets.ApplyConfiguration_Credentials_UserName }}
+      ApplyConfiguration_Credentials_Password: ${{ secrets.ApplyConfiguration_Credentials_Password }}
+      ApplyConfiguration_BaseUrl: ${{ secrets.ApplyConfiguration_BaseUrl }}
 
     steps:
     - name: Checkout
