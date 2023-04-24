@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Repos\EburyMassPaymentApiSolution\EburyApiModels\EburyApiModels.csproj" />
+    <ProjectReference Include="..\..\EburyAPI\src\EburyApiModels\EburyApiModels.csproj" />
     <ProjectReference Include="..\EburyMPIsoFilesLibrary\EburyMPIsoFilesLibrary.csproj" />
   </ItemGroup>
 

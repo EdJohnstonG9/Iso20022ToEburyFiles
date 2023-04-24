@@ -22,13 +22,13 @@
     <PackageReference Include="CsvHelper" Version="16.0.0" />
     <PackageReference Include="ExcelDataReader" Version="3.6.0" />
     <PackageReference Include="ExcelDataReader.DataSet" Version="3.6.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="RestSharp" Version="106.11.7" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Repos\EburyMassPaymentApiSolution\EburyApiModels\EburyApiModels.csproj" />
+    <ProjectReference Include="..\..\EburyAPI\src\EburyApiModels\EburyApiModels.csproj" />
   </ItemGroup>
 
 

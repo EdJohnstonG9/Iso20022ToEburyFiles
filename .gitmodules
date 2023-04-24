@@ -1,0 +1,3 @@
+[submodule "EburyAPI"]
+	path = EburyAPI
+	url = https://github.com/EdJohnstonG9/EburyAPI
