@@ -5,24 +5,24 @@ using System.Collections.Generic;
 using System.Text;
 using System.Net;
 using System.Diagnostics;
+using EburyMPIsoFilesLibraryTests;
 
 namespace EburyMPIsoFilesLibrary.Services.Tests
 {
-    public class ApplyFinancialsServiceTests
+    public class ApplyFinancialsServiceTests : ApplyFixture
     {
-        NetworkCredential credential = new NetworkCredential("mpoperations@ebury.com", "MpEb0427!");
         [Fact()]
         public void AuthenticateTest()
         {
-            ApplyFinancialsService service = new ApplyFinancialsService();
+            ApplyFinancialsService service = new ApplyFinancialsService(_applyConfig);
 
-            var result = service.Authenticate(credential);
+            var result = service.Authenticate();
 
             Assert.True(result == HttpStatusCode.OK);
             Assert.True(service.Token != "");
 
-            credential.UserName = "badUser";
-            result = service.Authenticate(credential);
+            _applyConfig.Credentials.UserName = "badUser";
+            result = service.Authenticate();
             Assert.True(string.IsNullOrEmpty(service.Token));
         }
 
@@ -39,9 +39,7 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
         [InlineData("09-01-35", "8471583")]
         public void ConvertTest(string sort, string acno)
         {
-            ApplyFinancialsService service = new ApplyFinancialsService();
-
-            var result = service.Authenticate(credential);
+            ApplyFinancialsService service = new ApplyFinancialsService(_applyConfig);
 
             Assert.True(service.Token != "");
 
@@ -60,9 +58,7 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
         [InlineData("GB", "GB27LOYD30802727682660", "LOYDGB2172")]
         public void ValidateTest(string ctry, string iban, string bic)
         {
-            ApplyFinancialsService service = new ApplyFinancialsService();
-
-            var result = service.Authenticate(credential);
+            ApplyFinancialsService service = new ApplyFinancialsService(_applyConfig);
 
             Assert.True(service.Token != "");
 

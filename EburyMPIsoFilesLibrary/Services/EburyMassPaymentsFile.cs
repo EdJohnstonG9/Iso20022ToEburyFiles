@@ -56,20 +56,34 @@ namespace EburyMPIsoFilesLibrary.Services
         public int CompleteBenePaymentList(ApplyFinancialsService service)
         {
             int output = 0;
-            foreach(var payment in Payments)
+            foreach (var payment in Payments)
             {
-                ConvertResponse response;
-                if (string.IsNullOrEmpty(payment.BankCountry)
-                    || string.IsNullOrEmpty(payment.BankCode)
-                    || string.IsNullOrEmpty(payment.AccountNo))
+                ConvertResponse response = null;
+                if (!string.IsNullOrEmpty(payment.BankCountry)
+                    && (!string.IsNullOrEmpty(payment.BankCode))
+                    && (!string.IsNullOrEmpty(payment.AccountNo)))
                 {
-                    payment.BeneficiaryReference = $"***MissingData*** {payment.BeneficiaryReference}";
+                    response = service.Convert(payment.BankCountry, payment.BankCode, payment.AccountNo);
+                }
+                else if (!string.IsNullOrEmpty(payment.IBAN))
+                {
+                    response = service.Validate(payment.SwiftCode, payment.IBAN);
                 }
                 else
                 {
-                    response = service.Convert(payment.BankCountry, payment.BankCode, payment.AccountNo);
+                    payment.BeneficiaryReference = $"***MissingData*** {payment.BeneficiaryReference}";
+                    System.Diagnostics.Debug.Print($"Missing Data:\t{payment.BeneficiaryName}\t{payment.SwiftCode}\tTo:\t{response?.recommendedBIC}\t{payment.IBAN}\tTo:\t{response?.recommendedAcct}");
+                }
+
+                if (response != null)
+                {
+                    if (payment.SwiftCode != response.recommendedBIC
+                        || payment.IBAN != response.recommendedAcct)
+                    {
+                        System.Diagnostics.Debug.Print($"Account Details updated:\t{payment.BeneficiaryName}\t{payment.SwiftCode}\tTo:\t{response.recommendedBIC}\t{payment.IBAN}\tTo:\t{response.recommendedAcct}");
+                    }
                     payment.SwiftCode = response.recommendedBIC;
-                    if(!string.IsNullOrEmpty(response.recommendedAcct))
+                    if (!string.IsNullOrEmpty(response.recommendedAcct))
                         payment.IBAN = response.recommendedAcct;
                     output += 1;
                 }
@@ -165,7 +179,7 @@ namespace EburyMPIsoFilesLibrary.Services
             }
             catch (Exception ex)
             {
-                throw new ApplicationException($"Could not read Mass Payment file: {FileName}",ex);
+                throw new ApplicationException($"Could not read Mass Payment file: {FileName}", ex);
             }
             Payments = output;
             return output.Count;

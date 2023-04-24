@@ -87,7 +87,7 @@ namespace EburyMPIsoFilesLibrary.Helpers
             output.PaymentAmount = creditTransfer.CreditAmt();
             output.PaymentCurrency = creditTransfer.CreditCcy();
             output.PaymentReference = creditTransfer.PaymentReference();
-                //output.ReasonForPayment = reasonForPayment(creditTransfer);
+                //infOut.ReasonForPayment = reasonForPayment(creditTransfer);
 
             output.SwiftCode = creditTransfer.CdtrAgt?.FinInstnId.BIC;
             output.BankName = creditTransfer.CdtrAgt?.FinInstnId.Nm;
@@ -106,7 +106,7 @@ namespace EburyMPIsoFilesLibrary.Helpers
             //ToDo CNY Payment Purpose Code
             //ToDo RUR Central Banking Codes
 
-            //output.CompleteSwift();
+            //infOut.CompleteSwift();
 
             return output;
         }
@@ -135,11 +135,32 @@ namespace EburyMPIsoFilesLibrary.Helpers
 
         public static string PaymentReference(this CreditTransferTransactionInformation10 creditTransfer)
         {
+            string output = "";
             try
             {
-                //string output = $"{creditTransfer.PurposeOfPayment()} {creditTransfer.RmtInf.Ustrd[0]}".Trim();
-                string output = $"{creditTransfer.RmtInf.Ustrd[0]}".Trim();
-                ///CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/RmtInf/Ustrd
+                if (creditTransfer.RmtInf.Ustrd?.Length > 0)
+                {
+                    foreach (var item in creditTransfer.RmtInf.Ustrd)
+                    {
+                        output += item.Trim();
+                        output += Environment.NewLine;
+                    }
+                    output.Trim();
+                    //output = creditTransfer.PmtId.EndToEndId + Environment.NewLine + output;
+                }
+                else if (creditTransfer.RmtInf.Strd?.Length > 0)
+                {
+                    foreach (var structured in creditTransfer.RmtInf.Strd)
+                    {
+                        output += addtlRmtInf(structured.AddtlRmtInf);
+                        output += cdtrRef(structured.CdtrRefInf);
+                        output += structured.Invcee == null ? "" : $"Invcee: {structured.Invcee.Nm} ";
+                        output += structured.Invcr == null ? "" : $"Invcr: {structured.Invcr.Nm} ";
+                        //infOut += structured.RfrdDocAmt == null ? "" : $"RfrdDocAmt: {structured.RfrdDocAmt}";
+                        output += structured.RfrdDocInf == null ? "" : $"RfrdDocInf: {structured.RfrdDocInf[0].Nb} ";
+                        output += Environment.NewLine;
+                    }
+                }
                 
                 //remove multispace
                 output = Regex.Replace(output, @"\s+", " ", RegexOptions.Multiline).Trim();
@@ -148,6 +169,27 @@ namespace EburyMPIsoFilesLibrary.Helpers
             catch (Exception ex)
             {
                 throw new ApplicationException($"{nameof(PaymentReference)}\tCould not find Payment Reference in Remittance Information for Bene: {creditTransfer.Cdtr.Nm}", ex);
+            }
+
+
+            string addtlRmtInf(string[] inf)
+            {
+                if (inf == null)
+                    return string.Empty;
+                string infOut = "";
+                foreach(string item in inf)
+                {
+                    infOut += item + Environment.NewLine;
+                }
+                return infOut.Trim();
+            }
+            string cdtrRef (CreditorReferenceInformation2 refInf)
+            {
+                if (refInf == null)
+                    return string.Empty;
+                string tp = refInf.Tp?.ToString();
+                tp = tp == null ? "" : tp + ": ";
+                return tp + refInf.Ref;
             }
         }
         public static string AccountNo(this CreditTransferTransactionInformation10 creditTransfer)

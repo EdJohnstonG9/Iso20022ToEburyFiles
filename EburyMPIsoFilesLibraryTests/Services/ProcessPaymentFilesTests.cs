@@ -7,10 +7,11 @@ using EburyMPIsoFilesLibrary.Models;
 using System.IO;
 using EburyMPIsoFilesLibrary.Models.ApplyFinancials;
 using System.Net;
+using EburyMPIsoFilesLibraryTests;
 
 namespace EburyMPIsoFilesLibrary.Services.Tests
 {
-    public class ProcessPaymentFilesTests
+    public class ProcessPaymentFilesTests : ApplyFixture
     {
         InputTypeModel inputType;
         string root = @"G:\Shared drives\MP - High Wycombe - Data\";
@@ -24,11 +25,7 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
 
         private ApplyConfiguration applyConfig()
         {
-            //todo: get this information from new Setting page, persist privately
-            var output = new ApplyConfiguration();
-            output.BaseUrl = @"https://apps.applyfinancial.co.uk/validate-api/rest";
-            output.Credentials = new NetworkCredential("mpoperations@ebury.com", "MpEb0427!");
-            return output;
+            return _applyConfig;
         }
         private InputTypeModel inputTypeModel()
         {

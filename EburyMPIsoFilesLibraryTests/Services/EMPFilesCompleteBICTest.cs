@@ -10,11 +10,8 @@ using Xunit;
 
 namespace EburyMPIsoFilesLibraryTests.Services
 {
-    public  class EMPFilesCompleteBICTest
+    public  class EMPFilesCompleteBICTest : ApplyFixture
     {
-
-        NetworkCredential _credential = new NetworkCredential("mpoperations@ebury.com", "MpEb0427!");
-        
         public EburyMassPaymentsFile ReadPaymentsFileTest(string fileName)
         {
             var eburyFile = new EburyMassPaymentsFile();
@@ -41,13 +38,14 @@ namespace EburyMPIsoFilesLibraryTests.Services
         //[InlineData(@"G:\Shared drives\MP - High Wycombe - Data\VialtoCompleteBIC\Copy of SWIFT Data.csv")]
         //[InlineData(@"G:\Shared drives\MP - High Wycombe - Data\VialtoCompleteBIC\Rubrik Data 220809.csv")]
         [InlineData(@"G:\Shared drives\MP - High Wycombe - Data\VialtoCompleteBIC\Yondr Penny test .csv")]
+        [InlineData(@"G:\Shared drives\MP - High Wycombe - Operations\BOS Downloads\Daily Ebury\Payment Files\Wiiplan Limited\Multi-230424-110325.csv")]
         public void ReadFileAndCompleteApplyAsync(string fileName)
         {
             var eburyFile = ReadPaymentsFileTest(fileName);
 
-            ApplyFinancialsService service = new ApplyFinancialsService();
+            ApplyFinancialsService service = new ApplyFinancialsService(_applyConfig);
 
-            var auth = service.Authenticate(_credential);
+            var auth = service.Authenticate();
 
             Assert.True(auth == HttpStatusCode.OK);
             Assert.True(service.Token != "");

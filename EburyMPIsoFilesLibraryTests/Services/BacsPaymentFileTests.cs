@@ -8,12 +8,12 @@ using System.Linq;
 using System.Net;
 using EburyMPIsoFilesLibrary.Models.Ebury;
 using System.Diagnostics;
+using EburyMPIsoFilesLibraryTests;
 
 namespace EburyMPIsoFilesLibrary.Services.Tests
 {
-    public class BacsPaymentFileTests
+    public class BacsPaymentFileTests :ApplyFixture
     {
-        NetworkCredential credential = new NetworkCredential("mpoperations@ebury.com", "MpEb0427!");
         string testFullFile;
         string filePath = @"G:\Shared drives\MP - High Wycombe - Data\BDOBacs";
         string fileName = "B2C2 BACSLIST.xls";
@@ -40,8 +40,8 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
         [Fact()]
         public List<MassPaymentFileModel> MassPaymentFileListTest()
         {
-            ApplyFinancialsService apply = new ApplyFinancialsService();
-            apply.Authenticate(credential);
+            ApplyFinancialsService apply = new ApplyFinancialsService(_applyConfig);
+            apply.Authenticate();
             BacsPaymentFile service = new BacsPaymentFile(apply);
             service.XlPassword = "B2C2";
             service.ReadPaymentsFile(testFullFile);

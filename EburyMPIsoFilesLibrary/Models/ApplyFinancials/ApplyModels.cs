@@ -8,7 +8,7 @@ namespace EburyMPIsoFilesLibrary.Models.ApplyFinancials
 
     public class ApplyConfiguration
     {
-        public NetworkCredential Credentials { get; set; }
+        public NetworkCredential Credentials { get; set; } = new NetworkCredential();
         public string BaseUrl { get; set; }
     }
 

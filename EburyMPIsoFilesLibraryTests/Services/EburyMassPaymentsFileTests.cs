@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Net;
 using System.Threading.Tasks;
+using EburyMPIsoFilesLibraryTests;
 
 namespace EburyMPIsoFilesLibrary.Services.Tests
 {
-    public class EburyMassPaymentsFileTests
+    public class EburyMassPaymentsFileTests : ApplyFixture
     {
-        NetworkCredential _credential = new NetworkCredential("mpoperations@ebury.com", "MpEb0427!");
         
         [Theory]
         [InlineData(@"G:\Shared drives\MP - High Wycombe - Data\XML FILE EXAMPLES\BDO Example 1\Copy of 3623_27821 Tokio Marine_ salaries_10_2020.xml",
@@ -81,9 +81,9 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
         {
             var eburyFile = ReadPaymentsFileTest(fileName, items);
 
-            ApplyFinancialsService service = new ApplyFinancialsService();
+            ApplyFinancialsService service = new ApplyFinancialsService(_applyConfig);
 
-            var auth = service.Authenticate(_credential);
+            var auth = service.Authenticate();
 
             Assert.True(auth == HttpStatusCode.OK);
             Assert.True(service.Token != "");

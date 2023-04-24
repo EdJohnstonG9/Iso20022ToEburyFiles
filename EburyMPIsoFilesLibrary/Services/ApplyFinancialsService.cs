@@ -14,7 +14,8 @@ namespace EburyMPIsoFilesLibrary.Services
     public class ApplyFinancialsService : IApplyFinancialsService
     {
         public string Token { get; private set; }
-        string basePath = @"https://apps.applyfinancial.co.uk/validate-api/rest";
+        //string basePath = @"https://apps.applyfinancial.co.uk/validate-api/rest";
+        string basePath = @"https://validate.bankersalmanac.com/validate-api/rest";
         private NetworkCredential _credential;
 
         public ApplyFinancialsService()
@@ -129,7 +130,7 @@ namespace EburyMPIsoFilesLibrary.Services
         {
             string reqPath = @"/convert/1.0.1";
             Method method = Method.GET;
-            string countryCode = bic.Substring(4, 2);
+            string countryCode = iban.Substring(0, 2);
             RestRequest request = new RestRequest(reqPath, method);
             request.AddParameter("countryCode", countryCode, ParameterType.QueryString);
             request.AddParameter("nationalId", bic, ParameterType.QueryString);
