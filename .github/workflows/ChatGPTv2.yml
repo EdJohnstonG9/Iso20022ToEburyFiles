@@ -1,0 +1,138 @@
+name: Deploy ClickOnce WPF App
+on:
+  push:
+    branches:
+      - mainxxx
+
+env:
+  SIGNING_CERT: ${{secrets.Base64_Encoded_Pfx}}
+  SIGNING_CERT_PASSWORD: ${{secrets.Pfx_Key}}
+  SIGNING_THUMB: "peanut"
+  APP_NAME: EburyMPIsoFiles
+  APP_PROJECT_PATH: EburyMPIsoFiles\EburyMPIsoFiles.csproj
+  APP_VERSION: 1.3.6.54
+  APP_URL: https://apps.engsyst.co.uk/Apps/Iso20022ToEburyFileSoln/EburyMPIsoFiles.application
+  DEPLOYMENT_PROVIDER_URL: https://apps.engsyst.co.uk/Apps/Iso20022ToEburyFileSoln/
+  PUBLISH_URL: .\EburyMPIsoFiles\bin\Release\app.publish\
+  PUBLISHER_NAME: Engineered Systems Ltd
+  SIGNING_CERT_CRITERIA: CN=Engineered Systems Ltd*
+  CERT_PATH: EburyMPIsoFiles\EngSyst-CodeSign-exp20230425.pfx
+  TARGET_ZONE: Internet
+  Solution_Name: Iso20022ToEburyFileSoln.sln
+  Configuration: Release
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          #fetch-depth: 0
+          submodules: 'true'
+          token: ${{ secrets.PAT_TOKEN }}
+
+      # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+      - name: Setup MSBuild.exe
+        uses: microsoft/setup-msbuild@v1.1
+
+      - name: Decode the pfx
+        run: |
+          $certificatePath = ".\cert.pfx"
+          $pfx_cert_byte = [System.Convert]::FromBase64String("${{ env.SIGNING_CERT }}")
+          [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
+          #certutil -importpfx -user -f -q -p ${{env.SIGNING_CERT_PASSWORD}} $certificatePath 
+          Import-PfxCertificate -FilePath $certificatePath -Password (ConvertTo-SecureString -String ${{env.SIGNING_CERT_PASSWORD}} -AsPlainText -Force) -CertStoreLocation Cert:\CurrentUser\My
+          $thumb = Get-ChildItem -Recurse Cert:\ | Where-Object { $_.Subject -like "CN=Engineered Systems Ltd*" } | Select-Object -ExpandProperty Thumbprint
+          echo "SIGNING_THUMB=$thumb" | Out-File -FilePath $env:GITHUB_ENV -Append
+          Remove-Item $certificatePath
+
+      #- name: Place File for PFX
+      #  run: |
+      #    if (!(Test-Path -Path $env:APP_NAME)) {New-Item -ItemType directory -Path $env:APP_NAME}
+      #    Set-Content -Path ${{env.CERT_PATH}}.txt -Value '${{ secrets.CERTIFICATE }}'
+      #    certutil -decode ${{env.CERT_PATH}}.txt ${{env.CERT_PATH}}
+      #    Remove-Item ${{env.CERT_PATH}}.txt 
+      #    echo "dir $env:APP_NAME"
+      #    echo "Thumb $env:SIGNING_THUMB"
+      #    $currUser = Get-ChildItem -Path Cert:\CurrentUser\My | Where-Object { $_.Subject -like "CN=Engineered Systems Ltd*" }
+      #    echo "Curr User Cert $currUser"
+
+      - name: Build Restore
+        env:
+          DOTNET_ROOT: 'C:\Program Files\dotnet'
+        run: MSBuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration 
+
+      - name: Publish and sign
+        run: msbuild EburyMPIsoFiles\EburyMPIsoFiles.csproj /t:publish /p:Configuration=$env:Configuration /p:PublishUrl=${{env.PUBLISH_URL}}
+
+      - name: Results
+        run: Get-ChildItem -Recurse | Select-Object -ExpandProperty FullName
+
+      # Upload the MSIX package: https://github.com/marketplace/actions/upload-a-build-artifact
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ClickOnce Package
+          path: ${{ env.PUBLISH_URL }}
+
+
+      #- name: Build and Sign Deployment
+      #  env:
+      #    DOTNET_ROOT: 'C:\Program Files\dotnet'
+      #  run: MSBuild ${{env.APP_PROJECT_PATH}} `
+      #    /t:publish `
+      #    /p:Configuration=Release `
+      #    /p:BaseOutputPath=EburyMPIsoFiles\Publish\ `
+      #    /p:Platform=AnyCPU `
+      #    /p:ApplicationVersion=1.3.6.53 `
+      #    /p:InstallUrl=https://apps.engsyst.co.uk/Apps/Iso20022ToEburyFileSoln/ `
+      #    /p:PublishUrl=https://apps.engsyst.co.uk/Apps/Iso20022ToEburyFileSoln/ `
+      #    /p:ProductName=EburyMPIsoFiles `
+      #    /p:PublisherName="Engineered Systems Ltd" `
+      #    /p:SigningCertificateCriteria="CN=Engineered Systems Ltd" `
+      #    /p:GenerateManifests=true `
+      #    /p:SignManifests=false `
+      #    /p:TargetZone=${{ env.TARGET_ZONE }} 
+      #    /p:ManifestCertificateThumbprint=${{env.SIGNING_THUMB}} `
+
+      #- name: Build ClickOnce Application
+      #  run: |
+      #    $publishFolder = '${{env.APP_NAME}}/bin/Release/publish'
+      #    $appName = $env:APP_NAME
+      #    $appVersion = $env:APP_VERSION
+      #    $appUrl = $env:APP_URL
+      #    $deploymentProviderUrl = $env:DEPLOYMENT_PROVIDER_URL
+      #    $signingCertCriteria = $env:SIGNING_CERT_CRITERIA
+
+      #    # Clean up the publish folder
+      #    if (test-path -Path $publishFolder) {Remove-Item -Path $publishFolder -Recurse -Force}
+
+      #    # Build the application
+      #    dotnet publish $env.APP_PROJECT_PATH -c Release -r win-x64 /p:PublishDir=$publishFolder /p:PublishProtocol=ClickOnce /p:ApplicationVersion=$appVersion /p:ProductName=$appName
+
+      #    # Set the deployment provider URL: not sure this is needed, will run the app.
+      #    #& "$publishFolder\$appName.application" -deploy -url $deploymentProviderUrl -providerUrl $deploymentProviderUrl
+
+      #- name: Sign ClickOnce Application
+      #  run: |
+      #    # Sign the ClickOnce manifest
+      #    $certificate = Get-ChildItem -Path Cert:\CurrentUser\My | Where-Object { $_.Subject -like $signingCertCriteria }
+      #    & "$env:windir\Microsoft.NET\Framework\v4.0.30319\mage.exe" -Update "$publishFolder\$appName.application" -CertFile $certificate -TimestampUri http://timestamp.digicert.com
+
+      #    # Update the ClickOnce application manifest
+      #    $xml = New-Object System.Xml.XmlDocument
+      #    $xml.Load("$publishFolder\$appName.application")
+      #    $asm = $xml.GetElementsByTagName("assemblyIdentity")[0]
+      #    $asm.SetAttribute("version", $appVersion)
+      #    $xml.Save("$publishFolder\$appName.application")
+
+      #    # Set the application URL
+      #    $xml = New-Object System.Xml.XmlDocument
+      #    $xml.Load("$publishFolder\$appName.application.manifest")
+      #    $asm = $xml.GetElementsByTagName("asmv2:assembly")[0]
+      #    $asm.SetAttribute("manifestVersion", "1.0.0.0")
+      #    $asm.SetAttribute("xmlns:asmv2", "urn:schemas-microsoft-com:asm.v2")
+      #    $asm.SetAttribute("codebase", $appUrl)
+      #    $xml.Save("$publishFolder\$appName.application.manifest")

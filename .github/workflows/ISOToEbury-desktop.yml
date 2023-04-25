@@ -40,9 +40,9 @@ name: .NET Core Desktop
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "xxxx" ] # was main
   pull_request:
-    branches: [ "main" ]
+    branches: [ "xxxx" ]
 
 jobs:
 
@@ -76,8 +76,8 @@ jobs:
       with:
         files: 'EburyMPIsoFilesLibraryTests/ApplyConfiguration.json'
       env: 
-        UserName: mpoperations@ebury.com
-        Password: ${{ secrets.ApplyConfiguration_Credentials_Password }}
+        ApplyConfiguration.Credentials.UserName: mpoperations@ebury.com
+        ApplyConfiguration.Credentials.Password: ${{ secrets.ApplyConfiguration_Credentials_Password }}
 
     # Install the .NET Core workload
 #    - name: Install .NETFramework
@@ -109,8 +109,7 @@ jobs:
     # Create the app package by building and packaging the Windows Application Packaging project
     - name: Create the app package
       #run: msbuild $env:Wap_Project_Path /p:Configuration=$env:Configuration /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}
-      run: msbuild $env:Wap_Project_Path t:publish /p:Configuration=$env:Wap_Configuration /p:PublishDir=..\Release\Publish\
-      #/p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}
+      run: msbuild EburyMPIsoFiles\EburyMPIsoFiles.csproj /t:publish /p:Configuration=release /p:PublishDir=..\Release\Publish\ /p:AssemblyOriginatorKeyFile=GitHubActionsWorkflow.pfx /p:CertificateThumbprint=13910D7B9239BE1F1A44492E8ED013EAAEDA5EF9 /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}
       env:
         Appx_Bundle: Always
         Appx_Bundle_Platforms: x86|x64

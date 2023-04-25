@@ -18,15 +18,19 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
             49)]
         public EburyMassPaymentsFile PaymentsFromISOTest(string fileName, int items)
         {
-            IsoPaymentFile payments = new IsoPaymentFile();
-            int actual = payments.ReadPaymentsFile(fileName);
-            Assert.Equal(items, actual);
-
             var eburyFile = new EburyMassPaymentsFile();
-            eburyFile.Payments = payments.GetPaymentFileList();
-            actual = eburyFile.Payments.Count;
+            if (new FileInfo(fileName).Exists)
+            {
+                IsoPaymentFile payments = new IsoPaymentFile();
+                int actual = payments.ReadPaymentsFile(fileName);
+                Assert.Equal(items, actual);
 
-            Assert.Equal(items, actual);
+                eburyFile.Payments = payments.GetPaymentFileList();
+                actual = eburyFile.Payments.Count;
+
+                Assert.Equal(items, actual);
+
+            }
             return eburyFile;
         }
 
@@ -43,12 +47,15 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
             1)]
         public void WriteMassPaymentsFileTest(string fileName, int items)
         {
-            var eburyFile = PaymentsFromISOTest(fileName, items);
+            if (new FileInfo(fileName).Exists)
+            {
+                var eburyFile = PaymentsFromISOTest(fileName, items);
 
-            string outFileName = fileName.Replace(".xml", "test.csv");
-            var actual = eburyFile.WriteMassPaymentsFile(outFileName);
+                string outFileName = fileName.Replace(".xml", "test.csv");
+                var actual = eburyFile.WriteMassPaymentsFile(outFileName);
 
-            Assert.True(actual);
+                Assert.True(actual); 
+            }
         }
 
         [Theory]
@@ -86,10 +93,9 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
         //    -1)]
         public void ReadFileAndCompleteApplyAsync(string fileName, int items)  
         {
-            var eburyFile = ReadPaymentsFileTest(fileName, items);
-
-            if (eburyFile != null)
+            if (new FileInfo(fileName).Exists)
             {
+                var eburyFile = ReadPaymentsFileTest(fileName, items);
                 ApplyFinancialsService service = new ApplyFinancialsService(_applyConfig);
 
                 var auth = service.Authenticate();

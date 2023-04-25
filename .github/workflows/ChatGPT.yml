@@ -1,0 +1,171 @@
+name: Deploy ClickOnce WPF App
+on:
+  push:
+    branches:
+      - mainxx
+
+env:
+  SIGNING_CERT: ${{secrets.Base64_Encoded_Pfx}}
+  SIGNING_CERT_PASSWORD: ${{secrets.Pfx_Key}}
+  APP_NAME: EburyMPIsoFiles
+  APP_PROJECT_PATH: EburyMPIsoFiles\EburyMPIsoFiles.csproj
+  APP_VERSION: 1.3.6.54
+  APP_URL: https://apps.engsyst.co.uk/Apps/Iso20022ToEburyFileSoln/
+  DEPLOYMENT_PROVIDER_URL: https://apps.engsyst.co.uk/Apps/Iso20022ToEburyFileSoln/EburyMPIsoFiles.application
+  PUBLISHER_NAME: Engineered Systems Ltd
+  SIGNING_CERT_CRITERIA: CN=Engineered Systems Ltd
+  TARGET_ZONE: Internet
+  Solution_Name: Iso20022ToEburyFileSoln.sln
+  Configuration: Release
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Decode the pfx
+        run: |
+          $certificatePath = ".\cert.pfx"
+          $pfx_cert_byte = [System.Convert]::FromBase64String("${{ env.SIGNING_CERT }}")
+          [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
+          certutil -f -p ${{env.SIGNING_CERT_PASSWORD}} -importPFX $certificatePath
+          Remove-Item $certificatePath
+
+      - name: Install ClickOnceHelper module
+        shell: powershell
+        run: Install-Module ClickOnceHelper -Force
+
+      - name: Import ClickOnceHelper module
+        shell: powershell
+        run: Import-Module ClickOnceHelper
+
+      - name: Add ClickOnceHelper module path to PSModulePath
+        shell: powershell
+        run: $env:PSModulePath += ";C:\Path\To\ClickOnceHelper\Module"
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          #fetch-depth: 0
+          submodules: 'true'
+          token: ${{ secrets.PAT_TOKEN }}
+
+      # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+      - name: Setup MSBuild.exe
+        uses: microsoft/setup-msbuild@v1.1
+
+      - name: Build Restore
+        env:
+          DOTNET_ROOT: 'C:\Program Files\dotnet'
+        run: MSBuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
+
+      - name: Build and Sign Deployment
+        env:
+          DOTNET_ROOT: 'C:\Program Files\dotnet'
+        run: MSBuild EburyMPIsoFiles\EburyMPIsoFiles.csproj `
+          /t:publish `
+          /p:Configuration=Release `
+          /p:BaseOutputPath=EburyMPIsoFiles\Publish\ `
+          /p:Platform=AnyCPU `
+          /p:ApplicationVersion=1.3.6.53 `
+          /p:InstallUrl=https://apps.engsyst.co.uk/Apps/Iso20022ToEburyFileSoln/ `
+          /p:PublishUrl=https://apps.engsyst.co.uk/Apps/Iso20022ToEburyFileSoln/ `
+          /p:ProductName=EburyMPIsoFiles `
+          /p:PublisherName="Engineered Systems Ltd" `
+          /p:SigningCertificateCriteria="CN=Engineered Systems Ltd" `
+          /p:GenerateManifests=true `
+          /p:SignManifests=false `
+          /p:TargetZone=${{ env.TARGET_ZONE }} 
+          #/p:ManifestCertificateThumbprint=13910D7B9239BE1F1A44492E8ED013EAAEDA5EF9 `
+
+      - name: Deploy
+        env:
+          APP_FOLDER: './bin/Release/publish'
+          APP_NAME: ${{ env.APP_NAME }}
+          APP_VERSION: ${{ env.APP_VERSION }}
+          APP_URL: ${{ env.APP_URL }}
+          DEPLOYMENT_PROVIDER_URL: ${{ env.DEPLOYMENT_PROVIDER_URL }}
+        run: |
+          Install-Module -Name PowerShellGet -Force
+          Import-Module -Name "ClickOnceHelper" -Force
+
+          $app = Get-ClickOnceApplication -Folder $env:APP_FOLDER
+          $app.Name = $env:APP_NAME
+          $app.Version = $env:APP_VERSION
+          $app.Url = $env:APP_URL
+          $app.DeploymentProviderUrl = $env:DEPLOYMENT_PROVIDER_URL
+          $app.SigningCertificate = Get-ChildItem -Path Cert:\CurrentUser\My | Where-Object { $_.Subject -eq $env:SIGNING_CERT_CRITERIA }
+          $app.TimeStampUri = 'http://timestamp.digicert.com'
+          Publish-ClickOnceApplication -Application $app
+
+
+#name: Build and Deploy
+
+#on:
+#  push:
+#    branches:
+#      - main
+#  pull_request:
+#    branches:
+#      - main
+
+#env:
+#  SOLUTION_FILE: Iso20022ToEburyFileSoln.sln
+#  PUBLISH_DIR: EburyMPIsoFiles.Package
+#  APPLICATION_URL: https://apps.engsyst.co.uk/Apps/Iso20022ToEburyFileSoln/
+#  ICON_FILE: EburyMPIsoFiles\Resources\AppIconIso.ico
+#  CERTIFICATE_FILE: EngSyst-Singing.pfx
+#  CERTIFICATE_PASSWORD: ${{ secrets.Pfx_Key }}
+#  PREREQUISITE: Microsoft .NET Framework 4.7.2 (x86 and x64)
+#  Wap_Project_Directory: EburyMPIsoFiles
+#  Wap_Project_Path: EburyMPIsoFiles\EburyMPIsoFiles.csproj
+
+#jobs:
+#  build-and-deploy:
+#    runs-on: windows-latest
+
+#    steps:
+#    - name: Checkout code
+#      uses: actions/checkout@v2
+#      with:
+#        fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
+#        submodules: 'true'
+#        token: ${{ secrets.PAT_TOKEN }}
+        
+#    - name: Setup MSBuild path
+#      uses: microsoft/setup-msbuild@v1.0.2
+
+#    - name: Restore NuGet packages
+#      run: nuget restore ${{ env.SOLUTION_FILE }}
+
+#    #- name: Build the solution
+#    #  run: msbuild ${{ env.SOLUTION_FILE }} /p:Configuration=Release
+
+#    # Decode the Base64 encoded Pfx
+#    - name: Decode the Pfx
+#      run: |
+#        $pfx_cert_byte = [System.Convert]::FromBase64String("${{ secrets.Base64_Encoded_Pfx }}")
+#        $certificatePath = Join-Path -Path $env:Wap_Project_Directory -ChildPath $env:CERTIFICATE_FILE
+#        [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
+
+#    - name: Build
+#      run: MSBuild EburyMPIsoFiles\EburyMPIsoFiles.csproj /t:publish /p:Configuration=Release /p:BaseOutputPath=D:\VisualStudio\Source\GitHub\Iso20022ToEburyFiles/EburyMPIsoFiles/Publish/ /p:Platform=x64 /p:ApplicationVersion=1.3.6.53 /p:InstallUrl=https://apps.engsyst.co.uk/Apps/Iso20022ToEburyFileSoln/ /p:PublishUrl=https://apps.engsyst.co.uk/Apps/Iso20022ToEburyFileSoln/ /p:ProductName=EburyMPIsoFiles /p:PublisherName="Engineered Systems Ltd" /p:SigningCertificateCriteria="CN=Engineered Systems Ltd" /p:GenerateManifests=true
+
+      
+#    #- name: Publish using ClickOnce
+#    #  run: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\BuildTools\\Common7\\IDE\\publish.exe /publishdir \"${{ env.PUBLISH_DIR }}\" /applicationUrl \"${{ env.APPLICATION_URL }}\" /installUrl \"${{ env.APPLICATION_URL }}\" /prerequisite \"${{ env.PREREQUISITE }}\" /target \"win32\" /win32icon \"${{ env.ICON_FILE }}\" /certfile \"${{ env.CERTIFICATE_FILE }}\" /password ${{ env.CERTIFICATE_PASSWORD }}"
+#    #  env:
+#    #    DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true      
+#      #run: |
+#      #  & "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\IDE\publish.exe" `
+#      #    ${{ env.Wap_Project_Path }} `
+#      #    /publishdir "${{ env.PUBLISH_DIR }}" `
+#      #    /applicationUrl "${{ env.APPLICATION_URL }}" `
+#      #    /installUrl "${{ env.APPLICATION_URL }}" `
+#      #    /prerequisite "${{ env.PREREQUISITE }}" `
+#      #    /target "win32" `
+#      #    /win32icon "${{ env.ICON_FILE }}" `
+#      #    /certfile "$certificatePath" `
+#      #    /password ${{ env.CERTIFICATE_PASSWORD }}
+
+

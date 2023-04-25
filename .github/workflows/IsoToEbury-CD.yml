@@ -1,0 +1,64 @@
+name: Publish and Sign ClickOnce WPF
+on:
+  push:
+    branches:
+      - main
+
+env:
+  SIGNING_CERT: ${{secrets.Base64_Encoded_Pfx}}
+  SIGNING_CERT_PASSWORD: ${{secrets.Pfx_Key}}
+  SIGNING_THUMB: "peanut"
+  APP_NAME: EburyMPIsoFiles
+  APP_PROJECT_PATH: EburyMPIsoFiles\EburyMPIsoFiles.csproj
+  PUBLISH_URL: .\EburyMPIsoFiles\bin\Release\app.publish\
+  SIGNING_CERT_CRITERIA: CN=Engineered Systems Ltd*
+  CERT_PATH: EburyMPIsoFiles\EngSyst-CodeSign.pfx
+  TARGET_ZONE: Internet
+  Solution_Name: Iso20022ToEburyFileSoln.sln
+  Configuration: Release
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          submodules: 'true'
+          token: ${{ secrets.PAT_TOKEN }}
+
+      # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+      - name: Setup MSBuild.exe
+        uses: microsoft/setup-msbuild@v1.1
+
+      #Gets the base64 text, converts to .pfx, imports into CurrentUser\My cert store
+      - name: Decode the pfx
+        run: |
+          $certificatePath = ".\cert.pfx"
+          $pfx_cert_byte = [System.Convert]::FromBase64String("${{ env.SIGNING_CERT }}")
+          [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
+          Import-PfxCertificate -FilePath $certificatePath -Password (ConvertTo-SecureString -String ${{env.SIGNING_CERT_PASSWORD}} -AsPlainText -Force) -CertStoreLocation Cert:\CurrentUser\My
+          $thumb = Get-ChildItem -Recurse Cert:\ | Where-Object { $_.Subject -like "${{env.SIGNING_CERT_CRITERIA}}" } | Select-Object -ExpandProperty Thumbprint
+          echo "SIGNING_THUMB=$thumb" | Out-File -FilePath $env:GITHUB_ENV -Append #save to environment var (not required)
+          Remove-Item $certificatePath
+
+      - name: Build Restore
+        env:
+          DOTNET_ROOT: 'C:\Program Files\dotnet'
+        run: MSBuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration 
+
+      - name: Publish and sign
+        run: msbuild EburyMPIsoFiles\EburyMPIsoFiles.csproj /t:publish /p:Configuration=$env:Configuration /p:PublishUrl=${{env.PUBLISH_URL}}
+
+      - name: Results
+        run: Get-ChildItem -Recurse | Select-Object -ExpandProperty FullName
+
+      # Upload the MSIX package: https://github.com/marketplace/actions/upload-a-build-artifact
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ClickOnce Package
+          path: ${{ env.PUBLISH_URL }}
+        

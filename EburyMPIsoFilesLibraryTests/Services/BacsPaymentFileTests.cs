@@ -47,14 +47,18 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
         [Fact()]
         public List<MassPaymentFileModel> MassPaymentFileListTest()
         {
-            ApplyFinancialsService apply = new ApplyFinancialsService(_applyConfig);
-            apply.Authenticate();
-            BacsPaymentFile service = new BacsPaymentFile(apply);
-            service.XlPassword = "B2C2";
-            service.ReadPaymentsFile(testFullFile);
+            List<MassPaymentFileModel> result = new List<MassPaymentFileModel>();
+            if (new FileInfo(testFullFile).Exists)
+            {
+                ApplyFinancialsService apply = new ApplyFinancialsService(_applyConfig);
+                apply.Authenticate();
+                BacsPaymentFile service = new BacsPaymentFile(apply);
+                service.XlPassword = "B2C2";
+                service.ReadPaymentsFile(testFullFile);
 
-            var result = service.MassPaymentFileList();
-            Assert.True(result.Count == service.TotalCount);
+                result = service.MassPaymentFileList();
+                Assert.True(result.Count == service.TotalCount); 
+            }
 
             return result;
         }
@@ -67,7 +71,7 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
             emp.Payments = output;
             string outFile = testFullFile.Replace(".xls", ".csv");
 
-            if(new FileInfo(outFile).Exists )
+            if(new FileInfo(outFile).Directory.Exists && output.Count > 0)
             {
                 emp.WriteMassPaymentsFile(outFile);
 

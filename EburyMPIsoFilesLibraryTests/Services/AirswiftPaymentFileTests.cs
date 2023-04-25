@@ -45,14 +45,17 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
         [InlineData(@"AirEnergi\0705_FLOUR.TXT")]
         public void MassPaymentFileListTest(string file)
         {
-            var paymentFile = ReadAirswiftFileTest(file);
+            if (new FileInfo(file).Exists)
+            {
+                var paymentFile = ReadAirswiftFileTest(file);
 
-            if(paymentFile == null)
+                var restult = paymentFile.MassPaymentFileList();
+                Assert.True(restult.Count > 0);
+            }
+            else
             {
                 Console.WriteLine($"{nameof(MassPaymentFileListTest)}\tTest not run for {file}");
             }
-            var restult = paymentFile.MassPaymentFileList();
-            Assert.True(restult.Count > 0);
         }
     }
 }

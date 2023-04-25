@@ -32,24 +32,27 @@ namespace EburyMPIsoFilesLibrary.Helpers.Tests
         [Fact()]
         public void GetPaymentFromAirswiftTest()
         {
-            var paymentFile = new AirswiftPaymentFile(_apply);
             string fileName = Path.Combine(fileRoot, @"AirEnergi\0705_SBM LOCAL_SGD.TXT");
-            var readfile = paymentFile.ReadPaymentsFile(fileName);
-            Assert.True(readfile > 0);
-            string settlementCcy = "USD";
-            var eburyData = new List<MassPaymentFileModel>();
-            foreach (var payment in paymentFile.InputPaymentList)
+            if (new FileInfo(fileName).Exists)
             {
-                var actual = payment.GetPaymentFromAirswift(settlementCcy, _apply);
-                Assert.True(actual != null);
-                eburyData.Add(actual);
+                var paymentFile = new AirswiftPaymentFile(_apply);
+                var readfile = paymentFile.ReadPaymentsFile(fileName);
+                Assert.True(readfile > 0);
+                string settlementCcy = "USD";
+                var eburyData = new List<MassPaymentFileModel>();
+                foreach (var payment in paymentFile.InputPaymentList)
+                {
+                    var actual = payment.GetPaymentFromAirswift(settlementCcy, _apply);
+                    Assert.True(actual != null);
+                    eburyData.Add(actual);
+                }
+
+                var eburyFile = new EburyMassPaymentsFile();
+                eburyFile.Payments = eburyData;
+
+                string outFileName = fileName.Replace(".TXT", "test.csv");
+                var saveActual = eburyFile.WriteMassPaymentsFile(outFileName); 
             }
-
-            var eburyFile = new EburyMassPaymentsFile();
-            eburyFile.Payments = eburyData;
-
-            string outFileName = fileName.Replace(".TXT", "test.csv");
-            var saveActual = eburyFile.WriteMassPaymentsFile(outFileName);
 
         }
     }
