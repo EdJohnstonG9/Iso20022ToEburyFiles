@@ -72,6 +72,12 @@ jobs:
         fetch-depth: 0
         submodules: 'true'
         token: ${{ secrets.PAT_TOKEN }}
+    - uses: microsoft/variable-substitution@v1 
+      with:
+        files: 'EburyMPIsoFilesLibraryTests/ApplyConfiguration.json'
+      env: 
+        UserName: mpoperations@ebury.com
+        Password: ${{ secrets.ApplyConfiguration_Credentials_Password }}
 
     # Install the .NET Core workload
 #    - name: Install .NETFramework

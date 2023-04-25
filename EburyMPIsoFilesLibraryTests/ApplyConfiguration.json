@@ -1,0 +1,9 @@
+{
+  "ApplyConfiguration": {
+    "Credentials": {
+      "UserName": "",
+      "Password": ""
+    },
+    "BaseUrl": "https://validate.bankersalmanac.com/validate-api/rest"
+  }
+}
