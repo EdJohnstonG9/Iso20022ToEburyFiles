@@ -16,7 +16,10 @@ namespace EburyMPIsoFilesLibraryTests.Services
         {
             var eburyFile = new EburyMassPaymentsFile();
 
-            var result = eburyFile.ReadPaymentsFile(fileName);
+            if (new FileInfo(fileName).Exists)
+            {
+                var result = eburyFile.ReadPaymentsFile(fileName); 
+            }
 
             return eburyFile;
         }
@@ -41,24 +44,27 @@ namespace EburyMPIsoFilesLibraryTests.Services
         [InlineData(@"G:\Shared drives\MP - High Wycombe - Operations\BOS Downloads\Daily Ebury\Payment Files\Wiiplan Limited\Multi-230424-110325.csv")]
         public void ReadFileAndCompleteApplyAsync(string fileName)
         {
-            var eburyFile = ReadPaymentsFileTest(fileName);
+            if (new FileInfo(fileName).Exists)
+            {
+                var eburyFile = ReadPaymentsFileTest(fileName);
 
-            ApplyFinancialsService service = new ApplyFinancialsService(_applyConfig);
+                ApplyFinancialsService service = new ApplyFinancialsService(_applyConfig);
 
-            var auth = service.Authenticate();
+                var auth = service.Authenticate();
 
-            Assert.True(auth == HttpStatusCode.OK);
-            Assert.True(service.Token != "");
+                Assert.True(auth == HttpStatusCode.OK);
+                Assert.True(service.Token != "");
 
-            var result = eburyFile.CompleteBenePaymentList(service);
+                var result = eburyFile.CompleteBenePaymentList(service);
 
-            Assert.Equal(eburyFile.Payments.Count, result);
-            var fi = new FileInfo(fileName);
-            string outDir = fi.DirectoryName;
-            string outFile = fi.Name;
-            string outFileName = Path.Combine(outDir, "Upd-" + outFile);
-            eburyFile.WriteMassPaymentsFile(outFileName);
-        }
+                Assert.Equal(eburyFile.Payments.Count, result);
+                var fi = new FileInfo(fileName);
+                string outDir = fi.DirectoryName;
+                string outFile = fi.Name;
+                string outFileName = Path.Combine(outDir, "Upd-" + outFile);
+                eburyFile.WriteMassPaymentsFile(outFileName);
+
+            }        }
 
     }
 }

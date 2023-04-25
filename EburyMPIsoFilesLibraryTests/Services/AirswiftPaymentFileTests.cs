@@ -27,8 +27,16 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
             _apply = new ApplyFinancialsService(applyConfig());
 
             var paymentFile = new AirswiftPaymentFile(_apply);
-            var result = paymentFile.ReadPaymentsFile(Path.Combine(fileRoot, file));
-            Assert.True(result > 0);
+            var fi = new FileInfo(Path.Combine(fileRoot, file));
+            if (fi.Exists)
+            {
+                var result = paymentFile.ReadPaymentsFile(fi.FullName);
+                Assert.True(result > 0);
+            }
+            else
+            {
+                Console.WriteLine($"{nameof(ReadAirswiftFileTest)}\tTest not run for {fi.FullName}");
+            }
             return paymentFile;
         }
 
@@ -39,6 +47,10 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
         {
             var paymentFile = ReadAirswiftFileTest(file);
 
+            if(paymentFile == null)
+            {
+                Console.WriteLine($"{nameof(MassPaymentFileListTest)}\tTest not run for {file}");
+            }
             var restult = paymentFile.MassPaymentFileList();
             Assert.True(restult.Count > 0);
         }

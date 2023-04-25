@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.IO;
 
 namespace EburyMPIsoFilesLibrary.Services.Tests
 {
@@ -18,8 +19,11 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
         {
             IsoPaymentFile payments = new IsoPaymentFile();
 
-            int actual = payments.ReadPaymentsFile(fileName);
-            Assert.Equal(items, actual);
+            if (new FileInfo(fileName).Exists)
+            {
+                int actual = payments.ReadPaymentsFile(fileName);
+                Assert.Equal(items, actual); 
+            }
             return payments;
         }
 
@@ -30,12 +34,15 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
         {
             IsoPaymentFile payments = new IsoPaymentFile();
 
-            int iRead = payments.ReadPaymentsFile(fileName);
+            if (new FileInfo(fileName).Exists)
+            {
+                int iRead = payments.ReadPaymentsFile(fileName);
 
-            var actual = payments.NewBeneficarisList(payments.Payments001001);
-            var total = actual.Sum(x => (decimal)x.Payment.Amount);
-            Assert.True(actual.Count == items);
-            Assert.Equal(payments.Payments001001.CstmrCdtTrfInitn.GrpHdr.CtrlSum, total);
+                var actual = payments.NewBeneficarisList(payments.Payments001001);
+                var total = actual.Sum(x => (decimal)x.Payment.Amount);
+                Assert.True(actual.Count == items);
+                Assert.Equal(payments.Payments001001.CstmrCdtTrfInitn.GrpHdr.CtrlSum, total); 
+            }
         }
 
         [Theory]
@@ -47,12 +54,15 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
         {
             IsoPaymentFile payments = new IsoPaymentFile();
 
-            int iRead = payments.ReadPaymentsFile(fileName);
+            if (new FileInfo(fileName).Exists)
+            {
+                int iRead = payments.ReadPaymentsFile(fileName);
 
-            var actual = payments.GetPaymentFileList();
-            var total = actual.Sum(x => (decimal)x.PaymentAmount);
-            Assert.True(actual.Count == items);
-            Assert.Equal(payments.ControlTotal, total);
+                var actual = payments.GetPaymentFileList();
+                var total = actual.Sum(x => (decimal)x.PaymentAmount);
+                Assert.True(actual.Count == items);
+                Assert.Equal(payments.ControlTotal, total); 
+            }
         }
     }
 }

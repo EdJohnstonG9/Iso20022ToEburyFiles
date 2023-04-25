@@ -15,11 +15,13 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
     {
         InputTypeModel inputType;
         string root = @"G:\Shared drives\MP - High Wycombe - Data\";
+        bool runTest;
 
         ApplyFinancialsService _apply;
         public ProcessPaymentFilesTests()
         {
             _apply = new ApplyFinancialsService(applyConfig());
+            runTest = new DirectoryInfo(root).Exists;
         }
 
 
@@ -49,32 +51,38 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
         [Fact()]
         public void ReadInputFilesAirswiftTest()
         {
-            var service = ProcessPaymentFilesTest();
-            string path = @"Airswift\AirEnergi\";
-            List<String> inFiles = new List<string>()
+            if (runTest)
             {
-                Path.Combine(root,path,"0705_FLOUR.TXT"),
-                Path.Combine(root,path,"0705_OTHERSFINAL.TXT")
-            };
-            var actual = service.ReadInputFiles(inFiles, root, root);
-            Assert.Contains("Success", actual);
-            Assert.DoesNotContain("FAILED)", actual);
+                var service = ProcessPaymentFilesTest();
+                string path = @"Airswift\AirEnergi\";
+                List<String> inFiles = new List<string>()
+                {
+                    Path.Combine(root,path,"0705_FLOUR.TXT"),
+                    Path.Combine(root,path,"0705_OTHERSFINAL.TXT")
+                };
+                var actual = service.ReadInputFiles(inFiles, root, root);
+                Assert.Contains("Success", actual);
+                Assert.DoesNotContain("FAILED)", actual); 
+            }
         }
         [Fact()]
         public void ReadInputFilesISOTest()
         {
-            var service = ProcessPaymentFilesTest();
-            string path = @"XML FILE EXAMPLES\AirBnB\";
-            inputType.InputExt = ".xml";
-            inputType.InputType = InputTypeModel.InputFileType.ISOPain113;
-            List<String> inFiles = new List<string>()
+            if (runTest)
+            {
+                var service = ProcessPaymentFilesTest();
+                string path = @"XML FILE EXAMPLES\AirBnB\";
+                inputType.InputExt = ".xml";
+                inputType.InputType = InputTypeModel.InputFileType.ISOPain113;
+                List<String> inFiles = new List<string>()
             {
                 Path.Combine(root,path,"payments_employees_AIR041_122020.xml"),
                 Path.Combine(root,path,"Social insurance_AIR041_122020.xml")
             };
-            var actual = service.ReadInputFiles(inFiles, root, root);
-            Assert.Contains("Success", actual);
-            Assert.DoesNotContain("FAILED)", actual);
+                var actual = service.ReadInputFiles(inFiles, root, root);
+                Assert.Contains("Success", actual);
+                Assert.DoesNotContain("FAILED)", actual); 
+            }
         }
     }
 }

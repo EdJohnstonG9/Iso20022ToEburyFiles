@@ -1,6 +1,7 @@
 ﻿using EburyMPIsoFilesLibrary.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Xunit;
@@ -16,8 +17,11 @@ namespace EburyMPIsoFilesLibraryTests.Services
         {
             Pain133PaymentFile payments = new Pain133PaymentFile();
 
-            var actual = payments.ReadPaymentsFile(fileName);
-            Assert.Equal(items, payments.MassPaymentFileList().Count);
+            if (new FileInfo(fileName).Exists)
+            {
+                var actual = payments.ReadPaymentsFile(fileName);
+                Assert.Equal(items, payments.MassPaymentFileList().Count); 
+            }
             return payments;
         }
 
@@ -28,12 +32,15 @@ namespace EburyMPIsoFilesLibraryTests.Services
         {
             Pain133PaymentFile payments = new Pain133PaymentFile();
 
-            var resuult = payments.ReadPaymentsFile(fileName);
+            if (new FileInfo(fileName).Exists)
+            {
+                var resuult = payments.ReadPaymentsFile(fileName);
 
-            var actual = payments.NewBeneficarisList(payments.IsoPayments);
-            var total = actual.Sum(x => (decimal)x.Payment.Amount);
-            Assert.True(actual.Count == items);
-            Assert.Equal(payments.IsoPayments.CstmrCdtTrfInitn.GrpHdr.CtrlSum, total);
+                var actual = payments.NewBeneficarisList(payments.IsoPayments);
+                var total = actual.Sum(x => (decimal)x.Payment.Amount);
+                Assert.True(actual.Count == items);
+                Assert.Equal(payments.IsoPayments.CstmrCdtTrfInitn.GrpHdr.CtrlSum, total); 
+            }
         }
 
         [Theory]
@@ -47,12 +54,15 @@ namespace EburyMPIsoFilesLibraryTests.Services
         {
             Pain133PaymentFile payments = new Pain133PaymentFile();
 
-            var result = payments.ReadPaymentsFile(fileName);
+            if (new FileInfo(fileName).Exists)
+            {
+                var result = payments.ReadPaymentsFile(fileName);
 
-            var actual = payments.MassPaymentFileList();
-            var total = actual.Sum(x => (decimal)x.PaymentAmount);
-            Assert.True(actual.Count == items);
-            Assert.Equal(payments.ControlTotal, total);
+                var actual = payments.MassPaymentFileList();
+                var total = actual.Sum(x => (decimal)x.PaymentAmount);
+                Assert.True(actual.Count == items);
+                Assert.Equal(payments.ControlTotal, total); 
+            }
         }
 
         [Theory]
@@ -64,11 +74,14 @@ namespace EburyMPIsoFilesLibraryTests.Services
         {
             Pain133PaymentFile payments = new Pain133PaymentFile();
 
-            var result = payments.ReadPaymentsFile(fileName);
+            if (new FileInfo(fileName).Exists)
+            {
+                var result = payments.ReadPaymentsFile(fileName);
 
-            var actual = payments.MassPaymentFileList();
-            Assert.True(result == 0);
-            Assert.Empty(actual);
+                var actual = payments.MassPaymentFileList();
+                Assert.True(result == 0);
+                Assert.Empty(actual); 
+            }
         }
 
     }
