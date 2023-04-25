@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\EburyAPI\src\EburyApiModels\EburyApiModels.csproj" />
+    <ProjectReference Include="..\EburyAPI\src\EburyApiModels\EburyApiModels.csproj" />
   </ItemGroup>
 
 
