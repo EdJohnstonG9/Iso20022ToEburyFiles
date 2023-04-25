@@ -20,17 +20,19 @@ namespace EburyMPIsoFilesLibraryTests
         public ApplyFixture()
         {
             var appLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location);
-            var configuration = new ConfigurationBuilder()
+            IConfiguration configuration = new ConfigurationBuilder()
                 .SetBasePath(appLocation)
-                .AddUserSecrets<ApplyFixture>()
-                .Build();
+                .AddUserSecrets<ApplyFixture>().Build();
 
             ApplyConfiguration applyConfig = new ApplyConfiguration();
 
             //var applyConfig = new ApplyConfiguration();
-            applyConfig.BaseUrl = configuration.GetSection("ApplyConfiguration_BaseUrl").Value;
-            applyConfig.Credentials.UserName = configuration.GetSection("ApplyConfiguration_Credentials_UserName").Value;
-            applyConfig.Credentials.Password = configuration.GetSection("ApplyConfiguration_Credentials_Password").Value;
+            //applyConfig.BaseUrl = configuration.GetSection("ApplyConfiguration_BaseUrl").Value;
+            //applyConfig.Credentials.UserName = configuration.GetSection("ApplyConfiguration_Credentials_UserName").Value;
+            //applyConfig.Credentials.Password = configuration.GetSection("ApplyConfiguration_Credentials_Password").Value;
+            applyConfig.BaseUrl = configuration.GetValue<string>("ApplyConfiguration_BaseUrl");
+            applyConfig.Credentials.UserName = configuration.GetValue<string>("ApplyConfiguration_Credentials_UserName");
+            applyConfig.Credentials.Password = configuration.GetValue<string>("ApplyConfiguration_Credentials_Password");
 
             Console.WriteLine($"applyConfig.BaseUrl: {applyConfig.BaseUrl}");
             Console.WriteLine($"applyConfig.Credentials.UserName: {applyConfig.Credentials.UserName}");
