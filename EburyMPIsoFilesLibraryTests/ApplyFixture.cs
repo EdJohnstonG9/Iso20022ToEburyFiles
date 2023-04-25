@@ -32,7 +32,10 @@ namespace EburyMPIsoFilesLibraryTests
             applyConfig.Credentials.UserName = configuration.GetSection("ApplyConfiguration_Credentials_UserName").Value;
             applyConfig.Credentials.Password = configuration.GetSection("ApplyConfiguration_Credentials_Password").Value;
 
-            _applyConfig= applyConfig;
+            Console.WriteLine($"applyConfig.BaseUrl: {applyConfig.BaseUrl}");
+            Console.WriteLine($"applyConfig.Credentials.UserName: {applyConfig.Credentials.UserName}");
+            Console.WriteLine($"applyConfig.Credentials.Password: {applyConfig.Credentials.Password}");
+            _applyConfig = applyConfig;
         }
         public void Dispose()
         {

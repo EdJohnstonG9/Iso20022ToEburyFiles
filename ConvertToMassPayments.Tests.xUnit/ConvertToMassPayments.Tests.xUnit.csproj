@@ -161,12 +161,6 @@
   <ItemGroup>
     <None Include="ConvertToMassPayments.Tests.xUnit_TemporaryKey.pfx" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ConvertToMassPayments\ConvertToMassPayments.csproj">
-      <Project>{F0CD74A0-F836-4427-BD96-BACA16636EC4}</Project>
-      <Name>ConvertToMassPayments</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
