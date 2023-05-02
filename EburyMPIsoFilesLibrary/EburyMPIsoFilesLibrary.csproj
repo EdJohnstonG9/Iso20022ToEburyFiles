@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\AirswiftToEburyFiles\EburyAPI\src\EburyApiModels\EburyApiModels.csproj" />
+    <ProjectReference Include="..\EburyAPI\src\EburyApiModels\EburyApiModels.csproj" />
   </ItemGroup>
 
 
