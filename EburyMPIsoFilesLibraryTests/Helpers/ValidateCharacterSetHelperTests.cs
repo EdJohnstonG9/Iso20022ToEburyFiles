@@ -16,6 +16,7 @@ namespace EburyMPIsoFilesLibrary.Helpers.Tests
         [InlineData("Alserbachstraße", "Alserbachstrasse")]
         [InlineData("Wienerbergstraße", "Wienerbergstrasse")]
         [InlineData("Peanut", "Peanut")]
+        [InlineData("Peanut" + "\u0080", "Peanut")]
         //[InlineData("Peanut", "Peanut")]
         //[InlineData("Peanut", "Peanut")]
         //[InlineData("Peanut", "Peanut")]

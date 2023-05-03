@@ -4,6 +4,7 @@ using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace EburyMPIsoFilesLibrary.Helpers
 {
@@ -125,7 +126,9 @@ namespace EburyMPIsoFilesLibrary.Helpers
                     }
                 }
             }
-            return writer.ToString();
+            string output = writer.ToString();
+            output = Regex.Replace(output, @"[^\u0000-\u007F]+", string.Empty); //Catch any remaining non-Ascii
+            return output;
         }
 
     }
