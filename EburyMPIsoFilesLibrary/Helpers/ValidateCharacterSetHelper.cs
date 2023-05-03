@@ -127,7 +127,9 @@ namespace EburyMPIsoFilesLibrary.Helpers
                 }
             }
             string output = writer.ToString();
-            output = Regex.Replace(output, @"[^\u0000-\u007F]+", string.Empty); //Catch any remaining non-Ascii
+            //output = Regex.Replace(output, @"[^\u0000-\u007F]+", string.Empty); //Catch any remaining non-Ascii
+            output = Regex.Replace(output, @"[^a-zA-Z0-9\/\-\?:().,'+ \n]+", string.Empty); //Catch any non-Swift
+            
             return output;
         }
 
