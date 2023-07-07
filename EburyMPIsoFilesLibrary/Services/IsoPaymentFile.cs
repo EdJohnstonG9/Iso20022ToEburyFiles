@@ -15,6 +15,7 @@ namespace EburyMPIsoFilesLibrary.Services
     {
         const string pain_001_001_03 = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03";
         const string pain_001_003_03 = "urn:iso:std:iso:20022:tech:xsd:pain.001.003.03";
+        const string pain_001_001_03_ch = @"http://www.six-interbank-clearing.com/de/pain.001.001.03.ch.02.xsd";
         public PaymentsInitiation001001v03 Payments001001 { get; private set; }
         public PaymentsInitiation001003v03 Payments001003 { get; private set; }
         public decimal ControlTotal { get { return getControlTotal(); } }
@@ -44,6 +45,15 @@ namespace EburyMPIsoFilesLibrary.Services
                 throw new ApplicationException($"XML file could not be found: {paymentFile}");
             xmlDoc.Load(paymentFile);
             return xmlDoc;
+        }
+
+        private XmlDocument replaceNamespace(XmlDocument docIn, string newNamespace)
+        {
+            var oldNamespace = GetNamespaceUri(docIn);
+            var newXml = docIn.OuterXml.Replace(oldNamespace, newNamespace);
+            var output = new XmlDocument();
+            output.LoadXml(newXml);
+            return output;
         }
         private PaymentsInitiation001001v03 getPaymentsInitiationSwift(XmlDocument xmlDoc)
         {
@@ -75,7 +85,14 @@ namespace EburyMPIsoFilesLibrary.Services
             try
             {
                 var xmlDoc = getPaymentFile(PaymentsFile);
-                var xmlNamespace = xmlDoc.GetElementsByTagName("Document")[0]?.NamespaceURI;
+                string xmlNamespace = GetNamespaceUri(xmlDoc);
+
+                if (xmlNamespace == pain_001_001_03_ch)
+                {
+                    xmlDoc = replaceNamespace(xmlDoc, pain_001_001_03);
+                    xmlNamespace = GetNamespaceUri(xmlDoc);
+                }
+
                 if (xmlNamespace == pain_001_001_03)
                 {
                     Payments001001 = getPaymentsInitiationSwift(xmlDoc);
@@ -99,12 +116,17 @@ namespace EburyMPIsoFilesLibrary.Services
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
 
             return output;
+        }
+
+        private static string GetNamespaceUri(XmlDocument xmlDoc)
+        {
+            return xmlDoc.GetElementsByTagName("Document")[0]?.NamespaceURI;
         }
 
         public List<MassPaymentFileModel> GetPaymentFileList()

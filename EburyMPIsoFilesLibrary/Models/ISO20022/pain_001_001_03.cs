@@ -21,8 +21,10 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     [System.Xml.Serialization.XmlRootAttribute(ElementName = "Document", Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", IsNullable = false)]
+    //[System.Xml.Serialization.XmlTypeAttribute()]
+    //[System.Xml.Serialization.XmlRootAttribute(ElementName = "Document", IsNullable = false)]
     public partial class PaymentsInitiation001001v03
     {
 
@@ -47,7 +49,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class CustomerCreditTransferInitiationV03
     {
 
@@ -88,7 +90,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class GroupHeader32
     {
 
@@ -220,7 +222,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class Authorisation1Choice
     {
 
@@ -245,7 +247,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public enum Authorisation1Code
     {
 
@@ -267,7 +269,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class CreditorReferenceType1Choice
     {
 
@@ -292,7 +294,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public enum DocumentType3Code
     {
 
@@ -320,7 +322,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class CreditorReferenceType2
     {
 
@@ -360,7 +362,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class CreditorReferenceInformation2
     {
 
@@ -400,7 +402,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class DocumentAdjustment1
     {
 
@@ -486,7 +488,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class ActiveOrHistoricCurrencyAndAmount
     {
 
@@ -526,7 +528,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public enum CreditDebitCode
     {
 
@@ -542,7 +544,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class RemittanceAmount1
     {
 
@@ -643,7 +645,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class ReferredDocumentType1Choice
     {
 
@@ -668,7 +670,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public enum DocumentType5Code
     {
 
@@ -723,7 +725,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class ReferredDocumentType2
     {
 
@@ -763,7 +765,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class ReferredDocumentInformation3
     {
 
@@ -835,7 +837,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class StructuredRemittanceInformation7
     {
 
@@ -937,7 +939,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class PartyIdentification32
     {
 
@@ -1022,7 +1024,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class PostalAddress6
     {
 
@@ -1197,7 +1199,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public enum AddressType2Code
     {
 
@@ -1225,7 +1227,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class Party6Choice
     {
 
@@ -1252,7 +1254,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class OrganisationIdentification4
     {
 
@@ -1293,7 +1295,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class GenericOrganisationIdentification1
     {
 
@@ -1348,7 +1350,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class OrganisationIdentificationSchemeName1Choice
     {
 
@@ -1390,7 +1392,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", IncludeInSchema = false)]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", IncludeInSchema = false)]
     public enum ItemChoiceType
     {
 
@@ -1406,7 +1408,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class PersonIdentification5
     {
 
@@ -1447,7 +1449,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class DateAndPlaceOfBirth
     {
 
@@ -1518,7 +1520,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class GenericPersonIdentification1
     {
 
@@ -1573,7 +1575,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class PersonIdentificationSchemeName1Choice
     {
 
@@ -1615,7 +1617,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", IncludeInSchema = false)]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", IncludeInSchema = false)]
     public enum ItemChoiceType1
     {
 
@@ -1631,7 +1633,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class ContactDetails2
     {
 
@@ -1760,7 +1762,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public enum NamePrefix1Code
     {
 
@@ -1782,7 +1784,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class RemittanceInformation5
     {
 
@@ -1824,7 +1826,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class RemittanceLocation2
     {
 
@@ -1908,7 +1910,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public enum RemittanceLocationMethod2Code
     {
 
@@ -1936,7 +1938,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class NameAndAddress10
     {
 
@@ -1976,7 +1978,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class TaxRecordDetails1
     {
 
@@ -2016,7 +2018,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class TaxPeriod1
     {
 
@@ -2102,7 +2104,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public enum TaxRecordPeriod1Code
     {
 
@@ -2166,7 +2168,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class DatePeriodDetails
     {
 
@@ -2208,7 +2210,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class TaxAmount1
     {
 
@@ -2295,7 +2297,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class TaxRecord1
     {
 
@@ -2440,7 +2442,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class TaxAuthorisation1
     {
 
@@ -2480,7 +2482,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class TaxParty2
     {
 
@@ -2550,7 +2552,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class TaxParty1
     {
 
@@ -2605,7 +2607,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class TaxInformation3
     {
 
@@ -2799,7 +2801,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class StructuredRegulatoryReporting3
     {
 
@@ -2917,7 +2919,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class RegulatoryAuthority2
     {
 
@@ -2957,7 +2959,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class RegulatoryReporting3
     {
 
@@ -3027,7 +3029,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public enum RegulatoryReportingType1Code
     {
 
@@ -3046,7 +3048,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class Purpose2Choice
     {
 
@@ -3088,7 +3090,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", IncludeInSchema = false)]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", IncludeInSchema = false)]
     public enum ItemChoiceType8
     {
 
@@ -3104,7 +3106,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class InstructionForCreditorAgent1
     {
 
@@ -3158,7 +3160,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public enum Instruction3Code
     {
 
@@ -3180,7 +3182,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class ChequeDeliveryMethod1Choice
     {
 
@@ -3205,7 +3207,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public enum ChequeDelivery1Code
     {
 
@@ -3251,7 +3253,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class Cheque6
     {
 
@@ -3474,7 +3476,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public enum ChequeType2Code
     {
 
@@ -3497,7 +3499,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public enum Priority2Code
     {
 
@@ -3513,7 +3515,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class ExchangeRateInformation1
     {
 
@@ -3598,7 +3600,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public enum ExchangeRateType1Code
     {
 
@@ -3617,7 +3619,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class EquivalentAmount2
     {
 
@@ -3657,7 +3659,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class AmountType3Choice
     {
 
@@ -3684,7 +3686,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class PaymentIdentification1
     {
 
@@ -3724,7 +3726,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class CreditTransferTransactionInformation10
     {
 
@@ -4128,7 +4130,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class PaymentTypeInformation19
     {
 
@@ -4214,7 +4216,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class ServiceLevel8Choice
     {
 
@@ -4256,7 +4258,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", IncludeInSchema = false)]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", IncludeInSchema = false)]
     public enum ItemChoiceType4
     {
 
@@ -4272,7 +4274,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class LocalInstrument2Choice
     {
 
@@ -4314,7 +4316,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", IncludeInSchema = false)]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", IncludeInSchema = false)]
     public enum ItemChoiceType5
     {
 
@@ -4330,7 +4332,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class CategoryPurpose1Choice
     {
 
@@ -4372,7 +4374,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", IncludeInSchema = false)]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", IncludeInSchema = false)]
     public enum ItemChoiceType6
     {
 
@@ -4386,7 +4388,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public enum ChargeBearerType1Code
     {
 
@@ -4408,7 +4410,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class BranchAndFinancialInstitutionIdentification4
     {
 
@@ -4448,7 +4450,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class FinancialInstitutionIdentification7
     {
 
@@ -4533,7 +4535,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class ClearingSystemMemberIdentification2
     {
 
@@ -4573,7 +4575,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class ClearingSystemIdentification2Choice
     {
 
@@ -4615,7 +4617,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", IncludeInSchema = false)]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", IncludeInSchema = false)]
     public enum ItemChoiceType2
     {
 
@@ -4631,7 +4633,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class GenericFinancialIdentification1
     {
 
@@ -4686,7 +4688,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class FinancialIdentificationSchemeName1Choice
     {
 
@@ -4728,7 +4730,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", IncludeInSchema = false)]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", IncludeInSchema = false)]
     public enum ItemChoiceType3
     {
 
@@ -4744,7 +4746,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class BranchData2
     {
 
@@ -4799,7 +4801,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class CashAccount16
     {
 
@@ -4869,7 +4871,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class AccountIdentification4Choice
     {
 
@@ -4896,7 +4898,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class GenericAccountIdentification1
     {
 
@@ -4951,7 +4953,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class AccountSchemeName1Choice
     {
 
@@ -4993,7 +4995,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", IncludeInSchema = false)]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", IncludeInSchema = false)]
     public enum ItemChoiceType7
     {
 
@@ -5009,7 +5011,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class CashAccountType2
     {
 
@@ -5034,7 +5036,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public enum CashAccountType4Code
     {
 
@@ -5092,7 +5094,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public partial class PaymentInstructionInformation3
     {
 
@@ -5422,7 +5424,7 @@ namespace EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.4084.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
+    //[System.Xml.Serialization.XmlTypeAttribute(Namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")]
     public enum PaymentMethod3Code
     {
 

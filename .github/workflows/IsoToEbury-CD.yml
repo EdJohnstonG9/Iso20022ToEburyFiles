@@ -10,7 +10,7 @@ env:
   SIGNING_THUMB: "peanut"
   APP_NAME: EburyMPIsoFiles
   APP_PROJECT_PATH: EburyMPIsoFiles\EburyMPIsoFiles.csproj
-  PUBLISH_URL: .\EburyMPIsoFiles\bin\Release\app.publish\
+  PUBLISH_URL: .\EburyMPIsoFiles\bin\Release\app.publish\855
   SIGNING_CERT_CRITERIA: CN=Engineered Systems Ltd*
   CERT_PATH: EburyMPIsoFiles\EngSyst-CodeSign.pfx
   TARGET_ZONE: Internet
