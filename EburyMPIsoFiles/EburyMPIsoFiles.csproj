@@ -16,7 +16,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>\\ENGSYST-SVR05\CommonData\deploy\Apps\Iso20022ToEburyFileSoln\</PublishUrl>
+    <PublishUrl>\\ENGSYST-SVR05\CommonData\deploy\Apps\Uat\Iso20022ToEburyFileSoln\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -26,14 +26,14 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>https://apps.engsyst.co.uk/Apps/Iso20022ToEburyFileSoln/</InstallUrl>
-    <UpdateUrl>https://apps.engsyst.co.uk/Apps/Iso20022ToEburyFileSoln/</UpdateUrl>
+    <InstallUrl>https://engsyst.co.uk/Apps/Uat/Iso20022ToEburyFileSoln/</InstallUrl>
+    <UpdateUrl>https://apps.engsyst.co.uk/Apps/Uat/Iso20022ToEburyFileSoln/</UpdateUrl>
     <ProductName>ISO to Mass Payment Files</ProductName>
     <PublisherName>Engineered Systems Ltd</PublisherName>
     <SuiteName>Ebury Mass Payments</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>60</ApplicationRevision>
+    <ApplicationRevision>61</ApplicationRevision>
     <ApplicationVersion>1.4.7.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
