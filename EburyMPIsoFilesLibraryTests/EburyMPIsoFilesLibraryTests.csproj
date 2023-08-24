@@ -31,15 +31,10 @@
     <None Update="ApplyConfiguration.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="TestData\321081_Zahlungsdatei_Arbeitnehmer_2023_04 %281%29.XML">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\321081_Zahlungsdatei_Finanzamt_2023_04.XML">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\321081_Zahlungsdatei_Krankenkassen_2023_04 %281%29.XML">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="TestData\" />
   </ItemGroup>
 
 </Project>

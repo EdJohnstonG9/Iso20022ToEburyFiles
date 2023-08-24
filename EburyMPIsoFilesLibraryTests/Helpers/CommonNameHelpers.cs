@@ -15,14 +15,14 @@ namespace EburyMPIsoFilesLibraryTests.Helpers
 
         [Theory]
         [InlineData(
-            @"D:\VisualStudio\Source\GitHub\Iso20022ToEburyFiles\EburyMPIsoFilesLibraryTests\TestData\321081_Zahlungsdatei_Multi-",
-                @"D:\VisualStudio\Source\GitHub\Iso20022ToEburyFiles\EburyMPIsoFilesLibraryTests\TestData\321081_Zahlungsdatei_Arbeitnehmer_2023_04 (1).XML",
-                @"D:\VisualStudio\Source\GitHub\Iso20022ToEburyFiles\EburyMPIsoFilesLibraryTests\TestData\321081_Zahlungsdatei_Finanzamt_2023_04.XML",
-                @"D:\VisualStudio\Source\GitHub\Iso20022ToEburyFiles\EburyMPIsoFilesLibraryTests\TestData\321081_Zahlungsdatei_Krankenkassen_2023_04 (1).XML"
+            @"G:\Shared drives\MP - High Wycombe - Data\XML FILE EXAMPLES\TestData321081_Zahlungsdatei_Multi-",
+                @"G:\Shared drives\MP - High Wycombe - Data\XML FILE EXAMPLES\TestData321081_Zahlungsdatei_Arbeitnehmer_2023_04 (1).XML",
+                @"G:\Shared drives\MP - High Wycombe - Data\XML FILE EXAMPLES\TestData321081_Zahlungsdatei_Finanzamt_2023_04.XML",
+                @"G:\Shared drives\MP - High Wycombe - Data\XML FILE EXAMPLES\TestData321081_Zahlungsdatei_Krankenkassen_2023_04 (1).XML"
             )]
         [InlineData(
-            @"D:\VisualStudio\Source\GitHub\Iso20022ToEburyFiles\EburyMPIsoFilesLibraryTests\TestData\321081_Zahlungsdatei_Arbeitnehmer_2023_04 (1).XML",
-                @"D:\VisualStudio\Source\GitHub\Iso20022ToEburyFiles\EburyMPIsoFilesLibraryTests\TestData\321081_Zahlungsdatei_Arbeitnehmer_2023_04 (1).XML"
+            @"G:\Shared drives\MP - High Wycombe - Data\XML FILE EXAMPLES\TestData321081_Zahlungsdatei_Arbeitnehmer_2023_04 (1).XML",
+                @"G:\Shared drives\MP - High Wycombe - Data\XML FILE EXAMPLES\TestData321081_Zahlungsdatei_Arbeitnehmer_2023_04 (1).XML"
             )]
         public void FilesNameTest(string expected, params string[] files)
         {
