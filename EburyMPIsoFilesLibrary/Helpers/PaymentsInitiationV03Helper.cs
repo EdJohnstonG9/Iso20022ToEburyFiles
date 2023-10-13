@@ -187,9 +187,17 @@ namespace EburyMPIsoFilesLibrary.Helpers
             {
                 if (refInf == null)
                     return string.Empty;
-                string tp = refInf.Tp?.ToString();
-                tp = tp == null ? "" : tp + ": ";
-                return tp + refInf.Ref;
+
+                string itemVal = refInf.Tp?.CdOrPrtry?.Item.ToString() ?? string.Empty;
+
+                if (!string.IsNullOrEmpty(itemVal))
+                    itemVal += ": ";
+
+                return itemVal + refInf?.Ref;
+
+                //string tp = refInf.Tp?.ToString();
+                //tp = tp == null ? "" : tp + ": ";
+                //return tp + refInf.Ref;
             }
         }
         public static string AccountNo(this CreditTransferTransactionInformation10 creditTransfer)
