@@ -149,7 +149,7 @@ namespace EburyMPIsoFilesLibrary.Helpers
                     //output = creditTransfer.PmtId.EndToEndId + Environment.NewLine + output;
                 }
                 else if (creditTransfer.RmtInf.Strd?.Length > 0)
-                {
+                {//Covering the options for reference information
                     foreach (var structured in creditTransfer.RmtInf.Strd)
                     {
                         output += addtlRmtInf(structured.AddtlRmtInf);
@@ -171,7 +171,7 @@ namespace EburyMPIsoFilesLibrary.Helpers
                 throw new ApplicationException($"{nameof(PaymentReference)}\tCould not find Payment Reference in Remittance Information for Bene: {creditTransfer.Cdtr.Nm}", ex);
             }
 
-
+            // Multi-line Remitter Info
             string addtlRmtInf(string[] inf)
             {
                 if (inf == null)
@@ -183,6 +183,7 @@ namespace EburyMPIsoFilesLibrary.Helpers
                 }
                 return infOut.Trim();
             }
+            //Creditor Ref Info handling
             string cdtrRef (CreditorReferenceInformation2 refInf)
             {
                 if (refInf == null)
@@ -193,11 +194,8 @@ namespace EburyMPIsoFilesLibrary.Helpers
                 if (!string.IsNullOrEmpty(itemVal))
                     itemVal += ": ";
 
-                return itemVal + refInf?.Ref;
-
-                //string tp = refInf.Tp?.ToString();
-                //tp = tp == null ? "" : tp + ": ";
-                //return tp + refInf.Ref;
+                //return itemVal + refInf?.Ref;
+                return refInf?.Ref;
             }
         }
         public static string AccountNo(this CreditTransferTransactionInformation10 creditTransfer)
