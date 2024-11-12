@@ -270,7 +270,11 @@ namespace EburyMPIsoFilesLibrary.Helpers
 
         public static string Iban(this CreditTransferTransactionInformation10 creditTransfer)
         {
-            var output = (string)creditTransfer.CdtrAcct.Id?.Item;
+            string output;
+            if (creditTransfer.CdtrAcct.Id?.Item is GenericAccountIdentification1 generic)
+                output = generic.Id;
+            else 
+                output = (string)creditTransfer.CdtrAcct.Id?.Item;
             return output;
         }
 
