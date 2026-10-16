@@ -1,9 +1,13 @@
 ﻿using EburyApiWrapper.Beneficiaries;
 using EburyApiWrapper.Payments;
+
 using EburyMPIsoFilesLibrary.Models.Ebury;
+using EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03;
 using EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_003_03;
+
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace EburyMPIsoFilesLibrary.Helpers
@@ -67,9 +71,10 @@ namespace EburyMPIsoFilesLibrary.Helpers
             output.BankCountry = creditTransfer.BankCountry();
 
             output.BeneficiaryName = creditTransfer.Cdtr.Nm;
-            output.BeneficiaryAddress1 = creditTransfer.BeneficiaryAddress1();
-            output.BeneficiaryCity = "";// creditTransfer.BeneficiaryCountry();
-            output.BeneficiaryCountry = creditTransfer.BeneficiaryCountry();
+            //output.BeneficiaryAddress1 = creditTransfer.BeneficiaryAddress1();
+            //output.BeneficiaryCity = "";// creditTransfer.BeneficiaryCountry();
+            //output.BeneficiaryCountry = creditTransfer.BeneficiaryCountry();
+            output.MapOutputAddresses(creditTransfer);
 
             output.SettlementCurrency = paymentInstruction.SettlementCurrency(output.PaymentCurrency);
 
@@ -83,6 +88,24 @@ namespace EburyMPIsoFilesLibrary.Helpers
         }
 
         #region simple functions
+
+        private static void MapOutputAddresses(this MassPaymentFileModel output, CreditTransferTransactionInformationSCT creditTransfer)
+        {
+            var postalAddr = creditTransfer.Cdtr.PstlAdr;
+            if (postalAddr == null) return;
+
+            //output.BeneficiaryStreetName = postalAddr.StrtNm;
+            //output.BeneficiaryBuildingNumber = postalAddr.BldgNb;
+            ////output.BeneficiaryFloor = postalAddr.Flr;
+            ////output.BeneficiaryApartmentOffice = postalAddr.Room;
+            //output.BeneficiaryPostCode = postalAddr.PstCd;
+            //output.BeneficiaryCountrySubDivision = postalAddr.CtrySubDvsn;
+            //output.BeneficiaryCity = postalAddr.TwnNm;
+
+            output.BeneficiaryCountry = postalAddr.Ctry;
+
+            Debug.Print($"AddrLines:\n{string.Join(Environment.NewLine, postalAddr.AdrLine)}");
+        }
 
         public static decimal CreditAmt(this CreditTransferTransactionInformationSCT creditTransfer)
         {

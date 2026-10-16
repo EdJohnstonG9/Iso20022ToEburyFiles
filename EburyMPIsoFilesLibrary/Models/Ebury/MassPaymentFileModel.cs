@@ -1,8 +1,12 @@
 ﻿using CsvHelper.Configuration.Attributes;
+
+using EburyAPI.Model;
+
 using EburyMPIsoFilesLibrary.Helpers;
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace EburyMPIsoFilesLibrary.Models.Ebury
@@ -20,11 +24,23 @@ namespace EburyMPIsoFilesLibrary.Models.Ebury
         private string remitterAddressLine2;
         private string beneficiaryReference;
         private string paymentReference;
+        private string beneficiaryStreetName;
+        private string beneficiaryBuildingNumber;
+        private string beneficiaryFloor;
+        private string beneficiaryApartmentOffice;
+        private string beneficiaryPostCode;
+        private string beneficiaryCountrySubDivision;
 
         public string Direction { get; set; }
         public string Product { get; set; }
         public string BeneficiaryName { get => beneficiaryName.ToAsciiChars(); set => beneficiaryName = value; }
-        public string BeneficiaryAddress1 { get => beneficiaryAddress1.ToAsciiChars(); set => beneficiaryAddress1 = value; }
+        //public string BeneficiaryAddress1 { get => beneficiaryAddress1.ToAsciiChars(); set => beneficiaryAddress1 = value; }
+        public string BeneficiaryStreetName { get => beneficiaryStreetName.ToAsciiChars(); set => beneficiaryStreetName = value; }
+        public string BeneficiaryBuildingNumber { get => beneficiaryBuildingNumber.ToAsciiChars(); set => beneficiaryBuildingNumber = value; }
+        public string BeneficiaryFloor { get => beneficiaryFloor.ToAsciiChars(); set => beneficiaryFloor = value; }
+        public string BeneficiaryApartmentOffice { get => beneficiaryApartmentOffice.ToAsciiChars(); set => beneficiaryApartmentOffice = value; }
+        public string BeneficiaryPostCode { get => beneficiaryPostCode.ToAsciiChars(); set => beneficiaryPostCode = value; }
+        public string BeneficiaryCountrySubDivision { get => beneficiaryCountrySubDivision.ToAsciiChars(); set => beneficiaryCountrySubDivision = value; }
         public string BeneficiaryCity { get => beneficiaryCity.ToAsciiChars(); set => beneficiaryCity = value; }
         public string BeneficiaryCountry { get; set; }
         public string PaymentCurrency { get; set; }

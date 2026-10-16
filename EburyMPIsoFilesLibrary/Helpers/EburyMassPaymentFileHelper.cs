@@ -14,8 +14,8 @@ namespace EburyMPIsoFilesLibrary.Helpers
                 name: paymentIn.BeneficiaryName,
                 emailAddresses: new List<string>(),
                 emailNotification: false,
-                addressLine1: paymentIn.BeneficiaryAddress1,
-                postCode: ".",
+                addressLine1: paymentIn.GetAddressLine1(),
+                postCode: paymentIn.BeneficiaryPostCode,
                 countryCode: paymentIn.BeneficiaryCountry,
 
                 bankName: paymentIn.BankName,

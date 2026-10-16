@@ -37,8 +37,9 @@ namespace EburyMPIsoFilesLibrary.Helpers
 
             output.BeneficiaryName = decodedString(bacs.EmployeeName);
             output.BeneficiaryReference = "";// bacs.Description;
-            output.BeneficiaryAddress1 = ".";
-            //output.BeneficiaryCity = airswift.Cdtr.PstlAdr?.TwnNm;
+            //output.BeneficiaryAddress1 = ".";
+            output.BeneficiaryStreetName = ".";
+            output.BeneficiaryCity = ".";
             output.BeneficiaryCountry = output.BankCountry;
 
             output.SettlementCurrency = bacsCcy;

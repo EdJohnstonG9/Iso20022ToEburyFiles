@@ -57,8 +57,10 @@ namespace EburyMPIsoFilesLibrary.Helpers
             output.BeneficiaryName = airswift.beneficiaryName(applyRes);
             //output.BeneficiaryReference = airswift.SecPty.SecPaymentRef;
             //output.BeneficiaryReference = airswift.BatHdr.BatBeneAddress; //Removed so dynamic references used
-            output.BeneficiaryAddress1 = airswift.beneficiaryAddress(valid);
             //output.BeneficiaryCity = airswift.Cdtr.PstlAdr?.TwnNm;
+
+            //ToDo: If Airswift is resurected, set Output address
+            //output.BeneficiaryAddress1 = airswift.beneficiaryAddress(valid);
             output.BeneficiaryCountry = airswift.SecPty.SecBankCtry;
 
             output.SettlementCurrency = settlementCcy;
