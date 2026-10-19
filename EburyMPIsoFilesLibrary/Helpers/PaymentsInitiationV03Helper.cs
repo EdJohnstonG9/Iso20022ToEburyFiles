@@ -1,15 +1,19 @@
 ﻿using EburyApiWrapper.Beneficiaries;
 using EburyApiWrapper.Client;
 using EburyApiWrapper.Payments;
+
 using EburyMPIsoFilesLibrary.Models.Ebury;
 using EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_001_03;
+
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace EburyMPIsoFilesLibrary.Helpers
 {
-    public static class PaymentsInitiationV03Helper 
+    public static class PaymentsInitiationV03Helper
     {
 
         public static void CompleteSwift(this NewBenePaymentModel benePayment)
@@ -48,7 +52,7 @@ namespace EburyMPIsoFilesLibrary.Helpers
                 addressLine1: creditTransfer.BeneficiaryAddress1(),
                 postCode: creditTransfer.Cdtr.PstlAdr?.PstCd,
                 countryCode: creditTransfer.BeneficiaryCountry(),
-                bankIdentifier: creditTransfer.BankIdentifier(), 
+                bankIdentifier: creditTransfer.BankIdentifier(),
                 accountNumber: creditTransfer.AccountNo(),
                 bankAddressLine1: creditTransfer.CdtrAgt?.FinInstnId.PstlAdr?.AdrLine?[0],
                 bankCountryCode: creditTransfer.BankCountry(),
@@ -87,7 +91,7 @@ namespace EburyMPIsoFilesLibrary.Helpers
             output.PaymentAmount = creditTransfer.CreditAmt();
             output.PaymentCurrency = creditTransfer.CreditCcy();
             output.PaymentReference = creditTransfer.PaymentReference();
-                //infOut.ReasonForPayment = reasonForPayment(creditTransfer);
+            //infOut.ReasonForPayment = reasonForPayment(creditTransfer);
 
             output.SwiftCode = creditTransfer.CdtrAgt?.FinInstnId.BIC;
             output.BankName = creditTransfer.CdtrAgt?.FinInstnId.Nm;
@@ -96,9 +100,15 @@ namespace EburyMPIsoFilesLibrary.Helpers
             output.BankCountry = creditTransfer.BankCountry();
 
             output.BeneficiaryName = creditTransfer.Cdtr.Nm;
-            output.BeneficiaryAddress1 = creditTransfer.BeneficiaryAddress1();
-            output.BeneficiaryCity = creditTransfer.Cdtr.PstlAdr?.TwnNm;
+            //output.BeneficiaryAddress1 = creditTransfer.BeneficiaryAddress1();
+            //output.BeneficiaryStreetName = creditTransfer.BeneficiaryAddress1
+            //output.BeneficiaryCity = creditTransfer.Cdtr.PstlAdr?.TwnNm;
+            output.MapOutputAddresses(creditTransfer);
             output.BeneficiaryCountry = creditTransfer.BeneficiaryCountry();
+
+            //BOS does not accept ISO purpose codes
+            //output.PurposeCode = creditTransfer.GetPurpopseCode(paymentInstruction);
+            output.PurposeCode = string.Empty;
 
             output.SettlementCurrency = paymentInstruction.SettlementCurrency(output.PaymentCurrency);
 
@@ -112,6 +122,34 @@ namespace EburyMPIsoFilesLibrary.Helpers
         }
 
         #region simple functions
+
+        private static string GetPurpopseCode(this CreditTransferTransactionInformation10 creditTransfer, PaymentInstructionInformation3 paymentInstruction)
+        {
+            var output = creditTransfer.Purp?.Item
+                ?? paymentInstruction.PmtTpInf.CtgyPurp?.Item;
+
+            return output;
+        }
+
+        private static void MapOutputAddresses(this MassPaymentFileModel output, CreditTransferTransactionInformation10 creditTransfer)
+        {
+            var postalAddr = creditTransfer.Cdtr.PstlAdr;
+            if (postalAddr == null) return;
+
+            output.BeneficiaryStreetName = postalAddr.StrtNm;
+            output.BeneficiaryBuildingNumber = postalAddr.BldgNb;
+            //output.BeneficiaryFloor = postalAddr.Flr;
+            //output.BeneficiaryApartmentOffice = postalAddr.Room;
+            output.BeneficiaryPostCode = postalAddr.PstCd;
+            output.BeneficiaryCountrySubDivision = postalAddr.CtrySubDvsn;
+            output.BeneficiaryCity = postalAddr.TwnNm;
+            output.BeneficiaryCountry = postalAddr.Ctry;
+
+            if (postalAddr.AdrLine?.Any() == true)
+            {
+                Debug.Print($"AddrLines:\n{string.Join(Environment.NewLine, postalAddr.AdrLine)}");
+            }
+        }
 
         public static decimal CreditAmt(this CreditTransferTransactionInformation10 creditTransfer)
         {
@@ -161,7 +199,7 @@ namespace EburyMPIsoFilesLibrary.Helpers
                         output += Environment.NewLine;
                     }
                 }
-                
+
                 //remove multispace
                 output = Regex.Replace(output, @"\s+", " ", RegexOptions.Multiline).Trim();
                 return output;
@@ -177,14 +215,14 @@ namespace EburyMPIsoFilesLibrary.Helpers
                 if (inf == null)
                     return string.Empty;
                 string infOut = "";
-                foreach(string item in inf)
+                foreach (string item in inf)
                 {
                     infOut += item + Environment.NewLine;
                 }
                 return infOut.Trim();
             }
             //Creditor Ref Info handling
-            string cdtrRef (CreditorReferenceInformation2 refInf)
+            string cdtrRef(CreditorReferenceInformation2 refInf)
             {
                 if (refInf == null)
                     return string.Empty;
@@ -222,7 +260,7 @@ namespace EburyMPIsoFilesLibrary.Helpers
         {
             string output = "";
             string purp = creditTransfer.Purp?.Item;
-            if(purp.ToUpper().Contains("SALA"))
+            if (purp.ToUpper().Contains("SALA"))
             {
                 output = "Salary/Payroll";
             }
@@ -251,8 +289,8 @@ namespace EburyMPIsoFilesLibrary.Helpers
 
         public static List<string> CreditorEmailAddress(this CreditTransferTransactionInformation10 creditTransfer)
         {
-             List<string> outEmail  = new List<string>();
-             outEmail.Add(creditTransfer.Cdtr.CtctDtls?.EmailAdr);
+            List<string> outEmail = new List<string>();
+            outEmail.Add(creditTransfer.Cdtr.CtctDtls?.EmailAdr);
             if (string.IsNullOrEmpty(outEmail[0]))
                 outEmail[0] = "No.Email@Nowhere.com";
             return outEmail;
@@ -273,7 +311,7 @@ namespace EburyMPIsoFilesLibrary.Helpers
             string output;
             if (creditTransfer.CdtrAcct.Id?.Item is GenericAccountIdentification1 generic)
                 output = generic.Id;
-            else 
+            else
                 output = (string)creditTransfer.CdtrAcct.Id?.Item;
             return output;
         }

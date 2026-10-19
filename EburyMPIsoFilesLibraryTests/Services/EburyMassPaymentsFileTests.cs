@@ -25,7 +25,7 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
                 int actual = payments.ReadPaymentsFile(fileName);
                 Assert.Equal(items, actual);
 
-                eburyFile.Payments = payments.GetPaymentFileList();
+                eburyFile.Payments = payments.GetPaymentFileList(payments.PaymentsFile);
                 actual = eburyFile.Payments.Count;
 
                 Assert.Equal(items, actual);

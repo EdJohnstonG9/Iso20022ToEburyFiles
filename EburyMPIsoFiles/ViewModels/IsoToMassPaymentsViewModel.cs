@@ -166,7 +166,7 @@ namespace EburyMPIsoFiles.ViewModels
             {
                 isoPayments = new IsoPaymentFile();
                 isoPayments.ReadPaymentsFile(fileName);
-                MassPaymentFile.Payments.AddRange(isoPayments.GetPaymentFileList());
+                MassPaymentFile.Payments.AddRange(isoPayments.GetPaymentFileList(isoPayments.PaymentsFile));
                 outStr = fileName.Replace(".xml", ".csv");
                 //outStr = writeIsoFile(fileName);
             }
