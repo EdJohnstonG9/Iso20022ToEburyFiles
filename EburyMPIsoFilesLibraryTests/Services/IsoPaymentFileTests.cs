@@ -38,10 +38,10 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
             {
                 int iRead = payments.ReadPaymentsFile(fileName);
 
-                var actual = payments.NewBeneficarisList(payments.Payments001001);
+                var actual = payments.NewBeneficarisList(payments.Payments001001v03);
                 var total = actual.Sum(x => (decimal)x.Payment.Amount);
                 Assert.True(actual.Count == items);
-                Assert.Equal(payments.Payments001001.CstmrCdtTrfInitn.GrpHdr.CtrlSum, total); 
+                Assert.Equal(payments.Payments001001v03.CstmrCdtTrfInitn.GrpHdr.CtrlSum, total); 
             }
         }
 
@@ -58,7 +58,7 @@ namespace EburyMPIsoFilesLibrary.Services.Tests
             {
                 int iRead = payments.ReadPaymentsFile(fileName);
 
-                var actual = payments.GetPaymentFileList();
+                var actual = payments.GetPaymentFileList(payments.PaymentsFile);
                 var total = actual.Sum(x => (decimal)x.PaymentAmount);
                 Assert.True(actual.Count == items);
                 Assert.Equal(payments.ControlTotal, total); 

@@ -145,9 +145,9 @@ namespace EburyMPIsoFiles.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Provides a simple conversion of ISO20022 XML files to Ebury Mass Payment format CSV files. 
-        ///Covers pain.001.001.03 and pain.001.003.03 file formats
+        ///Covers pain.001.001.03/09 and pain.001.003.03 file formats
         ///The user remains responsible for the content of converted files.
-        ///v1.5.8 adds conversion of non-ISO characters, i.e. with accents.
+        ///v1.6.13 adds pan.001.001.09 and the new Ebury Pay File output with structured addresses.
         /// </summary>
         public static string SettingsPageAboutText {
             get {
