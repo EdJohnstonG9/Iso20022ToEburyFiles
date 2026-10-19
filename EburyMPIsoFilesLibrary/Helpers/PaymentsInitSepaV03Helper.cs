@@ -8,6 +8,7 @@ using EburyMPIsoFilesLibrary.Models.ISO20022.pain_001_003_03;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace EburyMPIsoFilesLibrary.Helpers
@@ -76,6 +77,9 @@ namespace EburyMPIsoFilesLibrary.Helpers
             //output.BeneficiaryCountry = creditTransfer.BeneficiaryCountry();
             output.MapOutputAddresses(creditTransfer);
 
+            //BOS does not accept ISO purpose codes
+            //output.PurposeCode = creditTransfer.GetPurposeCode(paymentInstruction);
+
             output.SettlementCurrency = paymentInstruction.SettlementCurrency(output.PaymentCurrency);
 
             //ToDo Remitter Info
@@ -87,6 +91,11 @@ namespace EburyMPIsoFilesLibrary.Helpers
             return output;
         }
 
+        private static string GetPurposeCode(this CreditTransferTransactionInformationSCT creditTransfer, PaymentInstructionInformationSCT paymentInstruction)
+        {
+            return creditTransfer.Purp?.Cd ?? paymentInstruction.PmtTpInf?.CtgyPurp?.Cd;
+        }
+
         #region simple functions
 
         private static void MapOutputAddresses(this MassPaymentFileModel output, CreditTransferTransactionInformationSCT creditTransfer)
@@ -94,13 +103,18 @@ namespace EburyMPIsoFilesLibrary.Helpers
             var postalAddr = creditTransfer.Cdtr.PstlAdr;
             if (postalAddr == null) return;
 
-            //output.BeneficiaryStreetName = postalAddr.StrtNm;
+            output.BeneficiaryStreetName = postalAddr.AdrLine.Length > 0
+                ? postalAddr.AdrLine[0]
+                : string.Empty;
             //output.BeneficiaryBuildingNumber = postalAddr.BldgNb;
-            ////output.BeneficiaryFloor = postalAddr.Flr;
-            ////output.BeneficiaryApartmentOffice = postalAddr.Room;
+            //output.BeneficiaryFloor = postalAddr.Flr;
+            //output.BeneficiaryApartmentOffice = postalAddr.Room;
             //output.BeneficiaryPostCode = postalAddr.PstCd;
-            //output.BeneficiaryCountrySubDivision = postalAddr.CtrySubDvsn;
-            //output.BeneficiaryCity = postalAddr.TwnNm;
+            output.BeneficiaryCountrySubDivision = postalAddr.AdrLine.Length > 1
+                ? postalAddr.AdrLine[1]
+                : string.Empty;
+
+            output.BeneficiaryCity = postalAddr.AdrLine.LastOrDefault();
 
             output.BeneficiaryCountry = postalAddr.Ctry;
 

@@ -43,6 +43,7 @@ namespace EburyMPIsoFilesLibrary.Models.Ebury
         public string BeneficiaryCountrySubDivision { get => beneficiaryCountrySubDivision.ToAsciiChars(); set => beneficiaryCountrySubDivision = value; }
         public string BeneficiaryCity { get => beneficiaryCity.ToAsciiChars(); set => beneficiaryCity = value; }
         public string BeneficiaryCountry { get; set; }
+        public string PurposeCode { get; set; }
         public string PaymentCurrency { get; set; }
         public decimal PaymentAmount { get; set; }
         public string SettlementCurrency { get; set; }
@@ -64,7 +65,6 @@ namespace EburyMPIsoFilesLibrary.Models.Ebury
         [Name("Reason for trade")]
         public string ReasonForPayment { get; set; }
         public string BeneficiaryReference { get => beneficiaryReference.ToAsciiChars(); set => beneficiaryReference = value; }
-        public string PurposeCode { get; set; }
         public string INN { get; set; }
         public string VO { get; set; }
         public string KIO { get; set; }

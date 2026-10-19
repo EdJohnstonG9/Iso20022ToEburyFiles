@@ -106,6 +106,10 @@ namespace EburyMPIsoFilesLibrary.Helpers
             output.MapOutputAddresses(creditTransfer);
             output.BeneficiaryCountry = creditTransfer.BeneficiaryCountry();
 
+            //BOS does not accept ISO purpose codes
+            //output.PurposeCode = creditTransfer.GetPurpopseCode(paymentInstruction);
+            output.PurposeCode = string.Empty;
+
             output.SettlementCurrency = paymentInstruction.SettlementCurrency(output.PaymentCurrency);
 
             //ToDo Remitter Info
@@ -118,6 +122,14 @@ namespace EburyMPIsoFilesLibrary.Helpers
         }
 
         #region simple functions
+
+        private static string GetPurpopseCode(this CreditTransferTransactionInformation10 creditTransfer, PaymentInstructionInformation3 paymentInstruction)
+        {
+            var output = creditTransfer.Purp?.Item
+                ?? paymentInstruction.PmtTpInf.CtgyPurp?.Item;
+
+            return output;
+        }
 
         private static void MapOutputAddresses(this MassPaymentFileModel output, CreditTransferTransactionInformation10 creditTransfer)
         {

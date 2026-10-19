@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 
 namespace EburyMPIsoFilesLibrary.Helpers
@@ -79,6 +80,9 @@ namespace EburyMPIsoFilesLibrary.Helpers
             output.MapOutputAddresses(creditTransfer);
             output.BeneficiaryCountry = creditTransfer.BeneficiaryCountry();
 
+            //BOS does not accept ISO purpose codes
+            //output.PurposeCode = creditTransfer.GetPurpopseCode(paymentInstruction);
+
             output.SettlementCurrency = paymentInstruction.SettlementCurrency(output.PaymentCurrency);
 
             //ToDo Remitter Info
@@ -91,6 +95,14 @@ namespace EburyMPIsoFilesLibrary.Helpers
         }
 
         #region simple functions
+
+        private static string GetPurpopseCode(this CreditTransferTransaction34 creditTransfer, PaymentInstruction30 paymentInstruction)
+        {
+            var output = creditTransfer.Purp?.Item
+                ?? paymentInstruction.PmtTpInf.CtgyPurp?.Item;
+
+            return output;
+        }
 
         private static void MapOutputAddresses(this MassPaymentFileModel output, CreditTransferTransaction34 creditTransfer)
         {
